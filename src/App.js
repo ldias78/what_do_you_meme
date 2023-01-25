@@ -1,7 +1,6 @@
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-import { Button, Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import logo from "./logo.svg";
+import "./App.css";
+import React from "react";
 
 function BasicExample() {
   return (
