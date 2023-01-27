@@ -7,6 +7,7 @@ import axios from "axios";
 const App = () => {
   const [giphy, setGiphy] = useState("");
   const [fetching, setFetching] = useState("false");
+  const [prevgiphy, setCurrentGiph] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       const apiRoot = "https://api.giphy.com/v1/gifs/";
