@@ -5,75 +5,52 @@ import "bootstrap";
 
 import { Button, Form, InputGroup } from "react-bootstrap";
 
-function App() {
+const GiphyApi = () => {
+  const [gifs, setGifs] = useState([]);
+  const [displayedGifs, setDisplayedGifs] = useState(new Set());
 
-  import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Card, Container, Row, Col } from "react-bootstrap";
-import "./App.css";
-import axios from "axios";
-
-const App = () => {
-  const [giphy, setGiphy] = useState("");
-  const [fetching, setFetching] = useState("false");
-  const [prevgiphy, setCurrentGiph] = useState("");
   useEffect(() => {
-    const fetchData = async () => {
-      const apiRoot = "https://api.giphy.com/v1/gifs/";
-      const api_key = process.env.REACT_APP_GIPHY_KEY;
-      const result = await axios(
-        `${apiRoot}trending?api_key=${api_key}&rating=g`
+    const fetchGifs = async () => {
+      const response = await axios({
+        method: "get",
+        url: `${apiRoot}trending`,
+        params: {
+          api_key: api_key,
+          rating: "g",
+        },
+      });
+      const data = await response.data;
+      const newGifs = data.data.filter((gif) => !displayedGifs.has(gif.id));
+      setGifs([...gifs, ...newGifs]);
+      setDisplayedGifs(
+        new Set([...displayedGifs, ...newGifs.map((gif) => gif.id)])
       );
-      console.log(result);
-      const randomIndex = Math.floor(Math.random() * 50);
-      setGiphy(`${result.data.data[randomIndex].images.fixed_height.url}`);
     };
-    fetchData();
-  }, [fetching]);
+
+    fetchGifs();
+  }, []);
+
   return (
     <div>
-      <Container style={{ marginTop: "100px" }}>
-        <Row>
-          <Col md={{ span: 6, offset: 3 }}>
-            <Card style={{ backgroundColor: "powderblue" }}>
-              <Card.Img
-                variant="top"
-                src={giphy}
-                style={{ height: "350px", width: "100%" }}
-              />
-              <Card.Body>
-                <Card.Title>What do you Meme?</Card.Title>
-                <Card.Text>
-                  Pick a card with a caption that match this Meme
-                </Card.Text>
-                <Button
-                  variant="primary"
-                  onClick={() => setFetching(!fetching)}
-                >
-                  click here to see your next Meme
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      {gifs.map((gif) => (
+        <img key={gif.id} src={gif.images.original.url} alt={gif.title} />
+      ))}
     </div>
   );
 };
 
-export default App;
+export default GiphyApi;
 
-  // return (
-  //   <div className="welcome-screen">
-  //     <InputGroup className="player-name">
-  //       <InputGroup.Text> What's your name? </InputGroup.Text>
-  //       <Form.Control aria-label="Name" />
-  //     </InputGroup>
+// return (
+//   <div className="welcome-screen">
+//     <InputGroup className="player-name">
+//       <InputGroup.Text> What's your name? </InputGroup.Text>
+//       <Form.Control aria-label="Name" />
+//     </InputGroup>
 
-  //     <Button> Test Button </Button>
-  //     <Button> Test Button 2 </Button>
-  //   </div>
-
+//     <Button> Test Button </Button>
+//     <Button> Test Button 2 </Button>
+//   </div>
 
 // function BasicExample() {
 //   return (
@@ -90,5 +67,3 @@ export default App;
 //     </Card>
 //   );
 // }
-
-export default BasicExample;
