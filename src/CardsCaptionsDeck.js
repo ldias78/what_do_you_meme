@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import Randomphrases from "src/randomphrases.js";
+import { Randomphrases } from ".RandomPhrases";
 
 // const Randomphrases = [
 //   "When you realize it's Monday tomorrow",
@@ -104,7 +104,7 @@ import Randomphrases from "src/randomphrases.js";
 //   "When you leave the house and you're not dressed for the weather",
 // ];
 
-class CardCaption extends React.Component {
+export class CardCaption extends React.Component {
   render() {
     return (
       <div className="cardcap">
