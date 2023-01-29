@@ -1,9 +1,22 @@
-const randomphrases = [
-  "When you realize it's Monday tomorrow",
-  "When you're the only sober one at the party",
-  "When your mom says she's not mad",
-  "When you see a spider in your room",
-  "When you're trying to be cool in front of your crush",
+const Randomphrases = 
+    {
+      quote: "When you realize it's Monday tomorrow", 
+      id: 1 },
+    {
+      quote: "When you\'re the only sober one at the party",
+      id: 2 
+    }, 
+      { 
+        quote: "When your mom says she\'s not mad",
+      id: 3
+    },
+    { 
+      quote: "When you see a spider in your room",
+      id: 4
+    },
+    {
+      quote: "When you're trying to be cool in front of your crush",
+      id: 5}
   "When you're the only one who didn't get the joke",
   "When you're trying to act like you're listening",
   "When your meal is spicy as heck but you're acting like it's not",
@@ -98,6 +111,6 @@ const randomphrases = [
   "When you're trying to be a good sport but the equipment is too old",
   "When you're staying at a hotel and find a hair that's not yours on the pillow",
   "When you leave the house and you're not dressed for the weather",
-];
+};
 
-export default randomphrases;
+export default RandomPhrases;
