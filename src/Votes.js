@@ -6,7 +6,7 @@ class Votes extends React.Component {
   };
 
   CountVote = () => {
-    console.log("hi from countvote");
+    console.log("hi from the vote count");
     this.setState((prevState) => {
       return {
         count: prevState.count * 1,
