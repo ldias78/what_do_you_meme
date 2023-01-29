@@ -1,4 +1,7 @@
+import randomphrases from "src/randomphrases.js";
+
 const CardCaption = (props) => {
-  <div className="cardcap"></div>;
-  <p></p>;
+  <div className="cardcap">
+    <p></p>;
+  </div>;
 };

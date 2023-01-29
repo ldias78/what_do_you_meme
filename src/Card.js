@@ -1,12 +1,17 @@
+import Card from "react-bootstrap/Card";
+
 const Cards = (props) => {
-  }
-  return(
-  <div className="card-div"></div>;
-  <p></p>;
+  return (
+    <Card style={{ width: "18rem" }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Text>{props.Caption}</Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 
-export default Cards
+export default Cards;
 
 // import React, { useState } from "react";
 // import { useEffect } from "react";
