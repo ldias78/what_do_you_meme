@@ -1,23 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import Countdown from "react-countdown";
 
-const getTime = () => {
-  const time = new Date(deadline) - new Date();
+// Random component
+const Completionist = () => <span>You are good to go!</span>;
 
-  setTimeDelta({
-    minutes: Math.floor((time / 1000 / 60) % 60),
-    seconds: Math.floor((time / 1000) % 60),
-  });
-
-  render() {
-    return (
-      <div className="Timer">
-        <Card />
-        <span className="countdown">{this.state.getTime}</span>
-          Shuffle Button
-      </div>
-    );
-  }
-};
-
-export default getTime;
+ReactDOM.render(
+  <Countdown date={Date.now() + 5000}>
+    <Completionist />
+  </Countdown>,
+  document.getElementById("root")
+);
