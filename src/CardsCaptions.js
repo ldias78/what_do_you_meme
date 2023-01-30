@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { Randomphrases } from ".RandomPhrases";
+import Randomphrases from ".RandomPhrases";
 
 const CardCaption = (props) => {
   return (

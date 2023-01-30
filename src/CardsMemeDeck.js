@@ -1,5 +1,6 @@
 import React from "react";
-import Card from "src/Card.js";
+import Card from "./Card";
+import CardCaptions from "./CardsCaptionsDeck";
 import { useState } from "react";
 
 const CardDeck = () => {
