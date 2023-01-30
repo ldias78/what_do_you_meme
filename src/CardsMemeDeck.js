@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "src/Card.js";
+import { useState } from "react";
 
 const CardDeck = () => {
   const [totaldeck, setTotaldeck] = React.useState(25);

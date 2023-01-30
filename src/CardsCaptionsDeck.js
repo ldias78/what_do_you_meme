@@ -2,6 +2,16 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Randomphrases } from ".RandomPhrases";
 
+const CardCaption = (props) => {
+  return (
+    <div className="cardcap">
+      <p>{this.props.Randomphrases}</p>;
+    </div>
+  );
+};
+
+export default CardCaption;
+
 // const Randomphrases = [
 //   "When you realize it's Monday tomorrow",
 //   "When you're the only sober one at the party",
@@ -103,15 +113,3 @@ import { Randomphrases } from ".RandomPhrases";
 //   "When you're staying at a hotel and find a hair that's not yours on the pillow",
 //   "When you leave the house and you're not dressed for the weather",
 // ];
-
-export class CardCaption extends React.Component {
-  render() {
-    return (
-      <div className="cardcap">
-        <p>{this.props.Randomphrases}</p>;
-      </div>
-    );
-  }
-}
-
-export default CardCaption;
