@@ -30,8 +30,7 @@ const Randomphrases = [
   },
 
   {
-    quote:
-      "People waste their time pondering whether a glass is half empty or half full. Me, I just drink whatever/'s in the glass.",
+    quote: "Behind every great man is a woman rolling her eyes.",
     id: 6,
   },
 
@@ -53,29 +52,59 @@ const Randomphrases = [
 
   { quote: "I won't have a good day, actually.", id: 11 },
 
-  { quote: "When you're trying to act like you're listening", id: 12 },
+  { quote: "I hate to admit it, but they melts my Haagen-Dazs", id: 12 },
 
-  { quote: "When you're trying to act like you're listening", id: 13 },
+  {
+    quote:
+      "My mother always used to say: The older you get, the better you get, unless you're a banana.",
+    id: 13,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 14 },
+  {
+    quote: "You know I'm a feminist. That's why I let you pay for all my stuff",
+    id: 14,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 15 },
+  {
+    quote: "She's really a very sweet woman. She just doesn't like to show it.",
+    id: 15,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 16 },
+  { quote: "I'm not a criminal, I'm an outlaw.", id: 16 },
 
-  { quote: "When you're trying to act like you're listening", id: 17 },
+  {
+    quote:
+      "I'm sick of following my dreams, man. I'm just going to ask where they're going and hook up with 'em late",
+    id: 17,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 18 },
+  {
+    quote:
+      "I don’t believe in astrology; I'm a Sagittarius and we're skeptical.",
+    id: 18,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 19 },
+  { quote: "I'm not a kid anymore, I'm a grown-up.", id: 19 },
 
-  { quote: "When you're trying to act like you're listening", id: 20 },
+  {
+    quote:
+      "I'm not saying I hate you, but I would unplug your life support to charge my phone.",
+    id: 20,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 21 },
+  {
+    quote:
+      "Doing nothing is very hard to do… you never know when you're finished.",
+    id: 21,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 22 },
+  {
+    quote:
+      "I always wanted to be somebody, but now I realize I should have been more specific.",
+    id: 22,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 23 },
+  { quote: "When people say 'it's always the last place you look", id: 23 },
 
   { quote: "When you're trying to act like you're listening", id: 24 },
 

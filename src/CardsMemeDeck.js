@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import CardCaptions from "./CardsCaptionsDeck";
+import CardCaptions from "./CardsCaptions";
 import { useState } from "react";
 
 const CardDeck = () => {
