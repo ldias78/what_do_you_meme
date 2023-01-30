@@ -1,12 +1,11 @@
 import React from "react";
 import Card from "src/Card.js";
 
-class CardDeck extends React.Component {
-  state = {
-    Totaldeck: 25,
-  };
+const CardDeck = () => {
+  const [totaldeck, setTotaldeck] = (React.useState = React.useState(25));
 
-  shuffledeck = () => {
+  const shuffledeck = () => {
+    setTotaldeck((prevTotal) => prevTotal - 7);
     console.log("hi from deck");
     this.setState((prevState) => {
       return {
@@ -14,17 +13,16 @@ class CardDeck extends React.Component {
       };
     });
   };
-  render() {
-    return (
-      <div className="carddeck">
-        <Card />
-        <span className="deck">{this.state.Totaldeck}</span>
-        <button className="shuffle" onClick={this.shuffledeck}>
-          Shuffle Button
-        </button>
-      </div>
-    );
-  }
-}
+
+  return (
+    <div className="carddeck">
+      <Card />
+      <span className="deck">totaldeck</span>
+      <button className="shuffle" onClick={this.shuffledeck}>
+        Shuffle Button
+      </button>
+    </div>
+  );
+};
 
 export default CardDeck;
