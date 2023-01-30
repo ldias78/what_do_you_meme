@@ -1,25 +1,55 @@
 const Randomphrases = [
-  { quote: "When you realize it's Monday tomorrow", id: 1 },
+  {
+    quote:
+      "When you're trying to be a good citizen but the government is too corrupt",
+    id: 1,
+  },
 
-  { quote: "When you're the only sober one at the party", id: 2 },
+  {
+    quote: "When you're trying to be a good friend but they cancel plans",
+    id: 2,
+  },
 
-  { quote: "When your mom says she's not mad", id: 3 },
+  {
+    quote: "When you're trying to be a good human but the world is too chaotic",
+    id: 3,
+  },
 
-  { quote: "When you see a spider in your room", id: 4 },
+  {
+    quote:
+      "When you're trying to be a good listener but your mind is on the food",
+    id: 4,
+  },
 
-  { quote: "When you're trying to be cool in front of your crush", id: 5 },
+  {
+    quote:
+      "When you're trying to be a good host but the guests are too demanding",
+    id: 5,
+  },
 
-  { quote: " When you're the only one who didn't get the joke", id: 6 },
+  {
+    quote:
+      "People waste their time pondering whether a glass is half empty or half full. Me, I just drink whatever/'s in the glass.",
+    id: 6,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 7 },
+  { quote: "Don/'t you bring Lady Gaga into this.", id: 7 },
 
-  { quote: "When you're trying to act like you're listening", id: 8 },
+  { quote: "Do you like pie? Fruit should not be hot.", id: 8 },
 
-  { quote: "When you're trying to act like you're listening", id: 9 },
+  {
+    quote:
+      "Oh, my god! They are as pale like a zombie! You know they eat the hottest people first. Let me back my tasty ass up.",
+    id: 9,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 10 },
+  {
+    quote:
+      "People waste their time pondering whether a glass is half empty or half full. Me, I just drink whatever’s in the glass",
+    id: 10,
+  },
 
-  { quote: "When you're trying to act like you're listening", id: 11 },
+  { quote: "I won't have a good day, actually.", id: 11 },
 
   { quote: "When you're trying to act like you're listening", id: 12 },
 
