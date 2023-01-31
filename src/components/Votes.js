@@ -1,11 +1,11 @@
 import React from "react";
 
 const Votes = () => {
-  Bestcaption = {
+  const Bestcaption = {
     count: 0,
   };
 
-  CountVote = () => {
+  const CountVote = () => {
     console.log("hi from the vote count");
     this.setState((prevState) => {
       return {
