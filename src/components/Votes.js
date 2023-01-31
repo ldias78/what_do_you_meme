@@ -1,6 +1,6 @@
 import React from "react";
 
-class Votes extends React.Component {
+const Votes = () => {
   Bestcaption = {
     count: 0,
   };
