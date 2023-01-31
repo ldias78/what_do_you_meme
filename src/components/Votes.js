@@ -13,16 +13,14 @@ const Votes = () => {
       };
     });
   };
-  render() {
-    return (
-      <div className="Votebutton">
-        <span className="votes">{this.state.Votes}</span>
-        <button className="Buttonvote" onClick={this.Votes}>
-          Vote for Best Card
-        </button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="Votebutton">
+      <span className="votes">{this.state.Votes}</span>
+      <button className="Buttonvote" onClick={this.Votes}>
+        Vote for Best Card
+      </button>
+    </div>
+  );
+};
 
 export default Votes;
