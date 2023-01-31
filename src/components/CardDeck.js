@@ -4,7 +4,7 @@ import CardCaptions from "./CardsCaptions";
 import { useState } from "react";
 
 const CardDeck = () => {
-  const [totaldeck, setTotaldeck] = React.useState(25);
+  const [totaldeck, setTotaldeck] = React.useState(100);
 
   const shuffledeck = () => {
     setTotaldeck((prevTotal) => totaldeck - 7);
