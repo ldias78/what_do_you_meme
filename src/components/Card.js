@@ -1,12 +1,13 @@
+import React from "react";
 import Card from "react-bootstrap/Card";
 import CardCaption from "./src/CardsCaptionsDeck.js";
 
-const Cards = (props) => {
+const Cards = ({ caption }) => {
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
-        <Card.Text>{props.CardCaption}</Card.Text>
+        <Card.Text>{caption.CardCaption}</Card.Text>
       </Card.Body>
     </Card>
   );

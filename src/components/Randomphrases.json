@@ -1,3 +1,13 @@
+const [data, setData] = useState(D);
+useEffect(0) => {
+fetch(" <API URL>")
+then(res => res. jsonch)
+• then (json => setData(ison))
+.catch(error => console.error(error));
+}, D);
+
+
+
 Randomphrases = [
   {
     quote:
@@ -138,41 +148,41 @@ Randomphrases = [
 
   { quote: "When your new neighbor is way too friendly", id: 40 },
 
-  { quote: "When you're trying to act like you're listening", id: 41 },
+  { quote: "When someone says, No offense, and you know they're gonna offend you", id: 41 },
 
-  { quote: "When you're trying to act like you're listening", id: 42 },
+  { quote: "When you're trying to make a good impression but you're too awkward", id: 42 },
 
   { quote: "When you're trying to act like you're listening", id: 43 },
 
-  { quote: "When you're trying to act like you're listening", id: 44 },
+  { quote: "When your mom asks if you want to do something fun and it turns out her idea of fun is a puzzle", id: 44 },
 
-  { quote: "When you're trying to act like you're listening", id: 45 },
+  { quote: "When a supermarket employee catches you sampling the grapes", id: 45 },
 
-  { quote: "When you're trying to act like you're listening", id: 46 },
+  { quote: "When you're trying to be a good roommate but they're too messy", id: 46 },
 
-  { quote: "When you're trying to act like you're listening", id: 47 },
+  { quote: "When you're trying to be healthy but pizza is your true love", id: 47 },
 
-  { quote: "When you're trying to act like you're listening", id: 48 },
+  { quote: "When your Amazon order comes earlier than the expected delivery date", id: 48 },
 
-  { quote: "When you're trying to act like you're listening", id: 49 },
+  { quote: "If there's an adrenaline rush, I will find it; if there's an anxiety attack, I will have it.", id: 49 },
 
-  { quote: "When you're trying to act like you're listening", id: 50 },
+  { quote: "When the website says a store is open but you show up and they're closed", id: 50 },
 
-  { quote: "When you're trying to act like you're listening", id: 51 },
+  { quote: "When you just know you're about to break your 'number of days without crying' streak", id: 51 },
 
-  { quote: "When you're trying to act like you're listening", id: 52 },
+  { quote: "When you're trying to be a good partner but they're not meeting your expectations", id: 52 },
 
-  { quote: "When you're trying to act like you're listening", id: 53 },
+  { quote: "When someone spoils a movie or TV show on purpose", id: 53 },
 
-  { quote: "When you're trying to act like you're listening", id: 54 },
+  { quote: "When you're trying to be a good listener but your mind is on your phone", id: 54 },
 
-  { quote: "When you're trying to act like you're listening", id: 55 },
+  { quote: "When your boss starts following you on TikTok", id: 55 },
 
-  { quote: "When you're trying to act like you're listening", id: 56 },
+  { quote: "When one of your own farts wakes you up in the morning", id: 56 },
 
-  { quote: "When you're trying to act like you're listening", id: 57 },
+  { quote: "When you find a couple of bucks in your pants", id: 57 },
 
-  { quote: "When you're trying to act like you're listening", id: 58 },
+  { quote: "When you show someone a hilarious video and they don't laugh", id: 58 },
 
   { quote: "When you're trying to act like you're listening", id: 59 },
 
