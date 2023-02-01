@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
 
 .main-page {
-  background-image: url(../src/images/image.png);
+  background-image: url(./images/image.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;

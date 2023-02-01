@@ -1,7 +1,7 @@
 import React from "react";
 import { Router } from "@reach/router";
-import MainPage from "./MainPage";
-import BoardGame from "./BoardGame";
+import MainPage from "./Components/MainPage";
+import BoardGame from "./Components/BoardGame";
 
 const App = () => {
   return (

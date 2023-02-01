@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
-import "./MainPage.css";
 
 const MainPage = () => {
   const [players, setPlayers] = useState([]);
