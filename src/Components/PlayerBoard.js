@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
 import CardCaptions from "./CardsCaptions";
-import Player from "./CardsCaptions";
-import Player from "./CardsCaptions";
+import Player from "./Player";
 
 const PlayerBoard = () => {
   <div>
