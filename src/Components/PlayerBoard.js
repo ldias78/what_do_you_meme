@@ -9,5 +9,6 @@ const PlayerBoard = () => {
     <Player></Player>
     <CardDeck></CardDeck>
     <CardCaptions></CardCaptions>
+    <Timer></Timer>
   </div>;
 };
