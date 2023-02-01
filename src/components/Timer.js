@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Countdown from "react-countdown";
 
-// Random component
 const Completionist = () => <span>Time's up!</span>;
 
 ReactDOM.render(
