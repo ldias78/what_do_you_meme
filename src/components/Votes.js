@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Votes = () => {
-  const Bestcaption = {
-    count: 0,
+  const [count, setCount] = useState(0);
+
+  const handleVote = () => {
+    setCount((prevCount) => prevCount + 1);
   };
 
-  const CountVote = () => {
-    console.log("hi from the vote count");
-    this.setState((prevState) => {
-      return {
-        count: prevState.count * 1,
-      };
-    });
-  };
   return (
     <div className="Votebutton">
-      <span className="votes">{this.state.Votes}</span>
-      <button className="Buttonvote" onClick={this.Votes}>
+      <span className="votes">{count}</span>
+      <button className="Buttonvote" onClick={handleVote}>
         Vote for Best Card
       </button>
     </div>

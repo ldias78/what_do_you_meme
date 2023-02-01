@@ -1,22 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import CardCaptions from "./CardsCaptions";
-import { useState } from "react";
 
 const CardDeck = () => {
-  const [totaldeck, setTotaldeck] = React.useState(100);
+  const [deck, setDeck] = useState(CardCaptions);
+  const [players, setPlayers] = useState([]);
 
-  const shuffledeck = () => {
-    setTotaldeck((prevTotal) => totaldeck - 7);
-    console.log("hi from deck");
+  const shuffleDeck = () => {
+    setDeck(
+      deck
+        .map((a) => [Math.random(), a])
+        .sort((a, b) => a[0] - b[0])
+        .map((a) => a[1])
+    );
+  };
+
+  const dealCards = () => {
+    if (deck.length === 0) {
+      return;
+    }
+
+    const newPlayer = [];
+    for (let i = 0; i < 7; i++) {
+      newPlayer.push(deck.pop());
+    }
+
+    setPlayers([...players, newPlayer]);
   };
 
   return (
     <div className="carddeck">
-      <Card />
-      <span className="deck">totaldeck</span>
-      <button className="shuffle" onClick={() => shuffledeck()}>
-        Shuffle Button
+      <div className="deck">
+        {deck.map((card, index) => (
+          <Card key={index} caption={card} />
+        ))}
+      </div>
+      <div className="players">
+        {players.map((hand, index) => (
+          <div key={index} className="player-hand">
+            {hand.map((card, index) => (
+              <Card key={index} caption={card} />
+            ))}
+          </div>
+        ))}
+      </div>
+      <button className="shuffle" onClick={shuffleDeck}>
+        Shuffle Deck
+      </button>
+      <button className="deal" onClick={dealCards}>
+        Deal 7 Cards
       </button>
     </div>
   );

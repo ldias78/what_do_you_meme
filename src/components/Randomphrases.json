@@ -1,14 +1,16 @@
-const [data, setData] = useState(D);
-useEffect(0) => {
-fetch(" <API URL>")
-then(res => res. jsonch)
-• then (json => setData(ison))
-.catch(error => console.error(error));
-}, D);
+
+
+// const [data, setData] = useState(D);
+// useEffect(0) => {
+// fetch(" <API URL>")
+// then(res => res. jsonch)
+// • then (json => setData(ison))
+// .catch(error => console.error(error));
+// }, D);
 
 
 
-Randomphrases = [
+const Randomphrases = [
   {
     quote:
       "When you're trying to be a good citizen but the government is too corrupt",
