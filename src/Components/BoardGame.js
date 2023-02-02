@@ -9,7 +9,7 @@ import MainPage from "./MainPage";
 const BoardGame = (props) => {
   const [giphy, setGiphy] = useState("");
   const [fetching, setFetching] = useState("false");
-  <MainPage players={players} />;
+  const Currentplayers = props.location.state.players;
   useEffect(() => {
     const fetchData = async () => {
       const apiRoot = "https://api.giphy.com/v1/gifs/";
@@ -24,7 +24,9 @@ const BoardGame = (props) => {
   return (
     <div>
       <MainPage />
-      <CardDeck />
+      {Currentplayers.map((player, num) => (
+        <h5 key={num}>{player}></h5>
+      ))}
       <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
