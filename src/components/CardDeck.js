@@ -3,9 +3,8 @@ import Card from "..Card";
 
 const CardDeck = () => {
   const deckCount = 100;
-  const [deck, setDeck] = useState(
-    Array.from({ length: deckCount }, (_, i) => i + 1)
-  );
+  const [deck, setDeck] = useState();
+
   const [players, setPlayers] = useState([]);
 
   const dealCards = () => {
