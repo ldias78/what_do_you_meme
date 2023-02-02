@@ -3,10 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import "./BoardGame.css";
 import axios from "axios";
+import CardDeck from "./CardDeck";
+import MainPage from "./MainPage";
 
-const BoardGame = () => {
+const BoardGame = (props) => {
   const [giphy, setGiphy] = useState("");
   const [fetching, setFetching] = useState("false");
+  <MainPage players={players} />;
   useEffect(() => {
     const fetchData = async () => {
       const apiRoot = "https://api.giphy.com/v1/gifs/";
@@ -20,11 +23,8 @@ const BoardGame = () => {
   }, [fetching]);
   return (
     <div>
-      <h1 className="title">
-        WELCOME TO THE WHAT DO YOU MEME GAME
-        <p> GIPHY VERSION</p>
-        {/* <p>This game will bring laughter and fun to your parties!</p> */}
-      </h1>
+      <MainPage />
+      <CardDeck />
       <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
