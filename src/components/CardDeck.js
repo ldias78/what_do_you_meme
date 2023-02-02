@@ -26,10 +26,10 @@ const CardDeck = () => {
   return (
     <div className="carddeck">
       <div className="players">
-        {players.map((hand, index) => (
-          <div key={index} className="player-hand">
-            {hand.map((card, index) => (
-              <Card key={index} number={card} />
+        {players.map((hand, handIndex) => (
+          <div key={handIndex} className="player-hand">
+            {hand.map((card, cardIndex) => (
+              <Card key={cardIndex} number={card} />
             ))}
           </div>
         ))}
