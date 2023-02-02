@@ -16,9 +16,7 @@ const MainPage = () => {
   };
 
   const handleDone = () => {
-    console.log(players);
-    console.log(playerName);
-    if (players.length === 4 && playerName !== "") {
+    if (players.length < 4 && playerName !== "") {
       setPlayers([...players, playerName]);
       setPlayerName("");
     }
@@ -32,16 +30,15 @@ const MainPage = () => {
           <label>
             Player Name:
             <input
-              // disabled= player >=4</input>
               type="text"
               value={playerName}
               onChange={handleChange}
-              // onKeyPress={(event) => {
-              //   if (event.key === "Enter") {
-              //     handleDone();
-              //   }
-              // }}
-              // required
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  handleDone();
+                }
+              }}
+              required
             />
           </label>
           <button type="button" onClick={handleDone}>
