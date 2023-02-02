@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Card from "..Card";
+import Card from "./Card";
 
 const CardDeck = () => {
   const deckCount = 100;
-  const [deck, setDeck] = useState();
-
+  const [deck, setDeck] = useState(
+    Array.from({ length: deckCount }, (_, i) => i + 1)
+  );
   const [players, setPlayers] = useState([]);
 
   const dealCards = () => {
