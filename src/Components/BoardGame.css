@@ -1,3 +1,10 @@
+.title {
+  color: darkblue;
+  font-size: 36px;
+  text-align: center;
+  margin-top: 20px;
+  }
+
 .board-game {
     position: relative;
     height: 100vh;
@@ -30,5 +37,4 @@
   body{
     background-color: rgb(189, 135, 143);
   }
-  
   

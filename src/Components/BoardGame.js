@@ -20,9 +20,14 @@ const BoardGame = () => {
   }, [fetching]);
   return (
     <div>
-      <Container style={{ marginTop: "100px" }}>
+      <h1 className="title">
+        WELCOME TO THE WHAT DO YOU MEME GAME
+        <p> GIPHY VERSION</p>
+        {/* <p>This game will bring laughter and fun to your parties!</p> */}
+      </h1>
+      <Container style={{ marginTop: "160px" }}>
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
+          <Col md={{ span: 4, offset: 4 }}>
             <Card style={{ backgroundColor: "powderblue" }}>
               <Card.Img
                 variant="top"
@@ -30,15 +35,18 @@ const BoardGame = () => {
                 style={{ height: "350px", width: "100%" }}
               />
               <Card.Body>
-                <Card.Title>What do you Meme?</Card.Title>
-                <Card.Text>
-                  Pick a card with a caption that matches this Meme
+                <Card.Title style={{ textAlign: "center" }}>
+                  Look this Giphy and match your caption card
+                </Card.Title>
+                <Card.Text style={{ textAlign: "center" }}>
+                  What caption makes you laugh when you look at this Meme?
                 </Card.Text>
                 <Button
                   variant="primary"
+                  style={{ display: "block", margin: "0 auto" }}
                   onClick={() => setFetching(!fetching)}
                 >
-                  click here to see your next Meme
+                  Next Meme
                 </Button>
               </Card.Body>
             </Card>

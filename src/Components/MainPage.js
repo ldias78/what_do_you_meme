@@ -5,10 +5,13 @@ import "./MainPage.css";
 const MainPage = () => {
   const [players, setPlayers] = useState([]);
   const [playerName, setPlayerName] = useState("");
+  const [inputDisabled, setInputDisabled] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/boardgame", { state: { players } });
+    if (players.length === 4) {
+      navigate("/boardgame", { state: { players } });
+    }
   };
 
   const handleChange = (e) => {
@@ -19,6 +22,9 @@ const MainPage = () => {
     if (players.length < 4 && playerName !== "") {
       setPlayers([...players, playerName]);
       setPlayerName("");
+    }
+    if (players.length === 3) {
+      setInputDisabled(true);
     }
   };
 
@@ -33,15 +39,11 @@ const MainPage = () => {
               type="text"
               value={playerName}
               onChange={handleChange}
-              onKeyPress={(event) => {
-                if (event.key === "Enter") {
-                  handleDone();
-                }
-              }}
               required
+              disabled={inputDisabled}
             />
           </label>
-          <button type="button" onClick={handleDone}>
+          <button type="button" onClick={handleDone} disabled={inputDisabled}>
             Done
           </button>
         </div>
@@ -50,9 +52,11 @@ const MainPage = () => {
             <div key={i}>{player}</div>
           ))}
         </div>
-        <button type="submit" className="start-game-button">
-          Start Game
-        </button>
+        {players.length === 4 && (
+          <button type="submit" className="start-game-button">
+            Start Game
+          </button>
+        )}
       </form>
     </div>
   );
