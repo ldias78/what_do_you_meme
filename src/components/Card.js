@@ -3,19 +3,22 @@ import React from "react";
 import Randomphrases from "./Randomphrases.json";
 import "bootstrap/dist/css/bootstrap.css";
 
-const Card = () => {
-  const CardCaptions = (props) => {
-    return (
-      <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          {Randomphrases.map((captions) => (
-            <h5 class="card-title">{captions.quote}</h5>
-          ))}
-        </div>
+const Card = (props) => {
+  // console.log(Randomphrases);
+  console.log(Randomphrases.Randomphrases);
+  // const CardCaptions = (props) =>
+  return (
+    <div className="card text-dark bg-light mb-3">
+      <div className="card-header">Header</div>
+      <div className="card-body">
+        {Randomphrases.Randomphrases.map((caption) => (
+          <h5 className="card-title" key={caption.id}>
+            {caption.quote}
+          </h5>
+        ))}
       </div>
-    );
-  };
+    </div>
+  );
 };
 
 export default Card;
