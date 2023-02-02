@@ -9,7 +9,6 @@ const Card = (props) => {
   // const CardCaptions = (props) =>
   return (
     <div className="card text-dark bg-light mb-3">
-      <div className="card-header">Header</div>
       <div className="card-body">
         {Randomphrases.Randomphrases.map((caption) => (
           <h5 className="card-title" key={caption.id}>

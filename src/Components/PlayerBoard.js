@@ -7,7 +7,5 @@ const PlayerBoard = () => {
   <div>
     <Player></Player>
     <CardDeck></CardDeck>
-    <CardCaptions></CardCaptions>
-    <Timer></Timer>
   </div>;
 };
