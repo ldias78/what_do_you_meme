@@ -2,6 +2,7 @@ import React from "react";
 import { Router } from "@reach/router";
 import MainPage from "./Components/MainPage";
 import BoardGame from "./Components/BoardGame";
+import CardDeck from "./Components/CardDeck";
 
 const App = () => {
   return (
@@ -10,6 +11,8 @@ const App = () => {
         <MainPage path="/" />
         <BoardGame path="/boardgame" />
       </Router>
+      {/* <PlayBoard />
+      <CardDeck /> */}
     </div>
   );
 };
