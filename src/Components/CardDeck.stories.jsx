@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import CardDeck from "./CardDeck";
 
 export default {
   title: "Example/CardDeck",
