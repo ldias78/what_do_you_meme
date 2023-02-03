@@ -2,7 +2,7 @@ import React from "react";
 import Randomphrases from "./Randomphrases.json";
 import "bootstrap/dist/css/bootstrap.css";
 
-const Card = (props) => {
+const CardsCaptions = (props) => {
   const randomIndex = Math.floor(
     Math.random() * Randomphrases.Randomphrases.length
   );
@@ -17,4 +17,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default CardsCaptions;

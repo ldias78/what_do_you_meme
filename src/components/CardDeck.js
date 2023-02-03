@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "./Card";
+import Card from "./CardCaptions";
 
 const CardDeck = () => {
   const deckCount = 100;
@@ -13,14 +13,14 @@ const CardDeck = () => {
       return;
     }
 
-    const newPlayer = [];
+    const Player = [];
     for (let i = 0; i < 7; i++) {
       const randomIndex = Math.floor(Math.random() * deck.length);
       const card = deck.splice(randomIndex, 1)[0];
-      newPlayer.push(card);
+      Player.push(card);
     }
 
-    setPlayers([...players, newPlayer]);
+    setPlayers([...players, Player]);
   };
 
   return (

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import "./BoardGame.css";
 import axios from "axios";
-import CardDeck from "./CardDeck";
+// import CardDeck from "./CardDeck";
 import MainPage from "./MainPage";
 
 const BoardGame = (props) => {
@@ -23,9 +23,11 @@ const BoardGame = (props) => {
   }, [fetching]);
   return (
     <div>
-      <MainPage />
       {Currentplayers.map((player, num) => (
-        <h5 key={num}>{player}></h5>
+        <h5 key={num}>
+          {" "}
+          Player {num + 1}:{player}{" "}
+        </h5>
       ))}
       <Container style={{ marginTop: "160px" }}>
         <Row>
