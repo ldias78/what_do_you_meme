@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Card from "./CardCaptions";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const CardDeck = () => {
   const deckCount = 100;

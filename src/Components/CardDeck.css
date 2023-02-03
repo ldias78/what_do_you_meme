@@ -1,0 +1,7 @@
+.deck {
+  display: flex; 
+  flex-direction: column;
+}
+.lastInstack {
+  /*leave blank no need for overflow*/
+}

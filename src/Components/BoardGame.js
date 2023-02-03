@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import "./BoardGame.css";
 import axios from "axios";
-// import CardDeck from "./CardDeck";
+import CardDeck from "./CardDeck";
 import MainPage from "./MainPage";
 
 const BoardGame = (props) => {
@@ -23,6 +23,7 @@ const BoardGame = (props) => {
   }, [fetching]);
   return (
     <div>
+      <CardDeck />
       {Currentplayers.map((player, num) => (
         <h5 key={num}>
           {" "}
