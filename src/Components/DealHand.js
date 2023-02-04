@@ -21,7 +21,6 @@ const DealHand = () => {
   return (
     <div>
       <button onClick={dealCard}>Deal Card</button>
-      <CardDeck cards={players} />
     </div>
   );
 };

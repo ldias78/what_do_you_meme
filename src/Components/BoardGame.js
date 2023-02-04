@@ -6,6 +6,7 @@ import axios from "axios";
 import CardDeck from "./CardDeck";
 import MainPage from "./MainPage";
 import PlayerList from "./PlayerList";
+import DealHand from "./DealHand";
 
 const BoardGame = (props) => {
   const [giphy, setGiphy] = useState("");
@@ -24,7 +25,6 @@ const BoardGame = (props) => {
   }, [fetching]);
   return (
     <div>
-      <CardDeck />
       <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
@@ -48,8 +48,12 @@ const BoardGame = (props) => {
                 >
                   Next Meme
                 </Button>
+                <DealHand />
               </Card.Body>
             </Card>
+          </Col>
+          <Col md={4}>
+            <CardDeck />
           </Col>
         </Row>
       </Container>
