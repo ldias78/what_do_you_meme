@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import Card from "./CardCaptions";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import CardCaptions from "./CardCaptions";
+import PlayerList from "./CardCaptions";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 const CardDeck = () => {
   const deckCount = 100;
@@ -25,19 +28,27 @@ const CardDeck = () => {
   };
 
   return (
-    <div className="carddeck">
-      <div className="players">
-        {players.map((hand, handIndex) => (
-          <div key={handIndex} className="player-hand">
-            {hand.map((card, cardIndex) => (
-              <Card key={cardIndex} number={card} />
-            ))}
-          </div>
+    <div>
+      <Row xs={1} md={2} className="g-4">
+        {Array.from({ length: 4 }).map((_, idx) => (
+          <Col key={idx}>
+            <Card key={idx} number={CardCaptions}>
+              <Card.Title>
+                <PlayerList />
+              </Card.Title>
+              <Card.Body>
+                {players.map((hand, handIndex) => (
+                  <div key={handIndex} className="player-hand">
+                    {hand.map((CardCaptions, cardIndex) => (
+                      <CardCaptions key={cardIndex} number={CardCaptions} />
+                    ))}
+                  </div>
+                ))}
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </div>
-      <button className="deal" onClick={dealCards}>
-        Deal 7 Cards
-      </button>
+      </Row>
     </div>
   );
 };

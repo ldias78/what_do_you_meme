@@ -5,6 +5,7 @@ import "./BoardGame.css";
 import axios from "axios";
 import CardDeck from "./CardDeck";
 import MainPage from "./MainPage";
+import PlayerList from "./PlayerList";
 
 const BoardGame = (props) => {
   const [giphy, setGiphy] = useState("");
@@ -24,12 +25,6 @@ const BoardGame = (props) => {
   return (
     <div>
       <CardDeck />
-      {Currentplayers.map((player, num) => (
-        <h5 key={num}>
-          {" "}
-          Player {num + 1}:{player}{" "}
-        </h5>
-      ))}
       <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>

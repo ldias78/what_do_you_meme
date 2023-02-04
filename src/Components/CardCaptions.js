@@ -2,11 +2,11 @@ import React from "react";
 import Randomphrases from "./Randomphrases.json";
 import "bootstrap/dist/css/bootstrap.css";
 
-const CardsCaptions = (props) => {
-  const randomIndex = Math.floor(
+const CardCaptions = (props) => {
+  const randomCaptions = Math.floor(
     Math.random() * Randomphrases.Randomphrases.length
   );
-  const caption = Randomphrases.Randomphrases[randomIndex];
+  const caption = Randomphrases.Randomphrases[randomCaptions];
 
   return (
     <div className="card text-dark bg-light mb-3">
@@ -17,4 +17,4 @@ const CardsCaptions = (props) => {
   );
 };
 
-export default CardsCaptions;
+export default CardCaptions;
