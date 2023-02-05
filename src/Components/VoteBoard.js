@@ -1,26 +1,52 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "@reach/router";
 
-const VoteBoard = (props) => {
-  const { selectedMeme } = props;
+const VoteBoard = ({ selectedMeme }) => {
+  const navigate = useNavigate();
   return (
-    <div>
-      <Card style={{ backgroundColor: "powderblue" }}>
-        <Card.Img
-          variant="top"
-          src={selectedMeme}
-          style={{ height: "350px", width: "100%" }}
-        />
-        <Card.Body>
-          <Card.Title style={{ textAlign: "center" }}>
-            Look this Giphy and match your caption card
-          </Card.Title>
-          <Card.Text style={{ textAlign: "center" }}>
-            What caption makes you laugh when you look at this Meme?
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </div>
+    <Container style={{ marginTop: "160px" }}>
+      <Row>
+        <Col md={{ span: 4, offset: 4 }}>
+          <Card style={{ backgroundColor: "powderblue" }}>
+            <Card.Img
+              variant="top"
+              src={selectedMeme}
+              className="voteboard-card-img"
+            />
+            <Card.Body>
+              <Card.Title style={{ textAlign: "center" }}>
+                What caption matches better with this Meme?
+              </Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <Row style={{ marginTop: "30px" }}>
+        <Col md={{ span: 4, offset: 4 }}>
+          <Button
+            variant="primary"
+            size="lg"
+            block
+            onClick={() => navigate("/boardgame")}
+          >
+            Next Game
+          </Button>
+        </Col>
+      </Row>
+      <Row style={{ marginTop: "30px" }}>
+        <Col md={{ span: 4, offset: 4 }}>
+          <Button
+            variant="danger"
+            size="lg"
+            block
+            onClick={() => navigate("/winner")}
+          >
+            Game Over
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
