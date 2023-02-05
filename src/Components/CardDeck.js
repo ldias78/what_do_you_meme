@@ -29,6 +29,13 @@ const CardDeck = () => {
   };
 
   return (
+     <div class-"cards"›
+      <div class="card"›k/div>
+      <div class="card"#/div>
+      <div class-"card"›</div>
+      <div class="card"›</div>
+      <div class-"card"›</div>
+</div>
     <div className="carddeck">
       <div className="deck">
         {deck.map((card, index) => (
@@ -44,14 +51,38 @@ const CardDeck = () => {
           </div>
         ))}
       </div>
-      <button className="shuffle" onClick={shuffleDeck}>
-        Shuffle Deck
-      </button>
-      <button className="deal" onClick={dealCards}>
-        Deal 7 Cards
-      </button>
-    </div>
   );
 };
 
 export default CardDeck;
+
+
+
+const Card = ({ content, answer, id }) => (
+  <div className={`card ${answer ? "card--answer" : ""} ${id ? `card--${id}` : ""}`}>
+    <div className="card__content">{content}</div>
+    <footer className="card__footer">
+      {answer ? (
+        <img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-Black-Small.png" />
+      ) : (
+        <img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Small.png" />
+      )}
+      <span>What Do You Meme</span>
+      <sub>vol. 2</sub>
+    </footer>
+  </div>
+);
+
+const Scene = () => (
+  <div className="scene">
+    <input type="radio" name="choice" id="javascript" defaultChecked />
+    <input type="radio" name="choice" id="typescript" />
+    <label htmlFor="typescript" />
+    <label htmlFor="javascript" />
+    <Card content="Use _______ instead of _______." />
+    <Card content="JavaScript" answer={true} id="javascript" />
+    <Card content="TypeScript" answer={true} id="typescript" />
+  </div>
+);
+
+export default Scene;

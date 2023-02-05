@@ -36,11 +36,12 @@ const BoardGame = () => {
   };
   return (
     <div className="boardgame-container">
-      {players.map((player, index) => (
-        <div key={index} className={`player-${index + 1}`}>
-          <h2>{player.name}</h2>
-        </div>
-      ))}
+      <div className="player-1">
+        <h2>Player 1</h2>
+      </div>
+      <div className="player-2">
+        <h2>Player 2</h2>
+      </div>
       <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
