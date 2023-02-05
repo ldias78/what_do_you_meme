@@ -49,7 +49,9 @@ const MainPage = () => {
         </div>
         <div className="player-list">
           {players.map((player, i) => (
-            <div key={i}>{player}</div>
+            <div key={i}>
+              Player {i + 1}: {player}
+            </div>
           ))}
         </div>
         {players.length === 4 && (

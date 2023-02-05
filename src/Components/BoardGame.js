@@ -9,6 +9,12 @@ const BoardGame = () => {
   const [giphy, setGiphy] = useState("");
   const [fetching, setFetching] = useState(false);
   const [selectedMeme, setSelectedMeme] = useState("");
+  const [players, setPlayers] = useState([
+    { name: "Player 1", score: 0 },
+    { name: "Player 2", score: 0 },
+    { name: "Player 3", score: 0 },
+    { name: "Player 4", score: 0 },
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,13 +34,14 @@ const BoardGame = () => {
   const handleVote = () => {
     navigate("/voteboard", { state: { selectedMeme } });
   };
-
   return (
-    <div>
-      <h1 className="title">
-        WELCOME TO THE WHAT DO YOU MEME GAME
-        <p> GIPHY VERSION</p>
-      </h1>
+    <div className="boardgame-container">
+      <div className="player-1">
+        <h2>Player 1</h2>
+      </div>
+      <div className="player-2">
+        <h2>Player 2</h2>
+      </div>
       <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
@@ -60,15 +67,21 @@ const BoardGame = () => {
                   Next Meme
                 </Button>
               </Card.Body>
-              <Card.Footer style={{ textAlign: "center" }}>
-                <Button variant="secondary" onClick={handleVote}>
-                  Let's Vote
-                </Button>
-              </Card.Footer>
             </Card>
           </Col>
         </Row>
       </Container>
+      <div className="player-3">
+        <h2>Player 3</h2>
+      </div>
+      <div className="player-4">
+        <h2>Player 4</h2>
+      </div>
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <Button variant="secondary" onClick={handleVote}>
+          Let's Vote
+        </Button>
+      </div>
     </div>
   );
 };
