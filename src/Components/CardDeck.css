@@ -26,11 +26,11 @@ transition: 0.2s;
 }
 
 .card:hover {
-transform: translateY(var(--distance));
+transform: translateY(-1rem);
 }
 
-.card:hover ~ .card {
-transform: translate(4rem);
+.card:hover ~.card {
+transform: translateY(calc(var(--distance) *-1));
 }
 /* 
 
