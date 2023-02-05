@@ -1,88 +1,117 @@
 import React, { useState } from "react";
-import Card from "./CardCaptions";
 import CardCaptions from "./CardsCaptions";
+import "./carddeck.css";
+
 
 const CardDeck = () => {
   const [deck, setDeck] = useState(CardCaptions);
-  const [players, setPlayers] = useState([]);
+  const [chosenCaption, setchosenCaption] = useState(null);
+  const [turn, setTurn] = useState("Player 1");
+  const [playedcardsPile, setPlayedCardsPile] = useState([]);
+  const [drawcardPile, setDrawcardpile] = useState([...drawcardPile]);
+  const [player1Deck, setPlayer1Deck] = useState([...player1Deck]);
+  const [player2Deck, setPlayer2Deck] = useState([...player2Deck]);
+  const [player3Deck, setPlayer3Deck] = useState([...player3Deck]);
+  const [player4Deck, setPlayer4Deck] = useState([...player4Deck]);
 
-  const shuffleDeck = () => {
-    setDeck(
-      deck
-        .map((a) => [Math.random(), a])
-        .sort((a, b) => a[0] - b[0])
-        .map((a) => a[1])
-    );
-  };
 
-  const dealCards = () => {
-    if (deck.length === 0) {
-      return;
+  useEffect(() => {
+    //shuffle PACK_OF_CARDS array
+    const shuffledCards = shuffleArray(PACK_OF_CARDS)
+
+    //extract first 7 elements to player1Deck
+    const player1Deck = Shuffle.splice(0, 7)
+
+    //extract first 7 elements to player2Deck
+    const player2Deck = Shuffle.splice(0, 7)
+
+     //extract first 7 elements to player2Deck
+    const player3Deck = Shuffle.splice(0, 7)
+
+      //extract first 7 elements to player2Deck
+    const player4Deck = Shuffle.splice(0, 7)
+
+       //extract the card from that startingCardIndex into the playedCardsPile
+    const playedCardsPile = Shuffle.splice(startingCardIndex, 1)
+
+       //store all remaining cards into drawCardPile
+    const drawCardPile = shuffledCards
+
+      useEffect(() => {
+        const state = {
+          gameOver: false,
+          turn: 'Player 1',
+          player1Deck: [...player1Deck],
+          player2Deck: [...player2Deck],
+          player3Deck: [...player2Deck],
+          player4Deck: [...player2Deck],
+          playedCardsPile: [...playedCardsPile],
+          drawCardPile: [...drawCardPile]
+        };
+        dispatch(initGameState(state));
+      }, []);
+
+      useEffect(() => {
+        // Update state when gameOver changes
+        gameOver && setGameOver(gameOver)
+        gameOver === true && playGameOverSound()
+        turn && setTurn(turn)
+        player1Deck && setPlayer1Deck(player1Deck)
+        player2Deck && setPlayer2Deck(player2Deck)
+        player2Deck && setPlayer2Deck(player2Deck)
+        player3Deck && setPlayer3Deck(player2Deck)
+        playedCardsPile && setPlayedCardsPile(playedCardsPile)
+        drawCardPile && setDrawCardPile(drawCardPile)
+    }, [gameOver, winner, turn, player1Deck, player2Deck, player3Deck, player4Deck, playedCardsPile, drawCardPile])
+    
+    
+    
+    
+
+      const checkGameOver = (arr) => {
+        return arr.length === 1
     }
 
-    const newPlayer = [];
-    for (let i = 0; i < 7; i++) {
-      newPlayer.push(deck.pop());
-    }
+  // const dealCards = () => {
+  //   if (deck.length === 0) {
+  //     return;
+  //   }
 
-    setPlayers([...players, newPlayer]);
+  //   const newPlayer = [];
+  //   for (let i = 0; i < 7; i++) {
+  //     newPlayer.push(deck.pop());
+  //   }
+
+  //   setPlayers([...players, newPlayer]);
+  // };
+
+  const handleCardCaption = (card) => {
+    setchosenCaption(card);
   };
 
   return (
-     <div class-"cards"›
-      <div class="card"›k/div>
-      <div class="card"#/div>
-      <div class-"card"›</div>
-      <div class="card"›</div>
-      <div class-"card"›</div>
-</div>
-    <div className="carddeck">
-      <div className="deck">
+    <div className="cards">
+      <div className="card">
         {deck.map((card, index) => (
-          <Card key={index} caption={card} />
+          <div key={index} className="card">
+            <CardCaptions
+              caption={card}
+              onClick={() => handleCardCaption(card)}
+            />
+          </div>
         ))}
       </div>
       <div className="players">
         {players.map((hand, index) => (
           <div key={index} className="player-hand">
             {hand.map((card, index) => (
-              <Card key={index} caption={card} />
+              <CardCaptions key={index} caption={card} />
             ))}
           </div>
         ))}
       </div>
+    </div>
   );
 };
 
 export default CardDeck;
-
-
-
-const Card = ({ content, answer, id }) => (
-  <div className={`card ${answer ? "card--answer" : ""} ${id ? `card--${id}` : ""}`}>
-    <div className="card__content">{content}</div>
-    <footer className="card__footer">
-      {answer ? (
-        <img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-Black-Small.png" />
-      ) : (
-        <img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Small.png" />
-      )}
-      <span>What Do You Meme</span>
-      <sub>vol. 2</sub>
-    </footer>
-  </div>
-);
-
-const Scene = () => (
-  <div className="scene">
-    <input type="radio" name="choice" id="javascript" defaultChecked />
-    <input type="radio" name="choice" id="typescript" />
-    <label htmlFor="typescript" />
-    <label htmlFor="javascript" />
-    <Card content="Use _______ instead of _______." />
-    <Card content="JavaScript" answer={true} id="javascript" />
-    <Card content="TypeScript" answer={true} id="typescript" />
-  </div>
-);
-
-export default Scene;
