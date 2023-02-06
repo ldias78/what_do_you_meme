@@ -28,7 +28,7 @@ const MainPage = () => {
       <video src="/videos/video-2.mp4" autoPlay loop muted />
       <h1 className="title">WELCOME TO THE WHAT DO YOU MEME GAME</h1>
 
-      <form>
+      <form className="input-container">
         <div>
           <label>
             <h2>Player Name:</h2>
@@ -45,21 +45,23 @@ const MainPage = () => {
             Done
           </button>
         </div>
+      </form>
+      <div className="player-list-container">
         <div className="player-list">
           {players.map((player, i) => (
             <div key={i}>{player}</div>
           ))}
         </div>
-        {players.length === 4 && (
-          <button
-            type="button"
-            className="start-game-button"
-            onClick={() => navigate("/boardgame", { state: { players } })}
-          >
-            Start Game
-          </button>
-        )}
-      </form>
+      </div>
+      {players.length === 4 && (
+        <button
+          type="button"
+          className="start-game-button"
+          onClick={() => navigate("/boardgame", { state: { players } })}
+        >
+          Start Game
+        </button>
+      )}
     </div>
   );
 };

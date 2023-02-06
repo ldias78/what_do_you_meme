@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card } from "react-bootstrap";
 import "./BoardGame.css";
-import axios from "axios";
+// import axios from "axios";
 import { navigate } from "@reach/router";
 
-const BoardGame = () => {
-  const [giphy, setGiphy] = useState("");
-  const [fetching, setFetching] = useState(false);
-  const [selectedMeme, setSelectedMeme] = useState("");
+const BoardGame = ({ setFetching, fetching, giphy }) => {
+  const [selectedMeme] = useState("");
   // eslint-disable-next-line
   const [players, setPlayers] = useState([
     { name: "Player 1", score: 0 },
@@ -17,27 +15,13 @@ const BoardGame = () => {
     { name: "Player 4", score: 0 },
   ]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const apiRoot = "https://api.giphy.com/v1/gifs/";
-      const api_key = process.env.REACT_APP_GIPHY_KEY;
-      const result = await axios(`${apiRoot}trending?api_key=${api_key}`);
-      const randomIndex = Math.floor(Math.random() * 50);
-      setGiphy(result.data.data[randomIndex].images.fixed_height.url);
-    };
-    fetchData();
-  }, [fetching]);
-
-  const handleMemeSelection = (meme) => {
-    setSelectedMeme(meme);
-  };
-
   const handleVote = () => {
     navigate("/voteboard", { state: { selectedMeme } });
   };
 
   return (
     <div className="boardgame-container">
+      <video src="/videos/video-1.mp4" autoPlay loop muted />
       <h1 className="title">
         WELCOME TO THE WHAT DO YOU MEME GAME
         <p> GIPHY VERSION</p>
@@ -99,13 +83,12 @@ const BoardGame = () => {
         </div>
       </footer>
       <div className="meme-container">
-        <div style={{ textAlign: "center", marginTop: "120px" }}>
+        <div style={{ textAlign: "center", marginTop: "60px" }}>
           <Card style={{ backgroundColor: "powderblue" }}>
             <Card.Img
               variant="top"
               src={giphy}
               style={{ height: "350px", width: "100%" }}
-              onClick={() => handleMemeSelection(giphy)}
             />
             <Card.Body>
               <Card.Title style={{ textAlign: "center" }}>
@@ -121,18 +104,14 @@ const BoardGame = () => {
               >
                 Next Meme
               </Button>
+              <div style={{ textAlign: "center", marginTop: "60px" }}>
+                <Button variant="secondary" onClick={handleVote}>
+                  Let's Vote
+                </Button>
+              </div>
             </Card.Body>
           </Card>
         </div>
-      </div>
-      <div style={{ textAlign: "center", marginTop: "120px" }}>
-        <Button
-          variant="secondary"
-          onClick={handleVote}
-          style={{ fontSize: "3em" }}
-        >
-          Let's Vote
-        </Button>
       </div>
     </div>
   );
