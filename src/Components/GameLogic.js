@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CardCaptions from "./CardCaptions";
+import CardCaptions from "./CardDeck";
 import "./CardDeck.css";
 import ShuffleDeck from "./ShuffleDeck";
 

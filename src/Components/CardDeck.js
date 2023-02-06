@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import randomphrases from "./randomphrases.json";
+import randomphrases from "./Randomphrases.json";
 
 const Card = ({ quote, id }) => {
   return (
-    <div key={id} className="card">
+    <div key={id} className="cards">
+      <div className="card"></div>
       <p>{quote}</p>
     </div>
   );

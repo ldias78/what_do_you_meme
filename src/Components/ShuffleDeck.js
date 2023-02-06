@@ -1,20 +1,24 @@
-import React, { useState } from "react";
-import CardCaptions from "./CardCaptions";
+import React, { useState, useEffect } from "react";
+import CardDeck from "./CardDeck";
 
 const ShuffleDeck = () => {
-  const [captions, setCaptions] = useState(Array(100).fill(<CardCaptions />));
+  const [deck, setDeck] = useState([]);
 
-  setCaptions(
-    captions
-      .map((a) => [Math.random(), a])
-      .sort((a, b) => a[0] - b[0])
-      .map((a) => a[1])
-  );
+  useEffect(() => {
+    setDeck(
+      Array(100)
+        .fill(<CardDeck />)
+        .map((a) => [Math.random(), a])
+        .sort((a, b) => a[0] - b[0])
+        .map((a) => a[1])
+    );
+  }, []);
+
   return (
     <div className="cards">
-      {captions.map((caption) => (
-        <div className="card">
-          <p>{caption}</p>
+      {deck.map((card, index) => (
+        <div key={index} className="card">
+          {card}
         </div>
       ))}
     </div>
