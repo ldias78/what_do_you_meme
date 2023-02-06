@@ -3,7 +3,7 @@ import CardCaptions from "./CardCaptions";
 import "./CardDeck.css";
 import ShuffleDeck from "./ShuffleDeck";
 
-const CardDeck = () => {
+const GameLogic = () => {
   // const [deck, setDeck] = useState(CardCaptions);
   // const [chosenCaption, setchosenCaption] = useState(null);
   const [turn, setTurn] = useState("Player 1");
@@ -259,4 +259,4 @@ const CardDeck = () => {
   );
 };
 
-export default CardDeck;
+export default GameLogic;
