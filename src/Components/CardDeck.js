@@ -15,6 +15,7 @@ const CardDeck = () => {
 
   useEffect(() => {
     const shuffleCards = shuffleArray(CardCaptions);
+    const startingCardIndex = Math.floor(Math.random() * 100);
 
     const player1Deck = shuffleCards.splice(0, 7);
     setPlayer1Deck(player1Deck);
@@ -35,144 +36,167 @@ const CardDeck = () => {
     setdrawcardDeck(drawcardDeck);
   }, []);
 
+  useEffect(() => {
+    const state = {
+      gameOver: false,
+      turn: "Player 1",
+      player1Deck: [...player1Deck],
+      player2Deck: [...player2Deck],
+      player3Deck: [...player2Deck],
+      player4Deck: [...player2Deck],
+      playedcardsDeck: [...playedcardsDeck],
+      drawcardDeck: [...drawcardDeck],
+    };
+    dispatch(initGameState(state));
+  }, []);
 
-      useEffect(() => {
-        const state = {
-          gameOver: false,
-          turn: 'Player 1',
-          player1Deck: [...player1Deck],
-          player2Deck: [...player2Deck],
-          player3Deck: [...player2Deck],
-          player4Deck: [...player2Deck],
-          playedcardsDeck: [...playedcardsDeck],
-          drawcardDeck: [...drawcardDeck]
-        };
-        dispatch(initGameState(state));
-      }, []);
+  useEffect(() => {
+    // Update state when gameOver changes
+    gameOver && setGameOver(gameOver);
+    turn && setTurn(turn);
+    player1Deck && setPlayer1Deck(player1Deck);
+    player2Deck && setPlayer2Deck(player2Deck);
+    player3Deck && setPlayer3Deck(player2Deck);
+    player4Deck && setPlayer4Deck(player2Deck);
+    playedcardsDeck && setplayedcardsDeck(playedcardsDeck);
+    drawcardDeck && setdrawcardDeck(drawcardDeck);
+  }, [
+    gameOver,
+    turn,
+    player1Deck,
+    player2Deck,
+    player3Deck,
+    player4Deck,
+    playedcardsDeck,
+    drawcardDeck,
+  ]);
+};
 
-      useEffect(() => {
-        // Update state when gameOver changes
-        gameOver && setGameOver(gameOver)
-        turn && setTurn(turn)
-        player1Deck && setPlayer1Deck(player1Deck)
-        player2Deck && setPlayer2Deck(player2Deck)
-        player2Deck && setPlayer2Deck(player2Deck)
-        player3Deck && setPlayer3Deck(player2Deck)
-        playedcardsDeck && setplayedcardsDeck(playedcardsDeck)
-        drawcardDeck && setdrawcardDeck(drawcardDeck)
-    }, [gameOver, winner, turn, player1Deck, player2Deck, player3Deck, player4Deck, playedcardsDeck, drawcardDeck])
-    
-    
-    
-      const checkGameOver = (arr) => {
-        return arr.length === 1
-        }
+const checkGameOver = (arr) => {
+  return arr.length === 1;
+};
 
-      const handleCardCaption = (card) => {
-        setchosenCaption(card);
-      };
+const handleCardCaption = (card) => {
+  setchosenCaption(card);
+};
 
-      const onCardPlayedHandler = (played_card) => {
-        //check turn
-        //perform switch statement on played card
-        //case 1: simple number card
-        //extract color and number of played card
-        //match with currentColor and currentNumber
-        //if matched
-        //remove played card from current player's deck and add to playedcardsDeck
-        // /set turn to other player
-        // /else //invalid move
+const onCardPlayedHandler = (played_card) => {
+  //check turn
+  //perform switch statement on played card
+  //case 1: simple number card
+  //extract color and number of played card
+  //match with currentColor and currentNumber
+  //if matched
+  //remove played card from current player's deck and add to playedcardsDeck
+  // /set turn to other player
+  // /else //invalid move
 
-        const cardPlayedBy = turn;
-      
-        handleNumberCard(played_card, cardPlayedBy);
-        };
-      
-      const handleNumberCard = (played_card, cardPlayedBy) => {
-        const PlayedCard = played_card.charAt(0);
-        const otherPlayedCard = played_card.charAt(1);
-      
-      
-      const handleCardPlayedBy = (cardPlayedBy) => {
-        if (cardPlayedBy === "Player 1") {
-          // ...
-      
-          setState({
-            gameOver: checkGameOver(player1Deck),
-            turn: "Player 2",
-            playedcardsDeck: [...playedcardsDeck, played_card],
-            player1Deck: [...updatedPlayer1Deck],
-            drawcardDeck: [...copieddrawcardDeckArray],
-          });
-        }
-      };
+  const cardPlayedBy = turn;
+
+  handleNumberCard(played_card, cardPlayedBy);
+};
+
+const handleNumberCard = (played_card, cardPlayedBy) => {
+  const PlayedCard = played_card.charAt(0);
+  const otherPlayedCard = played_card.charAt(1);
+
+  const handleCardPlayedBy = (cardPlayedBy) => {
+    if (cardPlayedBy === "Player 1") {
+      // ...
+
+      setState({
+        gameOver: checkGameOver(player1Deck),
+        turn: "Player 2",
+        playedcardsDeck: [...playedcardsDeck, played_card],
+        player1Deck: [...updatedPlayer1Deck],
+        drawcardDeck: [...copieddrawcardDeckArray],
+      });
+    }
+  };
 
   return (
-      <div>
-        {currentUser === 'Player 1' && (
-          <div className="player-view">
-            <h2>{turn}'s turn</h2>
-            <div className="player-hand">
-              {player1Deck.map((card, index) => (
-                <Card key={index} caption={card} onClick={() => handleCardCaption(card)} />
-              ))}
-            </div>
-            <div className="played-cards">
-              {playedcardsDeck.map((card, index) => (
-                <Card key={index} caption={card} />
-              ))}
-            </div>
+    <div>
+      {currentUser === "Player 1" && (
+        <div className="player-view">
+          <h2>{turn}'s turn</h2>
+          <div className="player-hand">
+            {player1Deck.map((card, index) => (
+              <Card
+                key={index}
+                caption={card}
+                onClick={() => handleCardCaption(card)}
+              />
+            ))}
           </div>
-        )}
-        {/* PLAYER 2 VIEW */}
-        {currentUser === 'Player 2' && (
-          <div className="player-view">
-            <h2>{turn}'s turn</h2>
-            <div className="player-hand">
-              {player2Deck.map((card, index) => (
-                <Card key={index} caption={card} onClick={() => handleCardCaption(card)} />
-              ))}
-            </div>
-            <div className="played-cards">
-              {playedcardsDeck.map((card, index) => (
-                <Card key={index} caption={card} />
-              ))}
-            </div>
+          <div className="played-cards">
+            {playedcardsDeck.map((card, index) => (
+              <Card key={index} caption={card} />
+            ))}
           </div>
-        )}
-        {/* PLAYER 3 VIEW */}
-        {currentUser === 'Player 3' && (
-          <div className="player-view">
-            <h2>{turn}'s turn</h2>
-            <div className="player-hand">
-              {player3Deck.map((card, index) => (
-                <Card key={index} caption={card} onClick={() => handleCardCaption(card)} />
-              ))}
-            </div>
-            <div className="played-cards">
-              {playedcardsDeck.map((card, index) => (
-                <Card key={index} caption={card} />
-              ))}
-            </div>
+        </div>
+      )}
+      {/* PLAYER 2 VIEW */}
+      {currentUser === "Player 2" && (
+        <div className="player-view">
+          <h2>{turn}'s turn</h2>
+          <div className="player-hand">
+            {player2Deck.map((card, index) => (
+              <Card
+                key={index}
+                caption={card}
+                onClick={() => handleCardCaption(card)}
+              />
+            ))}
           </div>
-        )}
-        {/* PLAYER 4 VIEW */}
-        {currentUser === 'Player 4' && (
-          <div className="player-view">
-            <h2>{turn}'s turn</h2>
-            <div className="player-hand">
-              {player4Deck.map((card, index) => (
-                <Card key={index} caption={card} onClick={() => handleCardCaption(card)} />
-              ))}
-            </div>
-            <div className="played-cards">
-              {playedcardsDeck.map((card, index) => (
-                <Card key={index} caption={card} />
-              ))}
-            </div>
+          <div className="played-cards">
+            {playedcardsDeck.map((card, index) => (
+              <Card key={index} caption={card} />
+            ))}
           </div>
-        )}
-      </div>
-    );
-  }
+        </div>
+      )}
+      {/* PLAYER 3 VIEW */}
+      {currentUser === "Player 3" && (
+        <div className="player-view">
+          <h2>{turn}'s turn</h2>
+          <div className="player-hand">
+            {player3Deck.map((card, index) => (
+              <Card
+                key={index}
+                caption={card}
+                onClick={() => handleCardCaption(card)}
+              />
+            ))}
+          </div>
+          <div className="played-cards">
+            {playedcardsDeck.map((card, index) => (
+              <Card key={index} caption={card} />
+            ))}
+          </div>
+        </div>
+      )}
+      {/* PLAYER 4 VIEW */}
+      {currentUser === "Player 4" && (
+        <div className="player-view">
+          <h2>{turn}'s turn</h2>
+          <div className="player-hand">
+            {player4Deck.map((card, index) => (
+              <Card
+                key={index}
+                caption={card}
+                onClick={() => handleCardCaption(card)}
+              />
+            ))}
+          </div>
+          <div className="played-cards">
+            {playedcardsDeck.map((card, index) => (
+              <Card key={index} caption={card} />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default CardDeck;
