@@ -7,7 +7,9 @@ const randomphrasesArray = Object.values(Randomphrases);
 const Card = ({ quote, id }) => {
   return (
     <div key={id} className="cards">
-      <div className="card">{/* <h2>{quote}</h2> */}</div>
+      <div className="card">
+        <h2>{quote}</h2>
+      </div>
     </div>
   );
 };
