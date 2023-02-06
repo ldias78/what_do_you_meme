@@ -1,5 +1,5 @@
 import React from "react";
-import { ShuffleDeck } from "./ShuffleDeck";
+import ShuffleDeck from "./ShuffleDeck";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
