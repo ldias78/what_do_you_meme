@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import randomphrases from "./Randomphrases.json";
+import Randomphrases from "./Randomphrases.json";
+import "./CardDeck.css";
 
 const Card = ({ quote, id }) => {
   return (
@@ -14,7 +15,7 @@ const CardDeck = () => {
   const [deck, setDeck] = useState([]);
 
   useEffect(() => {
-    const newDeck = [...randomphrases];
+    const newDeck = [...Randomphrases];
     for (let i = newDeck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
@@ -23,9 +24,9 @@ const CardDeck = () => {
   }, []);
 
   return (
-    <div className="card-deck">
+    <div className="cards">
       {deck.map((card) => (
-        <Card key={card.id} quote={card.quote} id={card.id} />
+        <Card key={card.id} quote={card.quote} />
       ))}
     </div>
   );
