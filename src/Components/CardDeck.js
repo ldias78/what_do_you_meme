@@ -7,9 +7,7 @@ const randomphrasesArray = Object.values(Randomphrases);
 const Card = ({ quote, id }) => {
   return (
     <div key={id} className="cards">
-      <div className="card">
-        <p>{quote}</p>
-      </div>
+      <div className="card">{/* <h2>{quote}</h2> */}</div>
     </div>
   );
 };
@@ -19,11 +17,15 @@ const CardDeck = () => {
 
   useEffect(() => {
     const newDeck = [...randomphrasesArray];
+    console.log(newDeck);
     for (let i = newDeck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
+      // console.log(newDeck[i]);
+      // console.log(newDeck[j]);
       [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
     }
-    setDeck(newDeck.slice(0, 100));
+    setDeck(newDeck);
+    console.log("this checks the deck var", deck);
   }, []);
 
   return (

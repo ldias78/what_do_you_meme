@@ -4,8 +4,6 @@ import "./CardDeck.css";
 import ShuffleDeck from "./ShuffleDeck";
 
 const GameLogic = () => {
-  // const [deck, setDeck] = useState(CardCaptions);
-  // const [chosenCaption, setchosenCaption] = useState(null);
   const [turn, setTurn] = useState("Player 1");
   const [playedcardsDeck, setplayedcardsDeck] = useState([]);
   const [drawcardDeck, setdrawcardDeck] = useState([]);
