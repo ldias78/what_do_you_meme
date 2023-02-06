@@ -1,10 +1,10 @@
-import React from "react";
-import MainPage from "./MainPage";
+// import React from "react";
+// import MainPage from "./MainPage";
 
-const Player = (props) => {
-  return (
-    <button className="deal" onClick={dealCards}>
-      Deal 7 Cards
-    </button>
-  );
-};
+// const Player = (props) => {
+//   return (
+//     <button className="deal" onClick={dealCards}>
+//       Deal 7 Cards
+//     </button>
+//   );
+// };
