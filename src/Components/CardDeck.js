@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import CardCaptions from "./CardsCaptions";
-import "./carddeck.css";
+import CardCaptions from "./CardCaptions";
+import "./CardDeck.css";
+import ShuffleDeck from "./ShuffleDeck";
 
 const CardDeck = () => {
-  const [deck, setDeck] = useState(CardCaptions);
-  const [chosenCaption, setchosenCaption] = useState(null);
+  // const [deck, setDeck] = useState(CardCaptions);
+  // const [chosenCaption, setchosenCaption] = useState(null);
   const [turn, setTurn] = useState("Player 1");
   const [playedcardsDeck, setplayedcardsDeck] = useState([]);
   const [drawcardDeck, setdrawcardDeck] = useState([]);
@@ -12,10 +13,11 @@ const CardDeck = () => {
   const [player2Deck, setPlayer2Deck] = useState([]);
   const [player3Deck, setPlayer3Deck] = useState([]);
   const [player4Deck, setPlayer4Deck] = useState([]);
+  const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
-    const shuffleCards = shuffleArray(CardCaptions);
-    const startingCardIndex = Math.floor(Math.random() * 100);
+    const shuffleCards = ShuffleDeck(CardCaptions);
+    const startingCardIndex = Math.floor(Math.random() * 101);
 
     const player1Deck = shuffleCards.splice(0, 7);
     setPlayer1Deck(player1Deck);
@@ -50,69 +52,127 @@ const CardDeck = () => {
     dispatch(initGameState(state));
   }, []);
 
-  useEffect(() => {
-    // Update state when gameOver changes
+  const updateGameState = ({
+    gameOver,
+    winner,
+    turn,
+    player1Deck,
+    player2Deck,
+    currentColor,
+    currentNumber,
+    playedCardsPile,
+    drawCardDeck,
+  }) => {
     gameOver && setGameOver(gameOver);
     turn && setTurn(turn);
     player1Deck && setPlayer1Deck(player1Deck);
     player2Deck && setPlayer2Deck(player2Deck);
-    player3Deck && setPlayer3Deck(player2Deck);
-    player4Deck && setPlayer4Deck(player2Deck);
-    playedcardsDeck && setplayedcardsDeck(playedcardsDeck);
-    drawcardDeck && setdrawcardDeck(drawcardDeck);
-  }, [
+    playedCardsPile && setPlayedCardsDeck(playedCardsPile);
+    drawCardDeck && setdrawCardDeck(drawCardDeck);
+  };
+
+  const initGameState = ({
     gameOver,
     turn,
     player1Deck,
     player2Deck,
-    player3Deck,
-    player4Deck,
-    playedcardsDeck,
-    drawcardDeck,
-  ]);
-};
-
-const checkGameOver = (arr) => {
-  return arr.length === 1;
-};
-
-const handleCardCaption = (card) => {
-  setchosenCaption(card);
-};
-
-const onCardPlayedHandler = (played_card) => {
-  //check turn
-  //perform switch statement on played card
-  //case 1: simple number card
-  //extract color and number of played card
-  //match with currentColor and currentNumber
-  //if matched
-  //remove played card from current player's deck and add to playedcardsDeck
-  // /set turn to other player
-  // /else //invalid move
-
-  const cardPlayedBy = turn;
-
-  handleNumberCard(played_card, cardPlayedBy);
-};
-
-const handleNumberCard = (played_card, cardPlayedBy) => {
-  const PlayedCard = played_card.charAt(0);
-  const otherPlayedCard = played_card.charAt(1);
-
-  const handleCardPlayedBy = (cardPlayedBy) => {
-    if (cardPlayedBy === "Player 1") {
-      // ...
-
-      setState({
-        gameOver: checkGameOver(player1Deck),
-        turn: "Player 2",
-        playedcardsDeck: [...playedcardsDeck, played_card],
-        player1Deck: [...updatedPlayer1Deck],
-        drawcardDeck: [...copieddrawcardDeckArray],
-      });
-    }
+    currentColor,
+    currentNumber,
+    playedCardsPile,
+    drawCardDeck,
+  }) => {
+    setGameOver(gameOver);
+    setTurn(turn);
+    setPlayer1Deck(player1Deck);
+    setPlayer2Deck(player2Deck);
+    setPlayedCardsDeck(playedCardsPile);
+    setdrawCardDeck(drawCardDeck);
   };
+
+  const handleCurrentUserData = (name) => {
+    setCurrentUser(name);
+  };
+
+  useEffect(() => {
+    // retrieve the current user data from an API or data source
+    const retrieveCurrentUserData = async () => {
+      const response = await fetch("/api/currentUser");
+      const data = await response.json();
+      handleCurrentUserData(data.name);
+    };
+
+    retrieveCurrentUserData();
+  }, []);
+
+  //   useEffect(() => {
+  //     // Update state when gameOver changes
+  //     gameOver && setGameOver(gameOver);
+  //     turn && setTurn(turn);
+  //     player1Deck && setPlayer1Deck(player1Deck);
+  //     player2Deck && setPlayer2Deck(player2Deck);
+  //     player3Deck && setPlayer3Deck(player2Deck);
+  //     player4Deck && setPlayer4Deck(player2Deck);
+  //     playedcardsDeck && setplayedcardsDeck(playedcardsDeck);
+  //     drawcardDeck && setdrawcardDeck(drawcardDeck);
+  //   }, [
+  //     gameOver,
+  //     turn,
+  //     player1Deck,
+  //     player2Deck,
+  //     player3Deck,
+  //     player4Deck,
+  //     playedcardsDeck,
+  //     drawcardDeck,
+  //   ]);
+  // };
+
+  //   const checkGameOver = (arr) => {
+  //     return arr.length === 1;
+  //   };
+
+  // call the initGameState function here
+  useEffect(() => {
+    initGameState({
+      /* your data here */
+    });
+  }, []);
+  // const handleCardCaption = (card) => {
+  //   setchosenCaption(card);
+  // };
+
+  // const onCardPlayedHandler = (played_card) => {
+  //   //check turn
+  //   //perform switch statement on played card
+  //   //case 1: simple number card
+  //   //extract color and number of played card
+  //   //match with currentColor and currentNumber
+  //   //if matched
+  //   //remove played card from current player's deck and add to playedcardsDeck
+  //   // /set turn to other player
+  //   // /else //invalid move
+
+  //   const cardPlayedBy = turn;
+
+  //   handleNumberCard(played_card, cardPlayedBy);
+  // };
+
+  // const handleNumberCard = (played_card, cardPlayedBy) => {
+  //   const PlayedCard = played_card.charAt(0);
+  //   const otherPlayedCard = played_card.charAt(1);
+
+  //   const handleCardPlayedBy = (cardPlayedBy) => {
+  //     if (cardPlayedBy === "Player 1") {
+  //       // ...
+
+  //       setState({
+  //         gameOver: checkGameOver(player1Deck),
+  //         turn: "Player 2",
+  //         playedcardsDeck: [...playedcardsDeck, played_card],
+  //         player1Deck: [...updatedPlayer1Deck],
+  //         drawcardDeck: [...copieddrawcardDeckArray],
+  //       });
+  //     }
+  //   };
 
   return (
     <div>
@@ -121,7 +181,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           <h2>{turn}'s turn</h2>
           <div className="player-hand">
             {player1Deck.map((card, index) => (
-              <Card
+              <ShuffleDeck
                 key={index}
                 caption={card}
                 onClick={() => handleCardCaption(card)}
@@ -130,7 +190,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           </div>
           <div className="played-cards">
             {playedcardsDeck.map((card, index) => (
-              <Card key={index} caption={card} />
+              <ShuffleDeck key={index} caption={card} />
             ))}
           </div>
         </div>
@@ -141,7 +201,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           <h2>{turn}'s turn</h2>
           <div className="player-hand">
             {player2Deck.map((card, index) => (
-              <Card
+              <ShuffleDeck
                 key={index}
                 caption={card}
                 onClick={() => handleCardCaption(card)}
@@ -150,7 +210,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           </div>
           <div className="played-cards">
             {playedcardsDeck.map((card, index) => (
-              <Card key={index} caption={card} />
+              <ShuffleDeck key={index} caption={card} />
             ))}
           </div>
         </div>
@@ -161,7 +221,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           <h2>{turn}'s turn</h2>
           <div className="player-hand">
             {player3Deck.map((card, index) => (
-              <Card
+              <ShuffleDeck
                 key={index}
                 caption={card}
                 onClick={() => handleCardCaption(card)}
@@ -170,7 +230,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           </div>
           <div className="played-cards">
             {playedcardsDeck.map((card, index) => (
-              <Card key={index} caption={card} />
+              <ShuffleDeck key={index} caption={card} />
             ))}
           </div>
         </div>
@@ -181,7 +241,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           <h2>{turn}'s turn</h2>
           <div className="player-hand">
             {player4Deck.map((card, index) => (
-              <Card
+              <ShuffleDeck
                 key={index}
                 caption={card}
                 onClick={() => handleCardCaption(card)}
@@ -190,7 +250,7 @@ const handleNumberCard = (played_card, cardPlayedBy) => {
           </div>
           <div className="played-cards">
             {playedcardsDeck.map((card, index) => (
-              <Card key={index} caption={card} />
+              <ShuffleDeck key={index} caption={card} />
             ))}
           </div>
         </div>
