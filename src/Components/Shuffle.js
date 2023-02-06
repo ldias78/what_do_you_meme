@@ -1,8 +1,9 @@
-import React from "react";
-import 
+import React, { useState } from "react";
+import CardCaptions from "./CardCaptions";
 
+const ShuffleDeck = () => {
+  const [deck, setDeck] = useState(CardCaptions);
 
-const shuffleDeck = () => {
   setDeck(
     deck
       .map((a) => [Math.random(), a])
@@ -11,4 +12,4 @@ const shuffleDeck = () => {
   );
 };
 
-export default shuffleDeck;
+export default ShuffleDeck;
