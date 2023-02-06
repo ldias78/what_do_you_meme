@@ -7,7 +7,7 @@ const CardCaptions = (props) => {
     Math.random() * Randomphrases.Randomphrases.length
   );
   const caption = Randomphrases.Randomphrases[randomCaptions];
-
+  console.log(caption);
   return (
     <div className="card text-dark bg-light mb-3">
       <div className="card-body">
