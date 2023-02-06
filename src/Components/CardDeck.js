@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Randomphrases from "./Randomphrases.json";
 import "./CardDeck.css";
 
+const randomphrasesArray = Object.values(Randomphrases);
+
 const Card = ({ quote, id }) => {
   return (
     <div key={id} className="cards">
@@ -15,7 +17,7 @@ const CardDeck = () => {
   const [deck, setDeck] = useState([]);
 
   useEffect(() => {
-    const newDeck = [...Randomphrases];
+    const newDeck = [...randomphrasesArray];
     for (let i = newDeck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
