@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import CardDeck from "./CardDeck";
 import "./CardDeck.css";
+import CardDeck from "./CardDeck";
 import ShuffleDeck from "./ShuffleDeck";
 
 const GameLogic = () => {
+  const [gameover, setGameover] = useState(true);
   const [turn, setTurn] = useState("Player 1");
   const [playedcardsDeck, setplayedcardsDeck] = useState([]);
   const [drawcardDeck, setdrawcardDeck] = useState([]);
@@ -49,22 +50,6 @@ const GameLogic = () => {
     };
   }, []);
 
-  const updateGameState = ({
-    gameOver,
-    turn,
-    player1Deck,
-    player2Deck,
-    playedCardsPile,
-    drawCardDeck,
-  }) => {
-    gameOver && setGameOver(gameOver);
-    turn && setTurn(turn);
-    player1Deck && setPlayer1Deck(player1Deck);
-    player2Deck && setPlayer2Deck(player2Deck);
-    playedCardsPile && setPlayedCardsDeck(playedCardsPile);
-    drawCardDeck && setdrawCardDeck(drawCardDeck);
-  };
-
   const initGameState = ({
     gameOver,
     turn,
@@ -79,6 +64,22 @@ const GameLogic = () => {
     setPlayer2Deck(player2Deck);
     setPlayedCardsDeck(playedCardsPile);
     setdrawCardDeck(drawCardDeck);
+  };
+
+  const updateGameState = ({
+    gameOver,
+    turn,
+    player1Deck,
+    player2Deck,
+    playedCardsPile,
+    drawCardDeck,
+  }) => {
+    gameOver && setGameOver(gameOver);
+    turn && setTurn(turn);
+    player1Deck && setPlayer1Deck(player1Deck);
+    player2Deck && setPlayer2Deck(player2Deck);
+    playedCardsPile && setPlayedCardsDeck(playedCardsPile);
+    drawCardDeck && setdrawCardDeck(drawCardDeck);
   };
 
   const handleCurrentUserData = (name) => {
@@ -96,76 +97,6 @@ const GameLogic = () => {
     retrieveCurrentUserData();
   }, []);
 
-  //   useEffect(() => {
-  //     // Update state when gameOver changes
-  //     gameOver && setGameOver(gameOver);
-  //     turn && setTurn(turn);
-  //     player1Deck && setPlayer1Deck(player1Deck);
-  //     player2Deck && setPlayer2Deck(player2Deck);
-  //     player3Deck && setPlayer3Deck(player2Deck);
-  //     player4Deck && setPlayer4Deck(player2Deck);
-  //     playedcardsDeck && setplayedcardsDeck(playedcardsDeck);
-  //     drawcardDeck && setdrawcardDeck(drawcardDeck);
-  //   }, [
-  //     gameOver,
-  //     turn,
-  //     player1Deck,
-  //     player2Deck,
-  //     player3Deck,
-  //     player4Deck,
-  //     playedcardsDeck,
-  //     drawcardDeck,
-  //   ]);
-  // };
-
-  //   const checkGameOver = (arr) => {
-  //     return arr.length === 1;
-  //   };
-
-  // call the initGameState function here
-  useEffect(() => {
-    initGameState({
-      /* your data here */
-    });
-  }, []);
-  // const handleCardCaption = (card) => {
-  //   setchosenCaption(card);
-  // };
-
-  // const onCardPlayedHandler = (played_card) => {
-  //   //check turn
-  //   //perform switch statement on played card
-  //   //case 1: simple number card
-  //   //extract color and number of played card
-  //   //match with currentColor and currentNumber
-  //   //if matched
-  //   //remove played card from current player's deck and add to playedcardsDeck
-  //   // /set turn to other player
-  //   // /else //invalid move
-
-  //   const cardPlayedBy = turn;
-
-  //   handleNumberCard(played_card, cardPlayedBy);
-  // };
-
-  // const handleNumberCard = (played_card, cardPlayedBy) => {
-  //   const PlayedCard = played_card.charAt(0);
-  //   const otherPlayedCard = played_card.charAt(1);
-
-  //   const handleCardPlayedBy = (cardPlayedBy) => {
-  //     if (cardPlayedBy === "Player 1") {
-  //       // ...
-
-  //       setState({
-  //         gameOver: checkGameOver(player1Deck),
-  //         turn: "Player 2",
-  //         playedcardsDeck: [...playedcardsDeck, played_card],
-  //         player1Deck: [...updatedPlayer1Deck],
-  //         drawcardDeck: [...copieddrawcardDeckArray],
-  //       });
-  //     }
-  //   };
-
   return (
     <div>
       {currentUser === "Player 1" && (
@@ -176,7 +107,7 @@ const GameLogic = () => {
               <ShuffleDeck
                 key={index}
                 caption={card}
-                onClick={() => handleCardCaption(card)}
+                onClick={() => handleCardDeck(card)}
               />
             ))}
           </div>
@@ -196,7 +127,7 @@ const GameLogic = () => {
               <ShuffleDeck
                 key={index}
                 caption={card}
-                onClick={() => handleCardCaption(card)}
+                onClick={() => handleCardDeck(card)}
               />
             ))}
           </div>
@@ -216,7 +147,7 @@ const GameLogic = () => {
               <ShuffleDeck
                 key={index}
                 caption={card}
-                onClick={() => handleCardCaption(card)}
+                onClick={() => handleCardDeck(card)}
               />
             ))}
           </div>
@@ -236,7 +167,7 @@ const GameLogic = () => {
               <ShuffleDeck
                 key={index}
                 caption={card}
-                onClick={() => handleCardCaption(card)}
+                onClick={() => handleCardDeck(card)}
               />
             ))}
           </div>
@@ -252,3 +183,73 @@ const GameLogic = () => {
 };
 
 export default GameLogic;
+
+//   useEffect(() => {
+//     // Update state when gameOver changes
+//     gameOver && setGameOver(gameOver);
+//     turn && setTurn(turn);
+//     player1Deck && setPlayer1Deck(player1Deck);
+//     player2Deck && setPlayer2Deck(player2Deck);
+//     player3Deck && setPlayer3Deck(player2Deck);
+//     player4Deck && setPlayer4Deck(player2Deck);
+//     playedcardsDeck && setplayedcardsDeck(playedcardsDeck);
+//     drawcardDeck && setdrawcardDeck(drawcardDeck);
+//   }, [
+//     gameOver,
+//     turn,
+//     player1Deck,
+//     player2Deck,
+//     player3Deck,
+//     player4Deck,
+//     playedcardsDeck,
+//     drawcardDeck,
+//   ]);
+// };
+
+//   const checkGameOver = (arr) => {
+//     return arr.length === 1;
+//   };
+
+// call the initGameState function here
+// useEffect(() => {
+//   initGameState({
+//     /* your data here */
+//   });
+// }, []);
+// const handleCardCaption = (card) => {
+//   setchosenCaption(card);
+// };
+
+// const onCardPlayedHandler = (played_card) => {
+//   //check turn
+//   //perform switch statement on played card
+//   //case 1: simple number card
+//   //extract color and number of played card
+//   //match with currentColor and currentNumber
+//   //if matched
+//   //remove played card from current player's deck and add to playedcardsDeck
+//   // /set turn to other player
+//   // /else //invalid move
+
+//   const cardPlayedBy = turn;
+
+//   handleNumberCard(played_card, cardPlayedBy);
+// };
+
+// const handleNumberCard = (played_card, cardPlayedBy) => {
+//   const PlayedCard = played_card.charAt(0);
+//   const otherPlayedCard = played_card.charAt(1);
+
+//   const handleCardPlayedBy = (cardPlayedBy) => {
+//     if (cardPlayedBy === "Player 1") {
+//       // ...
+
+//       setState({
+//         gameOver: checkGameOver(player1Deck),
+//         turn: "Player 2",
+//         playedcardsDeck: [...playedcardsDeck, played_card],
+//         player1Deck: [...updatedPlayer1Deck],
+//         drawcardDeck: [...copieddrawcardDeckArray],
+//       });
+//     }
+//   };
