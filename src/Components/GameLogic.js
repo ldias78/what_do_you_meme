@@ -38,150 +38,150 @@ const GameLogic = () => {
     const drawcardDeck = shuffleCards;
     setdrawcardDeck(drawcardDeck);
   }, []);
-
-  useEffect(() => {
-    const initGameState = {
-      gameOver: false,
-      turn: "Player 1",
-      player1Deck: [...player1Deck],
-      player2Deck: [...player2Deck],
-      player3Deck: [...player2Deck],
-      player4Deck: [...player2Deck],
-      playedcardsDeck: [...playedcardsDeck],
-      drawcardDeck: [...drawcardDeck],
-    };
-  }, []);
-
-  // const initGameState = ({
-  //   gameOver,
-  //   turn,
-  //   player1Deck,
-  //   player2Deck,
-  //   playedCardsPile,
-  //   drawCardDeck,
-  // }) => {
-  //   setGameOver(gameOver);
-  //   setTurn(turn);
-  //   setPlayer1Deck(player1Deck);
-  //   setPlayer2Deck(player2Deck);
-  //   setPlayedCardsDeck(playedCardsPile);
-  //   setdrawCardDeck(drawCardDeck);
-  // };
-
-  const updateGameState = ({
-    gameOver,
-    turn,
-    player1Deck,
-    player2Deck,
-    playedCardsPile,
-    drawCardDeck,
-  }) => {
-    gameOver && setGameOver(gameOver);
-    turn && setTurn(turn);
-    player1Deck && setPlayer1Deck(player1Deck);
-    player2Deck && setPlayer2Deck(player2Deck);
-    playedCardsPile && setPlayedCardsDeck(playedCardsPile);
-    drawCardDeck && setdrawCardDeck(drawCardDeck);
-  };
-
-  const handleCurrentUserData = (name) => {
-    setCurrentUser(name);
-  };
-
-  useEffect(() => {
-    // retrieve the current user data from an API or data source
-    const retrieveCurrentUserData = async () => {
-      const response = await fetch("/api/currentUser");
-      const data = await response.json();
-      handleCurrentUserData(data.name);
-    };
-
-    retrieveCurrentUserData();
-  }, []);
-
-  return (
-    <div>
-      {currentUser === "Player 1" && (
-        <div className="player-view">
-          <h2>{turn}'s turn</h2>
-          <div className="player-hand">
-            {player1Deck.map((card, index) => (
-              <ShuffleDeck
-                key={index}
-                caption={card}
-                onClick={() => handleCardDeck(card)}
-              />
-            ))}
-          </div>
-          <div className="played-cards">
-            {playedcardsDeck.map((card, index) => (
-              <ShuffleDeck key={index} caption={card} />
-            ))}
-          </div>
-        </div>
-      )}
-      {/* PLAYER 2 VIEW */}
-      {currentUser === "Player 2" && (
-        <div className="player-view">
-          <h2>{turn}'s turn</h2>
-          <div className="player-hand">
-            {player2Deck.map((card, index) => (
-              <ShuffleDeck
-                key={index}
-                caption={card}
-                onClick={() => handleCardDeck(card)}
-              />
-            ))}
-          </div>
-          <div className="played-cards">
-            {playedcardsDeck.map((card, index) => (
-              <ShuffleDeck key={index} caption={card} />
-            ))}
-          </div>
-        </div>
-      )}
-      {/* PLAYER 3 VIEW */}
-      {currentUser === "Player 3" && (
-        <div className="player-view">
-          <h2>{turn}'s turn</h2>
-          <div className="player-hand">
-            {player3Deck.map((card, index) => (
-              <ShuffleDeck
-                key={index}
-                caption={card}
-                onClick={() => handleCardDeck(card)}
-              />
-            ))}
-          </div>
-          <div className="played-cards">
-            {playedcardsDeck.map((card, index) => (
-              <ShuffleDeck key={index} caption={card} />
-            ))}
-          </div>
-        </div>
-      )}
-      {/* PLAYER 4 VIEW */}
-      {currentUser === "Player 4" && (
-        <div className="player-view">
-          <h2>{turn}'s turn</h2>
-          <div className="player-hand">
-            {player4Deck.map((card, index) => (
-              <ShuffleDeck
-                key={index}
-                caption={card}
-                onClick={() => handleCardDeck(card)}
-              />
-            ))}
-          </div>
-          <div className="played-cards">
-            {playedcardsDeck.map((card, index) => (
-              <ShuffleDeck key={index} caption={card} />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
 };
+// useEffect(() => {
+//   const initGameState = {
+//     gameOver: false,
+//     turn: "Player 1",
+//     player1Deck: [...player1Deck],
+//     player2Deck: [...player2Deck],
+//     player3Deck: [...player2Deck],
+//     player4Deck: [...player2Deck],
+//     playedcardsDeck: [...playedcardsDeck],
+//     drawcardDeck: [...drawcardDeck],
+//   };
+// }, []);
 
-export default GameLogic;
+// // const initGameState = ({
+// //   gameOver,
+// //   turn,
+// //   player1Deck,
+// //   player2Deck,
+// //   playedCardsPile,
+// //   drawCardDeck,
+// // }) => {
+// //   setGameOver(gameOver);
+// //   setTurn(turn);
+// //   setPlayer1Deck(player1Deck);
+// //   setPlayer2Deck(player2Deck);
+// //   setPlayedCardsDeck(playedCardsPile);
+// //   setdrawCardDeck(drawCardDeck);
+// // };
+
+// const updateGameState = ({
+//   gameOver,
+//   turn,
+//   player1Deck,
+//   player2Deck,
+//   playedCardsPile,
+//   drawCardDeck,
+// }) => {
+//   gameOver && setGameOver(gameOver);
+//   turn && setTurn(turn);
+//   player1Deck && setPlayer1Deck(player1Deck);
+//   player2Deck && setPlayer2Deck(player2Deck);
+//   playedCardsPile && setPlayedCardsDeck(playedCardsPile);
+//   drawCardDeck && setdrawCardDeck(drawCardDeck);
+// };
+
+// const handleCurrentUserData = (name) => {
+//   setCurrentUser(name);
+// };
+
+// useEffect(() => {
+//   // retrieve the current user data from an API or data source
+//   const retrieveCurrentUserData = async () => {
+//     const response = await fetch("/api/currentUser");
+//     const data = await response.json();
+//     handleCurrentUserData(data.name);
+//   };
+
+//   retrieveCurrentUserData();
+// }, []);
+
+//   return (
+//     <div>
+//       {currentUser === "Player 1" && (
+//         <div className="player-view">
+//           <h2>{turn}'s turn</h2>
+//           <div className="player-hand">
+//             {player1Deck.map((card, index) => (
+//               <ShuffleDeck
+//                 key={index}
+//                 caption={card}
+//                 onClick={() => handleCardDeck(card)}
+//               />
+//             ))}
+//           </div>
+//           <div className="played-cards">
+//             {playedcardsDeck.map((card, index) => (
+//               <ShuffleDeck key={index} caption={card} />
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//       {/* PLAYER 2 VIEW */}
+//       {currentUser === "Player 2" && (
+//         <div className="player-view">
+//           <h2>{turn}'s turn</h2>
+//           <div className="player-hand">
+//             {player2Deck.map((card, index) => (
+//               <ShuffleDeck
+//                 key={index}
+//                 caption={card}
+//                 onClick={() => handleCardDeck(card)}
+//               />
+//             ))}
+//           </div>
+//           <div className="played-cards">
+//             {playedcardsDeck.map((card, index) => (
+//               <ShuffleDeck key={index} caption={card} />
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//       {/* PLAYER 3 VIEW */}
+//       {currentUser === "Player 3" && (
+//         <div className="player-view">
+//           <h2>{turn}'s turn</h2>
+//           <div className="player-hand">
+//             {player3Deck.map((card, index) => (
+//               <ShuffleDeck
+//                 key={index}
+//                 caption={card}
+//                 onClick={() => handleCardDeck(card)}
+//               />
+//             ))}
+//           </div>
+//           <div className="played-cards">
+//             {playedcardsDeck.map((card, index) => (
+//               <ShuffleDeck key={index} caption={card} />
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//       {/* PLAYER 4 VIEW */}
+//       {currentUser === "Player 4" && (
+//         <div className="player-view">
+//           <h2>{turn}'s turn</h2>
+//           <div className="player-hand">
+//             {player4Deck.map((card, index) => (
+//               <ShuffleDeck
+//                 key={index}
+//                 caption={card}
+//                 onClick={() => handleCardDeck(card)}
+//               />
+//             ))}
+//           </div>
+//           <div className="played-cards">
+//             {playedcardsDeck.map((card, index) => (
+//               <ShuffleDeck key={index} caption={card} />
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default GameLogic;

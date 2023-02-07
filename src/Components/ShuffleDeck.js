@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import CardCaptions from "./CardCaptions";
+import CardDeck from "./CardDeck";
 
 const ShuffleDeck = () => {
-  const [deck, setDeck] = useState(CardCaptions);
+  const [deck, setDeck] = useState(CardDeck);
 
   setDeck(
     deck
@@ -14,7 +14,7 @@ const ShuffleDeck = () => {
     <div className="cards">
       <div className="card"></div>
       <p>
-        <CardCaptions />
+        <CardDeck />
       </p>
     </div>
   );
