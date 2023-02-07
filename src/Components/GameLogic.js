@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CardCaptions from "./CardDeck";
+import CardDeck from "./CardDeck";
 import "./CardDeck.css";
 import ShuffleDeck from "./ShuffleDeck";
 
@@ -14,7 +14,7 @@ const GameLogic = () => {
   const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
-    const shuffleCards = ShuffleDeck(CardCaptions);
+    const shuffleCards = ShuffleDeck(CardDeck);
     const startingCardIndex = Math.floor(Math.random() * 101);
 
     const player1Deck = shuffleCards.splice(0, 7);
@@ -51,7 +51,6 @@ const GameLogic = () => {
 
   const updateGameState = ({
     gameOver,
-    winner,
     turn,
     player1Deck,
     player2Deck,
