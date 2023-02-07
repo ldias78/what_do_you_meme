@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./CardDeck.css";
 import CardDeck from "./CardDeck";
 import ShuffleDeck from "./ShuffleDeck";
+// import { useHistory } from "react-router-dom";
 
 const GameLogic = () => {
   const [gameover, setGameover] = useState(true);
@@ -38,7 +39,7 @@ const GameLogic = () => {
   }, []);
 
   useEffect(() => {
-    const state = {
+    const initGameState = {
       gameOver: false,
       turn: "Player 1",
       player1Deck: [...player1Deck],
@@ -50,21 +51,21 @@ const GameLogic = () => {
     };
   }, []);
 
-  const initGameState = ({
-    gameOver,
-    turn,
-    player1Deck,
-    player2Deck,
-    playedCardsPile,
-    drawCardDeck,
-  }) => {
-    setGameOver(gameOver);
-    setTurn(turn);
-    setPlayer1Deck(player1Deck);
-    setPlayer2Deck(player2Deck);
-    setPlayedCardsDeck(playedCardsPile);
-    setdrawCardDeck(drawCardDeck);
-  };
+  // const initGameState = ({
+  //   gameOver,
+  //   turn,
+  //   player1Deck,
+  //   player2Deck,
+  //   playedCardsPile,
+  //   drawCardDeck,
+  // }) => {
+  //   setGameOver(gameOver);
+  //   setTurn(turn);
+  //   setPlayer1Deck(player1Deck);
+  //   setPlayer2Deck(player2Deck);
+  //   setPlayedCardsDeck(playedCardsPile);
+  //   setdrawCardDeck(drawCardDeck);
+  // };
 
   const updateGameState = ({
     gameOver,

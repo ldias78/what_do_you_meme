@@ -31,10 +31,9 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
           <div className="player-container">
             <h2>Player 1</h2>
             <Button
-              variant="secondary"
-              className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/player1cards", { state: { player: players[0] } })
+                type="button"
+                className="big-btn see-card-btn"
+                onClick={() => navigate("/gamelogic", { state: initGameState)}
               }
             >
               Get your Cards
