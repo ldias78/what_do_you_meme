@@ -47,7 +47,6 @@ const GameLogic = () => {
       playedcardsDeck: [...playedcardsDeck],
       drawcardDeck: [...drawcardDeck],
     };
-    dispatch(initGameState(state));
   }, []);
 
   const updateGameState = ({
@@ -56,8 +55,6 @@ const GameLogic = () => {
     turn,
     player1Deck,
     player2Deck,
-    currentColor,
-    currentNumber,
     playedCardsPile,
     drawCardDeck,
   }) => {
@@ -74,8 +71,6 @@ const GameLogic = () => {
     turn,
     player1Deck,
     player2Deck,
-    currentColor,
-    currentNumber,
     playedCardsPile,
     drawCardDeck,
   }) => {
