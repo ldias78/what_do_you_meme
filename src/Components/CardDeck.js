@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Randomphrases from "./Randomphrases.json";
-import "./CardDeck.css";
+// import "./CardDeck.css";
 
 // const quotes = randomphrasesArray.map((obj) => obj["quote"]);
 const randomphrasesArray = Object.values(Randomphrases.Randomphrases);
