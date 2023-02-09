@@ -11,8 +11,6 @@ const Card = ({ quote }) => (
 );
 
 const PlayerHand = () => {
-  const [selectedCard, setSelectedCard] = useState(null);
-
   let players = [[], [], [], []];
   let numberOfCards = 7;
 
@@ -21,13 +19,6 @@ const PlayerHand = () => {
     players[currentPlayer].push(Randomphrases[i]);
   }
   console.log(players[0]);
-  const handleCardClick = (quote) => {
-    setSelectedCard(quote);
-  };
-
-  // useEffect(() => {
-  //   setgameDeck([]);
-  // }, []);
 
   return (
     <div>
@@ -36,18 +27,18 @@ const PlayerHand = () => {
         <Card key={index} quote={quote.quote} />
       ))}
 
-      {/* <h2>Player 2</h2>
+      <h2>Player 2</h2>
       {players[1].map((quote, index) => (
-        <Card key={index} quote={quote} />
+        <Card key={index} quote={quote.quote} />
       ))}
       <h2>Player 3</h2>
       {players[2].map((quote, index) => (
-        <Card key={index} quote={quote} />
+        <Card key={index} quote={quote.quote} />
       ))}
       <h2>Player 4</h2>
       {players[3].map((quote, index) => (
-        <Card key={index} quote={quote} />
-      ))} */}
+        <Card key={index} quote={quote.quote} />
+      ))}
     </div>
   );
 };
