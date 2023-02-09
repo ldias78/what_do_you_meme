@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card } from "react-bootstrap";
 import "./BoardGame.css";
 // import axios from "axios";
-import { navigate } from "@reach/router";
+import { router, navigate } from "@reach/router";
 
 const BoardGame = ({ setFetching, fetching, giphy }) => {
   const [selectedMeme] = useState("");
@@ -34,7 +34,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
               variant="secondary"
               className="big-btn see-card-btn"
               onClick={() =>
-                navigate("/player1cards", { state: { player: players[0] } })
+                navigate("/PlayerHand", { state: { playerHand: players[0] } })
               }
             >
               Get your Cards
