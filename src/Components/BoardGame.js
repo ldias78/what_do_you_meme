@@ -8,6 +8,7 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players;
+  console.log(players);
   const [selectedMeme] = useState("");
 
   const handleVote = () => {
@@ -25,7 +26,7 @@ const BoardGame = (props) => {
         <div className="header-container">
           {players.slice(0, 2).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player.name}</h2>
+              <h2>{player}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
@@ -41,9 +42,9 @@ const BoardGame = (props) => {
       </header>
       <footer>
         <div className="footer-container">
-          {players.slice(0, 2).map((player, index) => (
+          {players.slice(2, 4).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player.name}</h2>
+              <h2>{player}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"

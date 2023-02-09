@@ -4,6 +4,7 @@ import { useNavigate } from "@reach/router";
 
 const VoteBoard = ({ giphy }) => {
   const navigate = useNavigate();
+
   return (
     <div>
       <h1 className="title">NOW LET'S VOTE FOR THE BEST CAPTION</h1>

@@ -3,14 +3,15 @@ import { navigate } from "@reach/router";
 import "./MainPage.css";
 
 const MainPage = () => {
-  const handleClick = () => {
-    navigate("/boardgame", {
-      state: { players: ["Player 1", "Player 2", "Player 3", "Player 4"] },
-    });
-  };
   const [players, setPlayers] = useState([]);
   const [playerName, setPlayerName] = useState("");
   const [inputDisabled, setInputDisabled] = useState(false);
+
+  const handleClick = () => {
+    navigate("/boardgame", {
+      state: { players: players },
+    });
+  };
 
   const handleDone = () => {
     if (players.length < 4 && playerName !== "") {
