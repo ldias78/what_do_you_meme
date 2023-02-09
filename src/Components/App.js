@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Router, navigate } from "@reach/router";
 import MainPage from "./MainPage";
 import BoardGame from "./BoardGame";
+// import PlayerHand from "./PlayerHand";
 import VoteBoard from "./VoteBoard";
 import Winner from "./Winner";
 import axios from "axios";
