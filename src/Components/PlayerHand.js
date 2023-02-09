@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import Randomphrases from "./Randomphrases.json";
 import "./CardDeck.css";
 
