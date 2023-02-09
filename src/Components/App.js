@@ -40,8 +40,8 @@ const App = (props) => {
           fetching={fetching}
           giphy={giphy}
         />
-        <VoteBoard path="/voteboard" players={players} giphy={giphy} />
-        <Winner path="/winner" players={players} />
+        <VoteBoard path="/voteboard" giphy={giphy} />
+        <Winner path="/winner" />
       </Router>
     </div>
   );
