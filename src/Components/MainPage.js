@@ -3,13 +3,18 @@ import { navigate } from "@reach/router";
 import "./MainPage.css";
 
 const MainPage = () => {
+  const handleClick = () => {
+    navigate("/boardgame", {
+      state: { players: ["Player 1", "Player 2", "Player 3", "Player 4"] },
+    });
+  };
   const [players, setPlayers] = useState([]);
   const [playerName, setPlayerName] = useState("");
   const [inputDisabled, setInputDisabled] = useState(false);
 
   const handleDone = () => {
     if (players.length < 4 && playerName !== "") {
-      setPlayers([...players, `Player ${players.length + 1}: ${playerName}`]);
+      setPlayers([...players, playerName]);
       setPlayerName("");
     }
     if (players.length === 3) {
@@ -26,12 +31,12 @@ const MainPage = () => {
   return (
     <div className="main-page">
       <video src="/videos/video-2.mp4" autoPlay loop muted />
-      <h1 className="title">WELCOME TO THE WHAT DO YOU MEME GAME</h1>
+      {/* <h1 className="title">WELCOME TO THE WHAT DO YOU MEME GAME</h1> */}
 
       <form className="input-container">
         <div>
           <label>
-            <h2>Player Name:</h2>
+            <h1>Player Name:</h1>
             <input
               type="text"
               value={playerName}
@@ -57,7 +62,7 @@ const MainPage = () => {
         <button
           type="button"
           className="start-game-button"
-          onClick={() => navigate("/boardgame", { state: { players } })}
+          onClick={handleClick}
         >
           Start Game
         </button>

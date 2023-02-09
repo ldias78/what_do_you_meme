@@ -5,15 +5,10 @@ import "./BoardGame.css";
 // import axios from "axios";
 import { navigate } from "@reach/router";
 
-const BoardGame = ({ setFetching, fetching, giphy }) => {
+const BoardGame = (props) => {
+  const { setFetching, fetching, giphy, location } = props;
+  const players = location?.state?.players;
   const [selectedMeme] = useState("");
-  // eslint-disable-next-line
-  const [players, setPlayers] = useState([
-    { name: "Player 1", score: 0 },
-    { name: "Player 2", score: 0 },
-    { name: "Player 3", score: 0 },
-    { name: "Player 4", score: 0 },
-  ]);
 
   const handleVote = () => {
     navigate("/voteboard", { state: { selectedMeme } });
@@ -21,65 +16,45 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
 
   return (
     <div className="boardgame-container">
-      <video src="/videos/video-1.mp4" autoPlay loop muted />
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
       <h1 className="title">
         WELCOME TO THE WHAT DO YOU MEME GAME
         <p> GIPHY VERSION</p>
       </h1>
       <header>
         <div className="header-container">
-          <div className="player-container">
-            <h2>Player 1</h2>
-            <Button
-              variant="secondary"
-              className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/player1cards", { state: { player: players[0] } })
-              }
-            >
-              Get your Cards
-            </Button>
-          </div>
-          <div className="player-container">
-            <h2>Player 2</h2>
-            <Button
-              variant="secondary"
-              className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/player2cards", { state: { player: players[1] } })
-              }
-            >
-              Get your Cards
-            </Button>
-          </div>
+          {players.slice(0, 2).map((player, index) => (
+            <div className="player-container" key={index}>
+              <h2>{player.name}</h2>
+              <Button
+                variant="secondary"
+                className="big-btn see-card-btn"
+                onClick={() =>
+                  navigate(`/player${index + 1}cards`, { state: { player } })
+                }
+              >
+                Get your Cards
+              </Button>
+            </div>
+          ))}
         </div>
       </header>
       <footer>
         <div className="footer-container">
-          <div className="player-container">
-            <h2>Player 3</h2>
-            <Button
-              variant="secondary"
-              className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/player3cards", { state: { player: players[2] } })
-              }
-            >
-              Get your Cards
-            </Button>
-          </div>
-          <div className="player-container">
-            <h2>Player 4</h2>
-            <Button
-              variant="secondary"
-              className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/player4cards", { state: { player: players[3] } })
-              }
-            >
-              Get your Cards
-            </Button>
-          </div>
+          {players.slice(0, 2).map((player, index) => (
+            <div className="player-container" key={index}>
+              <h2>{player.name}</h2>
+              <Button
+                variant="secondary"
+                className="big-btn see-card-btn"
+                onClick={() =>
+                  navigate(`/player${index + 3}cards`, { state: { player } })
+                }
+              >
+                Get your Cards
+              </Button>
+            </div>
+          ))}
         </div>
       </footer>
       <div className="meme-container">

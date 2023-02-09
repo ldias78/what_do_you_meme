@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Router } from "@reach/router";
+// import { createRoot } from "react-dom/client";
+import { Router, navigate } from "@reach/router";
 import MainPage from "./MainPage";
 import BoardGame from "./BoardGame";
 import VoteBoard from "./VoteBoard";
@@ -9,6 +10,12 @@ import axios from "axios";
 const App = (props) => {
   const [giphy, setGiphy] = useState("");
   const [fetching, setFetching] = useState("false");
+  const [players, setPlayers] = useState([]);
+
+  const handleClick = (players) => {
+    setPlayers(players);
+    navigate("/boardgame", { state: { players: players } });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,15 +32,16 @@ const App = (props) => {
   return (
     <div className="app">
       <Router>
-        <MainPage path="/" />
+        <MainPage path="/" handleClick={handleClick} />
         <BoardGame
           path="/boardgame"
+          players={players}
           setFetching={setFetching}
           fetching={fetching}
           giphy={giphy}
         />
-        <VoteBoard path="/voteboard" giphy={giphy} />
-        <Winner path="/winner" />
+        <VoteBoard path="/voteboard" players={players} giphy={giphy} />
+        <Winner path="/winner" players={players} />
       </Router>
     </div>
   );
