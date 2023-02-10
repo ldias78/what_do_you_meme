@@ -1,4 +1,3 @@
-// Game.js
 import React, { useState } from "react";
 import PlayerHand from "./PlayerHand";
 import SelectedCards from "./SelectedCards";
@@ -25,7 +24,11 @@ const Game = () => {
       {selectedCards.length === 0 ? (
         <PlayerHand onCardSelect={onCardSelect} />
       ) : (
-        <SelectedCards selected Cards={selectedCards} onVote={onVote} />
+        <SelectedCards
+          selectedCards={selectedCards}
+          onVote={onVote}
+          onBackToBoard={onBackToBoard}
+        />
       )}
       {selectedCards.length > 0 && (
         <div className="results">
