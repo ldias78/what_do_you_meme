@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import Randomphrases from "./Randomphrases.json";
 import "./CardDeck.css";
 import { navigate } from "@reach/router";
-
-const Card = ({ quote, onClick }) => (
-  <div className="cards" onClick={onClick}>
-    <div className="card">
-      <p>{quote}</p>
-    </div>
-  </div>
-);
+import Card from "./Card";
 
 const PlayCard = (props) => {
   const [cards, setCards] = useState([]);
@@ -21,8 +14,8 @@ const PlayCard = (props) => {
   useEffect(() => {
     let numberOfCards = 7;
     const shuffledArray = Randomphrases.sort(() => 0.5 - Math.random());
-    const choosenItems = shuffledArray.slice(0, numberOfCards);
-    setCards(choosenItems);
+    const chooenItems = shuffledArray.slice(0, numberOfCards);
+    setCards(chooenItems);
   }, [player]);
 
   return (
@@ -31,6 +24,7 @@ const PlayCard = (props) => {
       {cards.map((quote, index) => (
         <Card
           key={index}
+          isSelected={quote.quote == selectedCard}
           quote={quote.quote}
           onClick={() => {
             const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
