@@ -8,10 +8,6 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players;
-  console.log(players);
-  console.log(location);
-  console.log(location.state);
-  console.log(location?.state);
   const [selectedMeme] = useState("");
 
   const handleVote = () => {
