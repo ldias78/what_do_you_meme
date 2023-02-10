@@ -34,7 +34,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
               variant="secondary"
               className="big-btn see-card-btn"
               onClick={() =>
-                navigate("/PlayerHand", { state: { playerHand: players[0] } })
+                navigate("/cardtest", { state: { cardtest: players[0] } })
               }
             >
               Get your Cards
