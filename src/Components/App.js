@@ -43,7 +43,7 @@ const App = (props) => {
           giphy={giphy}
         />
         <VoteBoard path="/voteboard" giphy={giphy} />
-        <PlayCard path="/playercard" />
+        <PlayCard path="/playcard" />
         <FavoriteCards path="/favoritecards" />
         <Winner path="/winner" />
       </Router>

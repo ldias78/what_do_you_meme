@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Randomphrases from "./Randomphrases.json";
+import BoardGame from "./BoardGame";
 import "./CardDeck.css";
 import { navigate } from "@reach/router";
 
@@ -21,8 +22,8 @@ const PlayCard = (props) => {
   useEffect(() => {
     let numberOfCards = 7;
     const shuffledArray = Randomphrases.sort(() => 0.5 - Math.random());
-    const chooenItems = shuffledArray.slice(0, numberOfCards);
-    setCards(chooenItems);
+    const choosenItems = shuffledArray.slice(0, numberOfCards);
+    setCards(choosenItems);
   }, [player]);
 
   return (
