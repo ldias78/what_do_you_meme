@@ -6,6 +6,7 @@ import VoteBoard from "./VoteBoard";
 // import Winner from "./Winner";
 import axios from "axios";
 import PlayCard from "./PlayCard";
+import FavoriteCards from "./FavoriteCards";
 
 const App = (props) => {
   const [giphy, setGiphy] = useState("");
@@ -35,7 +36,8 @@ const App = (props) => {
         />
 
         <VoteBoard path="/voteboard" giphy={giphy} />
-        <PlayCard path="/playcard" />
+        <PlayCard path="/playercard" />
+        <FavoriteCards path="/favoritecards" />
       </Router>
     </div>
   );
