@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-// import { createRoot } from "react-dom/client";
 import { Router, navigate } from "@reach/router";
 import MainPage from "./MainPage";
 import BoardGame from "./BoardGame";
-import FavoriteCards from "./FavoriteCards";
 import PlayCard from "./PlayCard";
-import VoteBoard from "./VoteBoard";
+import FavoriteCards from "./FavoriteCards";
 import Winner from "./Winner";
 import axios from "axios";
+import VoteBoard from "./VoteBoard";
 
 const App = (props) => {
   const [giphy, setGiphy] = useState("");
