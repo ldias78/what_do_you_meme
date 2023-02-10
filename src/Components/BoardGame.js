@@ -34,7 +34,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
               variant="secondary"
               className="big-btn see-card-btn"
               onClick={() =>
-                navigate("/playcard", { state: { cardtest: players[0] } })
+                navigate("/playcard", { state: { playcard: players[0] } })
               }
             >
               Get your Cards
@@ -46,7 +46,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
               variant="secondary"
               className="big-btn see-card-btn"
               onClick={() =>
-                navigate("/playcard", { state: { cardtest: players[1] } })
+                navigate("/playcard", { state: { playcard: players[1] } })
               }
             >
               Get your Cards
@@ -62,7 +62,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
               variant="secondary"
               className="big-btn see-card-btn"
               onClick={() =>
-                navigate("/playcard", { state: { cardtest: players[2] } })
+                navigate("/playcard", { state: { playcard: players[2] } })
               }
             >
               Get your Cards
@@ -74,7 +74,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
               variant="secondary"
               className="big-btn see-card-btn"
               onClick={() =>
-                navigate("/playcard", { state: { cardtest: players[3] } })
+                navigate("/playcard", { state: { playcard: players[3] } })
               }
             >
               Get your Cards
