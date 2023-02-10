@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card } from "react-bootstrap";
 import "./BoardGame.css";
-// import axios from "axios";
-import { router, navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 
 const BoardGame = ({ setFetching, fetching, giphy }) => {
-  const [selectedMeme] = useState("");
-  // eslint-disable-next-line
+  const [selectedMeme, setSelectedMeme] = useState("");
   const [players, setPlayers] = useState([
-    { name: "Player 1", score: 0 },
-    { name: "Player 2", score: 0 },
-    { name: "Player 3", score: 0 },
-    { name: "Player 4", score: 0 },
+    { name: "Player 1", score: 0, cards: [] },
+    { name: "Player 2", score: 0, cards: [] },
+    { name: "Player 3", score: 0, cards: [] },
+    { name: "Player 4", score: 0, cards: [] },
   ]);
 
   const handleVote = () => {
     navigate("/voteboard", { state: { selectedMeme } });
+  };
+
+  const handleGetCards = (player) => {
+    navigate("/playcard", { state: { playcard: player } });
   };
 
   return (
@@ -24,7 +26,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
       <video src="/videos/video-1.mp4" autoPlay loop muted />
       <h1 className="title">
         WELCOME TO THE WHAT DO YOU MEME GAME
-        <p> GIPHY VERSION</p>
+        <p>GIPHY VERSION</p>
       </h1>
       <header>
         <div className="header-container">
@@ -33,9 +35,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
             <Button
               variant="secondary"
               className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/playcard", { state: { playcard: players[0] } })
-              }
+              onClick={() => handleGetCards(players[0])}
             >
               Get your Cards
             </Button>
@@ -45,9 +45,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
             <Button
               variant="secondary"
               className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/playcard", { state: { playcard: players[1] } })
-              }
+              onClick={() => handleGetCards(players[1])}
             >
               Get your Cards
             </Button>
@@ -61,9 +59,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
             <Button
               variant="secondary"
               className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/playcard", { state: { playcard: players[2] } })
-              }
+              onClick={() => handleGetCards(players[2])}
             >
               Get your Cards
             </Button>
@@ -73,9 +69,7 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
             <Button
               variant="secondary"
               className="big-btn see-card-btn"
-              onClick={() =>
-                navigate("/playcard", { state: { playcard: players[3] } })
-              }
+              onClick={() => handleGetCards(players[3])}
             >
               Get your Cards
             </Button>
@@ -88,27 +82,20 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
             <Card.Img
               variant="top"
               src={giphy}
-              style={{ height: "350px", width: "100%" }}
+              style={{ height: "300px", width: "100%", objectFit: "cover" }}
             />
             <Card.Body>
               <Card.Title style={{ textAlign: "center" }}>
-                Look this Giphy and match your caption card
+                {selectedMeme || "Select a Meme"}
               </Card.Title>
-              <Card.Text style={{ textAlign: "center" }}>
-                What caption makes you laugh when you look at this Meme?
-              </Card.Text>
               <Button
                 variant="primary"
-                style={{ display: "block", margin: "0 auto" }}
-                onClick={() => setFetching(!fetching)}
+                className="vote-btn"
+                onClick={handleVote}
+                disabled={selectedMeme === ""}
               >
-                Next Meme
+                Vote
               </Button>
-              <div style={{ textAlign: "center", marginTop: "60px" }}>
-                <Button variant="secondary" onClick={handleVote}>
-                  Let's Vote
-                </Button>
-              </div>
             </Card.Body>
           </Card>
         </div>
@@ -116,5 +103,4 @@ const BoardGame = ({ setFetching, fetching, giphy }) => {
     </div>
   );
 };
-
 export default BoardGame;
