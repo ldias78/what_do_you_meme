@@ -1,11 +1,11 @@
-body {
+/* body {
   background: #777;
   height: 100vh;
   margin: 0;
   display: grid;
   place-items: center;
   overflow: hidden;
-}
+} */
 
 .cards {
   display: flex;
