@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Router, navigate } from "@reach/router";
 import MainPage from "./MainPage";
 import BoardGame from "./BoardGame";
-// import PlayerHand from "./PlayerHand";
+import FavoriteCards from "./FavoriteCards";
+import PlayCard from "./PlayCard";
 import VoteBoard from "./VoteBoard";
 import Winner from "./Winner";
 import axios from "axios";
@@ -42,6 +43,8 @@ const App = (props) => {
           giphy={giphy}
         />
         <VoteBoard path="/voteboard" giphy={giphy} />
+        <PlayCard path="/playercard" />
+        <FavoriteCards path="/favoritecards" />
         <Winner path="/winner" />
       </Router>
     </div>
