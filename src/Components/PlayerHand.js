@@ -1,16 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Randomphrases from "./Randomphrases.json";
-import "./CardDeck.css";
+import Card from "./Card";
 
-const Card = ({ quote }) => (
-  <div className="cards">
-    <div className="card">
-      <p>{quote}</p>
-    </div>
-  </div>
-);
-
-const PlayerHand = () => {
+const PlayerHand = ({ onCardSelect }) => {
   let players = [[], [], [], []];
   let numberOfCards = 7;
 
@@ -18,7 +10,6 @@ const PlayerHand = () => {
     let currentPlayer = i % 4;
     players[currentPlayer].push(Randomphrases[i]);
   }
-  console.log(players[0]);
 
   return (
     <div>
@@ -26,7 +17,7 @@ const PlayerHand = () => {
       {players[0].map((quote, index) => (
         <Card key={index} quote={quote.quote} />
       ))}
-
+      css Copy code
       <h2>Player 2</h2>
       {players[1].map((quote, index) => (
         <Card key={index} quote={quote.quote} />
@@ -37,7 +28,11 @@ const PlayerHand = () => {
       ))}
       <h2>Player 4</h2>
       {players[3].map((quote, index) => (
-        <Card key={index} quote={quote.quote} />
+        <Card
+          key={index}
+          quote={quote.quote}
+          onClick={() => onCardSelect(quote)}
+        />
       ))}
     </div>
   );
