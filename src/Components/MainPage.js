@@ -60,7 +60,10 @@ const MainPage = () => {
         <button
           type="button"
           className="start-game-button"
-          onClick={() => navigate("/boardgame", { state: { players } })}
+          onClick={() => {
+            localStorage.removeItem("FavoriteCards");
+            navigate("/boardgame", { state: { players } });
+          }}
         >
           Start Game
         </button>

@@ -12,12 +12,21 @@ body {
   --distance: -4rem;
 }
 
+.card-selected {
+  background-color: aquamarine !important;
+}
+
 .card {
+  margin-top: 1rem;
   background: white;
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 4px 4px 15px 2px rgba(0, 0, 0, 0.75);
   transition: 0.2s;
+}
+.cards-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card:not(:first-child) {
@@ -32,4 +41,14 @@ body {
 .card:hover ~ .card,
 .card:focus-within ~ .card {
   transform: translate(calc(var(--distance) * -1));
+}
+
+.card-favorite {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 400px;
 }

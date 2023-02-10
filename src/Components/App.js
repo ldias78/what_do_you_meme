@@ -37,7 +37,7 @@ const App = (props) => {
 
         <VoteBoard path="/voteboard" giphy={giphy} />
         <PlayCard path="/playercard" />
-        <FavoriteCards path="/favoritecards" />
+        <FavoriteCards path="/favoritecards" giphy={giphy} />
       </Router>
     </div>
   );
