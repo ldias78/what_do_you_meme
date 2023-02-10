@@ -7,9 +7,7 @@ import Card from "./Card";
 const PlayCard = (props) => {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
-  console.log("player33", props);
   const player = props.location.state.player;
-  console.log("player44", player);
   let players = [[], [], [], []];
   useEffect(() => {
     let numberOfCards = 7;
