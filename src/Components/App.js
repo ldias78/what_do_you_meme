@@ -5,7 +5,7 @@ import BoardGame from "./BoardGame";
 import VoteBoard from "./VoteBoard";
 // import Winner from "./Winner";
 import axios from "axios";
-import PlayerTest from "./PlayerTest";
+import PlayCard from "./PlayCard";
 
 const App = (props) => {
   const [giphy, setGiphy] = useState("");
@@ -35,7 +35,7 @@ const App = (props) => {
         />
 
         <VoteBoard path="/voteboard" giphy={giphy} />
-        <PlayerTest path="/playertest" />
+        <PlayCard path="/playcard" />
       </Router>
     </div>
   );
