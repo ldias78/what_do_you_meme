@@ -1,4 +1,4 @@
-{ "Randomphrases" : [
+[
   {
     "quote":
       "When you're trying to be a good citizen but the government is too corrupt",
@@ -168,7 +168,7 @@
 
   { "quote": "When your boss starts following you on TikTok", "id": 55 },
 
-  { "quote": "When one of your own farts wakes you up in the morning", "id": 56 },
+  { "quote":  "Did you just look at me? Did you? Look at me! Look at me! How dare you? Close your eyes!", "id": 56 },
 
   { "quote": "When you find a couple of bucks in your pants", "id": 57 },
 
@@ -258,5 +258,4 @@
 
   { "quote": "When someone tells you that you chew too loud", "id": 100 }
 ]
-}
 
