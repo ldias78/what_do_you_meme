@@ -9,10 +9,13 @@ const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players;
   console.log(players);
+  console.log(location);
+  console.log(location.state);
+  console.log(location?.state);
   const [selectedMeme] = useState("");
 
   const handleVote = () => {
-    navigate("/voteboard", { state: { selectedMeme } });
+    navigate("/voteboard", { state: { selectedMeme, players } });
   };
 
   return (
@@ -26,7 +29,7 @@ const BoardGame = (props) => {
         <div className="header-container">
           {players.slice(0, 2).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player}</h2>
+              <h2>{player.playerName}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
@@ -44,7 +47,7 @@ const BoardGame = (props) => {
         <div className="footer-container">
           {players.slice(2, 4).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player}</h2>
+              <h2>{player.playerName}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"

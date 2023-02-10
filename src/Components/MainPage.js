@@ -15,7 +15,8 @@ const MainPage = () => {
 
   const handleDone = () => {
     if (players.length < 4 && playerName !== "") {
-      setPlayers([...players, playerName]);
+      const playerInfo = { playerName, score: 0 };
+      setPlayers([...players, playerInfo]);
       setPlayerName("");
     }
     if (players.length === 3) {
@@ -32,7 +33,6 @@ const MainPage = () => {
   return (
     <div className="main-page">
       <video src="/videos/video-2.mp4" autoPlay loop muted />
-      {/* <h1 className="title">WELCOME TO THE WHAT DO YOU MEME GAME</h1> */}
 
       <form className="input-container">
         <div>
@@ -55,7 +55,7 @@ const MainPage = () => {
       <div className="player-list-container">
         <div className="player-list">
           {players.map((player, i) => (
-            <div key={i}>{player}</div>
+            <div key={i}>{player.playerName}</div>
           ))}
         </div>
       </div>
