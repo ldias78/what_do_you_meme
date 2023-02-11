@@ -8,17 +8,20 @@ function Winner() {
   };
 
   return (
-    <div>
-      <h1
-        style={{
-          textAlign: "center",
-          marginTop: "60px",
-          marginBottom: "60px",
-          color: "green",
-        }}
-      >
-        CONGRATULATIONS TO THE WINNER!
-      </h1>
+    <div className="page-container">
+      <div className="label-container">
+        <h1
+          style={{
+            textAlign: "center",
+            // marginTop: "60px",
+            // marginBottom: "60px",
+            color: "#a32e9e",
+          }}
+        >
+          CONGRATULATIONS TO THE WINNER!
+        </h1>
+      </div>
+
       <video src="/videos/video-3.mp4" autoPlay loop muted />
       <footer style={{ display: "flex", justifyContent: "center" }}>
         <button className="start-over" onClick={handleClick}>

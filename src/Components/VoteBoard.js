@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 import { useNavigate } from "@reach/router";
+
 import "./VoteBoard.css";
 
 const VoteBoard = ({ giphy, location }) => {
   const navigate = useNavigate();
-  // const players = location?.state?.players;
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    //   const savedItemsStr =
-    //   localStorage.getItem("FavoriteCards") ?? "{}";
-    // const savedItems = JSON.parse(savedItemsStr);
-    // if (savedItems[player].count === undefined) {
-    //   savedItems[player].count = 1;
-    // } else {
-    //   savedItems[player].count++;
-    // }
-    // localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
-
     const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
     const savedItems = JSON.parse(savedItemsStr);
-
     let players = [];
     Object.keys(savedItems).forEach((key) => {
       players.push({
@@ -40,7 +29,7 @@ const VoteBoard = ({ giphy, location }) => {
   };
 
   return (
-    <div>
+    <div className="container">
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -59,6 +48,18 @@ const VoteBoard = ({ giphy, location }) => {
           ))}
         </tbody>
       </Table>
+
+      <div className="justify-center">
+        <Button
+          variant="secondary"
+          onClick={() => {
+            navigate("/winner");
+          }}
+        >
+          Winner
+        </Button>
+      </div>
+
       {/* <h1 className="title">NOW LET'S VOTE FOR THE BEST CAPTION</h1>
       <h3 style={{ textAlign: "center" }}>
         PICK THE CAPTION THAT MAKES MORE SENSE WITH THE GIPHY MEME DISPLAYED

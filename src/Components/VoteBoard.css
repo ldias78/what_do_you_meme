@@ -127,3 +127,13 @@
 .playerScore {
     font-size: 18px;
 } */
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    padding: 5%;
+}

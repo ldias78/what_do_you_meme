@@ -1,5 +1,5 @@
 video {
-    object-fit:cover;
+    /* object-fit:cover; */
     width: 100%;
     height: 100%;
     position: fixed;
@@ -48,3 +48,12 @@ video {
     background-color: lightblue;
   } 
   
+  .container {
+    /* background-color: white; */
+  }
+
+  .label-container {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+  }

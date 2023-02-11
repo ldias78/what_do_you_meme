@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import "./BoardGame.css";
-// import axios from "axios";
 import { navigate } from "@reach/router";
 
 const BoardGame = (props) => {
@@ -48,8 +47,6 @@ const BoardGame = (props) => {
                 variant="secondary"
                 className="big-btn see-card-btn"
                 onClick={() => {
-                  // navigate(`/player${index + 3}cards`, { state: { player } })
-
                   navigate(`/playercard`, { state: { player } });
                 }}
               >
