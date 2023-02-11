@@ -11,7 +11,7 @@ const BoardGame = (props) => {
   const [selectedMeme] = useState("");
 
   const handleVote = () => {
-    navigate("/voteboard", { state: { selectedMeme, players } });
+    navigate("/voteboard", { state: { selectedMeme } });
   };
 
   return (
