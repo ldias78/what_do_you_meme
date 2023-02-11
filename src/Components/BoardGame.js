@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./BoardGame.css";
 // import axios from "axios";
 import { navigate } from "@reach/router";
@@ -8,11 +8,12 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players;
-  console.log(players);
   const [selectedMeme] = useState("");
+
   const handleVote = () => {
-    navigate("/voteboard", { state: { selectedMeme } });
+    navigate("/voteboard", { state: { selectedMeme, players } });
   };
+
   return (
     <div className="boardgame-container">
       <video src="/videos/video-3.mp4" autoPlay loop muted />
@@ -29,7 +30,6 @@ const BoardGame = (props) => {
                 variant="secondary"
                 className="big-btn see-card-btn"
                 onClick={() => {
-                  console.log("player1", player);
                   navigate(`/playercard`, { state: { player } });
                 }}
               >
@@ -49,7 +49,7 @@ const BoardGame = (props) => {
                 className="big-btn see-card-btn"
                 onClick={() => {
                   // navigate(`/player${index + 3}cards`, { state: { player } })
-                  console.log("player222", player);
+
                   navigate(`/playercard`, { state: { player } });
                 }}
               >
@@ -61,33 +61,34 @@ const BoardGame = (props) => {
       </footer>
       <div className="meme-container">
         <div style={{ textAlign: "center", marginTop: "60px" }}>
-          <Card style={{ backgroundColor: "powderblue" }}>
-            <Card.Img
-              variant="top"
+          <div style={{ backgroundColor: "powderblue", padding: "20px" }}>
+            <img
               src={giphy}
-              style={{ height: "350px", width: "100%" }}
+              alt=""
+              style={{
+                height: "350px",
+                width: "100%",
+                display: "block",
+                margin: "0 auto",
+              }}
             />
-            <Card.Body>
-              <Card.Title style={{ textAlign: "center" }}>
-                Look this Giphy and match your caption card
-              </Card.Title>
-              <Card.Text style={{ textAlign: "center" }}>
-                What caption makes you laugh when you look at this Meme?
-              </Card.Text>
-              <Button
-                variant="primary"
-                style={{ display: "block", margin: "0 auto" }}
-                onClick={() => setFetching(!fetching)}
-              >
-                Next Meme
+            <div style={{ textAlign: "center" }}>
+              <h2>Look this Giphy and match your caption card</h2>
+              <p>What caption makes you laugh when you look at this Meme?</p>
+            </div>
+            <Button
+              variant="primary"
+              style={{ display: "block", margin: "0 auto", marginTop: "60px" }}
+              onClick={() => setFetching(!fetching)}
+            >
+              Next Meme
+            </Button>
+            <div style={{ textAlign: "center", marginTop: "60px" }}>
+              <Button variant="secondary" onClick={handleVote}>
+                Let's Vote
               </Button>
-              <div style={{ textAlign: "center", marginTop: "60px" }}>
-                <Button variant="secondary" onClick={handleVote}>
-                  Let's Vote
-                </Button>
-              </div>
-            </Card.Body>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </div>

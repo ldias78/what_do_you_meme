@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "@reach/router";
 import "./VoteBoard.css";
 
@@ -41,37 +41,47 @@ const VoteBoard = ({ giphy, location }) => {
       <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
-            <Card style={{ backgroundColor: "powderblue" }}>
-              <Card.Img
-                variant="top"
-                src={giphy}
-                className="voteboard-card-img"
-              />
-              <Card.Body>
-                <Card.Title style={{ textAlign: "center" }}>
-                  What caption matches better with this Meme?
-                </Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row style={{ marginTop: "30px" }}>
-          <Col md={{ span: 4, offset: 4 }}>
-            <Button variant="primary" size="lg" block onClick={handleClick}>
-              Next Game
-            </Button>
-          </Col>
-        </Row>
-        <Row style={{ marginTop: "30px" }}>
-          <Col md={{ span: 4, offset: 4 }}>
-            <Button
-              variant="danger"
-              size="lg"
-              block
-              onClick={() => navigate("/winner")}
-            >
-              Game Over
-            </Button>
+            <div className="meme-container">
+              <div style={{ textAlign: "center", marginTop: "20px" }}>
+                <div style={{ backgroundColor: "powderblue", padding: "30px" }}>
+                  <img
+                    src={giphy}
+                    alt=""
+                    style={{
+                      height: "350px",
+                      width: "100%",
+                      display: "block",
+                      margin: "0 auto",
+                    }}
+                  />
+                  <div style={{ textAlign: "center", marginTop: "30px" }}>
+                    {/* <h2>Look this Giphy and match your caption card</h2> */}
+                    <p> What caption matches better with this Meme?</p>
+                  </div>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    block
+                    onClick={handleClick}
+                  >
+                    Next Game
+                  </Button>
+
+                  <Row style={{ marginTop: "30px" }}>
+                    <Col md={{ span: 3.1, offset: 3.1 }}>
+                      <Button
+                        variant="danger"
+                        size="lg"
+                        block
+                        onClick={() => navigate("/winner")}
+                      >
+                        Game Over
+                      </Button>
+                    </Col>
+                  </Row>
+                </div>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

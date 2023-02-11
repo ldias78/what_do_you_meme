@@ -1,5 +1,5 @@
 /* body {
-  background: #777;
+  background: rgb(99, 163, 185);
   height: 100vh;
   margin: 0;
   display: grid;
@@ -9,20 +9,23 @@
 
 .cards {
   display: flex;
-  --distance: -4rem;
+  --distance: 6rem;
+  color:green
 }
 
 .card-selected {
   background-color: aquamarine !important;
 }
-
 .card {
+  width: 400px;
+  height: 200px;
   margin-top: 1rem;
-  background: white;
-  border-radius: 1rem;
-  padding: 2rem;
+  background: rgb(160, 67, 67);
+  border-radius: 4rem;
+  padding: 8rem;
   box-shadow: 4px 4px 15px 2px rgba(0, 0, 0, 0.75);
   transition: 0.2s;
+  word-wrap: break-word;
 }
 .cards-container {
   display: flex;

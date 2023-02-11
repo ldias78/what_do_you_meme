@@ -22,7 +22,7 @@ video {
   font-family: 'Balsamiq Sans', sans-serif;
   font-weight: 700;
 }
-.content {
+/* .content {
   color: darkblue;
   font-size: 36px;
   text-align: center;
@@ -32,24 +32,24 @@ video {
   justify-content: center;
   align-items: center;
   color: white;
-}
+} */
  
-.overlay{
+/* .overlay{
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .4);
-  /* background-color: #000000cc; */
+  background-color: #000000cc;
 
-}
+} */
 
 .start-game-button {
   margin-top: 10px;
   padding: 10px 20px;
   font-size: 20px;
-  background-color: #00bfff;
+  background-color: purple;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -68,5 +68,20 @@ video {
 }
 
 .done-button {
+  color: purple;
+  background-color: rgb(129, 26, 166);
+}
+
+button {
+  background-color: purple;
+  color: white;
+}
+
+label h1 {
+  color: yellow;
+}
+
+input {
   background-color: white;
+  color:purple;
 }

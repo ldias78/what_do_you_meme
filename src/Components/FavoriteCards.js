@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
+import "./BoardGame.css";
+
 // import axios from "axios";
 
 const stringSort = (a, b) => {
@@ -27,14 +29,13 @@ const FavoriteCards = ({ giphy }) => {
   useEffect(() => {
     const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
     const savedItems = JSON.parse(savedItemsStr);
-    console.log("saved items=", savedItems);
+
     setFavoriteCards(
       Object.entries(savedItems).sort((a, b) => stringSort(a[0], b[0]))
     );
   }, []);
 
   const FavoiteCard = ({ quote, player, count }) => {
-    console.log("count", count);
     return (
       <div className="card-favorite">
         <h4>{player}</h4>
@@ -50,7 +51,6 @@ const FavoriteCards = ({ giphy }) => {
             variant="secondary"
             className="see-card-btn "
             onClick={() => {
-              console.log("player1", player);
               const savedItemsStr =
                 localStorage.getItem("FavoriteCards") ?? "{}";
               const savedItems = JSON.parse(savedItemsStr);
@@ -102,7 +102,36 @@ const FavoriteCards = ({ giphy }) => {
           ))}
         </div>
 
-        <Card.Img variant="top" src={giphy} style={{ height: "350px" }} />
+        <div className="container">
+          <div className="cards-container">
+            <div>
+              {favoriteCards.slice(0, 2).map((card, index) => (
+                <FavoiteCard
+                  key={index}
+                  isSelected={false}
+                  player={card[0]}
+                  quote={card[1].quote}
+                  count={card[1].count}
+                  onClick={() => {}}
+                />
+              ))}
+            </div>
+
+            <Card.Img variant="top" src={giphy} style={{ height: "350px" }} />
+            <div>
+              {favoriteCards.slice(2, 4).map((card, index) => (
+                <FavoiteCard
+                  key={index}
+                  isSelected={false}
+                  player={card[0]}
+                  quote={card[1].quote}
+                  count={card[1].count}
+                  onClick={() => {}}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
         <div>
           {favoriteCards.slice(2, 4).map((card, index) => (
             <FavoiteCard

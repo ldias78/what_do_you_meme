@@ -26,12 +26,11 @@ const MainPage = () => {
   return (
     <div className="main-page">
       <video src="/videos/video-2.mp4" autoPlay loop muted />
-      <h1 className="title">WELCOME TO THE WHAT DO YOU MEME GAME</h1>
 
       <form className="input-container">
         <div>
           <label>
-            <h2>Player Name:</h2>
+            <h1>Player Name:</h1>
             <input
               type="text"
               value={playerName}
@@ -39,6 +38,7 @@ const MainPage = () => {
               required
               disabled={inputDisabled}
               onKeyPress={handleKeyPress}
+              placeholder="type name here"
             />
           </label>
           <button type="button" onClick={handleDone} disabled={inputDisabled}>

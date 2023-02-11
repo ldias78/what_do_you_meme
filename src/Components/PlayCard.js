@@ -7,8 +7,10 @@ import Card from "./Card";
 const PlayCard = (props) => {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  console.log("player33", props);
   const player = props.location.state.player;
-  let players = [[], [], [], []];
+  console.log("player44", player);
+  // let players = [[], [], [], []];
   useEffect(() => {
     let numberOfCards = 7;
     const shuffledArray = Randomphrases.sort(() => 0.5 - Math.random());
@@ -17,73 +19,75 @@ const PlayCard = (props) => {
   }, [player]);
 
   return (
-    <div>
-      <h2>{player}</h2>
-      {cards.map((quote, index) => (
-        <Card
-          key={index}
-          isSelected={quote.quote == selectedCard}
-          quote={quote.quote}
-          onClick={() => {
-            const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
-            const savedItems = JSON.parse(savedItemsStr);
-            savedItems[player] = quote;
-            localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
-            setSelectedCard(quote.quote);
-          }}
-        />
-      ))}
-      <div style={{ marginTop: 10 }}>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <h1
+        style={{
+          marginBottom: 100,
+          marginTop: 100,
+          color: "green",
+          fontFamily: "Comic Sans MS, sans-serif",
+        }}
+      >
+        {player}
+      </h1>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {cards.map((quote, index) => (
+          <Card
+            key={index}
+            isSelected={quote.quote === selectedCard}
+            quote={quote.quote}
+            onClick={() => {
+              const savedItemsStr =
+                localStorage.getItem("FavoriteCards") ?? "{}";
+              const savedItems = JSON.parse(savedItemsStr);
+              savedItems[player] = quote;
+              localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
+              setSelectedCard(quote.quote);
+            }}
+          />
+        ))}
+      </div>
+      <div style={{ marginTop: 20 }}>
         {selectedCard && (
           <div>
-            <p>You selected: {selectedCard}</p>
+            <h3>
+              <p
+                style={{
+                  marginBottom: 50,
+
+                  color: "green",
+                  fontFamily: "Comic Sans MS, sans-serif",
+                }}
+              >
+                You selected: {selectedCard}
+              </p>
+            </h3>
           </div>
         )}
       </div>
-
-      <button onClick={() => navigate("/favoritecards")}>
+      <button
+        style={{
+          marginTop: 20,
+          backgroundColor: "green",
+          transition: "all 0.5s ease",
+          padding: 15,
+          fontSize: 18,
+          borderRadius: 5,
+        }}
+        onClick={() => navigate("/favoritecards")}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "coral";
+          e.currentTarget.style.transform = "scale(1.2)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "green";
+          e.currentTarget.style.transform = "scale(1)";
+        }}
+      >
         Go to All Favorite cards
       </button>
-
-      {/* <h2>Player 2</h2>
-      {players[1].map((quote, index) => (
-        <Card
-          key={index}
-          quote={quote.quote}
-          onClick={() => setSelectedCard(quote.quote)}
-        />
-      ))}
-      {selectedCard && (
-        <div>
-          <p>You selected: {selectedCard}</p>
-        </div>
-      )}
-      <h2>Player 3</h2>
-      {players[2].map((quote, index) => (
-        <Card
-          key={index}
-          quote={quote.quote}
-          onClick={() => setSelectedCard(quote.quote)}
-        />
-      ))}
-      {selectedCard && (
-        <div>
-          <p>You selected: {selectedCard}</p>
-        </div>
-      )}
-      <h2>Player 4</h2>
-      {players[3].map((quote, index) => (
-        <Card
-          key={index}
-          quote={quote.quote}
-          onClick={() => setSelectedCard(quote.quote)}
-        />
-      ))}
-      {selectedCard && (
-        <div>
-          <p>You selected: {selectedCard}</p>
-        </div>
-      )} */}
     </div>
   );
 };

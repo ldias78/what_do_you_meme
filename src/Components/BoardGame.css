@@ -1,7 +1,7 @@
-.title {
+h1.title {
   color: darkblue;
   font-size: 36px;
-  text-align: center;
+  /* text-align: center; */
   margin-top: 20px;
   }
   
@@ -13,24 +13,29 @@
   
   .header-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 100;
+    left: 200;
+    right: 200;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 40px 60px;
   }
   
   .footer-container {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 100;
+    left: 200;
+    right: 200;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 40px 60px;
   }
-  
+
+  button:hover {
+    background-color: #0077CC;
+    color: white;
+  }
+
   .player-container {
     display: flex;
     flex-direction: column;
@@ -46,9 +51,9 @@
     background-color: lightgreen;
   }
 
-  /* body{
-     background-image: url(/src/image.png);
-  } */
+  body{
+     background-color: lightgrey;
+  }
   video {
     object-fit:cover;
     width: 100%;
@@ -56,3 +61,5 @@
     position: fixed;
     z-index: -1;
   }
+
+  

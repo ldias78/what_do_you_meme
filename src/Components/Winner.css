@@ -34,8 +34,9 @@ video {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   }
   .start-over {
+    margin-top: 600px;
     padding: 10px 20px;
-    background-color: darkblue;
+    background-color: green;
     border: none;
     border-radius: 5px;
     font-size: 16px;
