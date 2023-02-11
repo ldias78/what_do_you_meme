@@ -87,7 +87,9 @@ const FavoriteCards = ({ giphy }) => {
   };
   return (
     <div>
-      <div>All Favorite cards</div>
+      <div>
+        <h1 className="title">All Favorite Cards</h1>
+      </div>
       <div className="cards-container">
         <div>
           {favoriteCards.slice(0, 2).map((card, index) => (
@@ -102,36 +104,18 @@ const FavoriteCards = ({ giphy }) => {
           ))}
         </div>
 
-        <div className="container">
-          <div className="cards-container">
-            <div>
-              {favoriteCards.slice(0, 2).map((card, index) => (
-                <FavoiteCard
-                  key={index}
-                  isSelected={false}
-                  player={card[0]}
-                  quote={card[1].quote}
-                  count={card[1].count}
-                  onClick={() => {}}
-                />
-              ))}
-            </div>
-
-            <Card.Img variant="top" src={giphy} style={{ height: "350px" }} />
-            <div>
-              {favoriteCards.slice(2, 4).map((card, index) => (
-                <FavoiteCard
-                  key={index}
-                  isSelected={false}
-                  player={card[0]}
-                  quote={card[1].quote}
-                  count={card[1].count}
-                  onClick={() => {}}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        <Card.Img
+          variant="top"
+          src={giphy}
+          style={{
+            marginTop: "100px",
+            height: "550px",
+            width: "400px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        />
         <div>
           {favoriteCards.slice(2, 4).map((card, index) => (
             <FavoiteCard
