@@ -1,37 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button, Table } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "@reach/router";
 import "./VoteBoard.css";
 
 const VoteBoard = ({ giphy, location }) => {
   const navigate = useNavigate();
-  // const players = location?.state?.players;
-  const [players, setPlayers] = useState([]);
-
-  useEffect(() => {
-    //   const savedItemsStr =
-    //   localStorage.getItem("FavoriteCards") ?? "{}";
-    // const savedItems = JSON.parse(savedItemsStr);
-    // if (savedItems[player].count === undefined) {
-    //   savedItems[player].count = 1;
-    // } else {
-    //   savedItems[player].count++;
-    // }
-    // localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
-
-    const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
-    const savedItems = JSON.parse(savedItemsStr);
-
-    let players = [];
-    Object.keys(savedItems).forEach((key) => {
-      players.push({
-        player: key,
-        data: savedItems[key],
-      });
-    });
-    console.log("players", players);
-    setPlayers(players.sort((a, b) => b.data.count - a.data.count));
-  }, []);
+  const players = location?.state?.players;
 
   const handleClick = () => {
     navigate("/boardgame", {
@@ -41,30 +15,12 @@ const VoteBoard = ({ giphy, location }) => {
 
   return (
     <div>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Player Name</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {players.map((player, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{player.player}</td>
-              <td>{player.data.count}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-      {/* <h1 className="title">NOW LET'S VOTE FOR THE BEST CAPTION</h1>
+      <h1 className="title">NOW LET'S VOTE FOR THE BEST CAPTION</h1>
       <h3 style={{ textAlign: "center" }}>
         PICK THE CAPTION THAT MAKES MORE SENSE WITH THE GIPHY MEME DISPLAYED
       </h3>
-      <video src="/videos/video-3.mp4" autoPlay loop muted /> */}
-      {/* <header>
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
+      <header>
         <div className="header-container">
           {players.slice(0, 2).map((player, index) => (
             <div className="player-container" key={index}>
@@ -81,8 +37,8 @@ const VoteBoard = ({ giphy, location }) => {
             </div>
           ))}
         </div>
-      </footer> */}
-      {/* <Container style={{ marginTop: "160px" }}>
+      </footer>
+      <Container style={{ marginTop: "160px" }}>
         <Row>
           <Col md={{ span: 4, offset: 4 }}>
             <div className="meme-container">
@@ -99,6 +55,7 @@ const VoteBoard = ({ giphy, location }) => {
                     }}
                   />
                   <div style={{ textAlign: "center", marginTop: "30px" }}>
+                    {/* <h2>Look this Giphy and match your caption card</h2> */}
                     <p> What caption matches better with this Meme?</p>
                   </div>
                   <Button
@@ -127,7 +84,7 @@ const VoteBoard = ({ giphy, location }) => {
             </div>
           </Col>
         </Row>
-      </Container> */}
+      </Container>
     </div>
   );
 };

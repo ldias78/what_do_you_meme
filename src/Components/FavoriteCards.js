@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import "./BoardGame.css";
-
-// import axios from "axios";
+import { navigate } from "@reach/router";
 
 const stringSort = (a, b) => {
   if (a < b) return -1;
@@ -103,19 +102,37 @@ const FavoriteCards = ({ giphy }) => {
             />
           ))}
         </div>
-
-        <Card.Img
-          variant="top"
-          src={giphy}
+        <div
           style={{
-            marginTop: "100px",
-            height: "550px",
-            width: "400px",
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
             alignItems: "center",
           }}
-        />
+        >
+          <Button
+            variant="secondary"
+            className="see-card-btn "
+            onClick={() => {
+              // navigate("/voteboard", { state: { selectedMeme, players } });
+              navigate("/voteboard");
+            }}
+          >
+            VoteBoard
+          </Button>
+          <Card.Img
+            variant="top"
+            src={giphy}
+            style={{
+              marginTop: "100px",
+              height: "550px",
+              width: "400px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          />
+        </div>
+
         <div>
           {favoriteCards.slice(2, 4).map((card, index) => (
             <FavoiteCard
