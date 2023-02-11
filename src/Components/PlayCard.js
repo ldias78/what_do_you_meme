@@ -3,17 +3,16 @@ import Randomphrases from "./Randomphrases.json";
 import "./CardDeck.css";
 import { navigate } from "@reach/router";
 import Card from "./Card";
+import { NUMBER_OF_CARDS } from "../constant";
 
 const PlayCard = (props) => {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const player = props.location.state.player;
-  console.log("player44", player);
 
   useEffect(() => {
-    let numberOfCards = 7;
     const shuffledArray = Randomphrases.sort(() => 0.5 - Math.random());
-    const chooenItems = shuffledArray.slice(0, numberOfCards);
+    const chooenItems = shuffledArray.slice(0, NUMBER_OF_CARDS);
     setCards(chooenItems);
   }, [player]);
 
@@ -44,11 +43,10 @@ const PlayCard = (props) => {
         }}
         onClick={() => {
           if (isLastPlayer) {
-            navigate('favoritecards')
+            navigate("favoritecards");
           } else {
-            navigate.
+            window.history.back();
           }
-          // navigate(isLastPlayer ? "/favoritecards" : "/boardgame")
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.backgroundColor = "coral";

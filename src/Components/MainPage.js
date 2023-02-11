@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { navigate } from "@reach/router";
 import "./MainPage.css";
 
+import { MAX_PLAYERS } from "../constant";
+
 const MainPage = () => {
   const [players, setPlayers] = useState([]);
   const [playerName, setPlayerName] = useState("");
   const [inputDisabled, setInputDisabled] = useState(false);
 
   const handleDone = () => {
-    if (players.length < 4 && playerName !== "") {
+    if (players.length < MAX_PLAYERS && playerName !== "") {
       setPlayers([...players, `Player ${players.length + 1}: ${playerName}`]);
       setPlayerName("");
     }
-    if (players.length === 3) {
+    if (players.length === MAX_PLAYERS - 1) {
       setInputDisabled(true);
     }
   };
@@ -53,7 +55,7 @@ const MainPage = () => {
           ))}
         </div>
       </div>
-      {players.length === 4 && (
+      {players.length === MAX_PLAYERS && (
         <button
           type="button"
           className="start-game-button"

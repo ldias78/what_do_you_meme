@@ -6,11 +6,9 @@ import { navigate } from "@reach/router";
 
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
-  const players = location?.state?.players;
-  const [selectedMeme] = useState("");
-
+  const players = location?.state?.players ?? [];
   const handleVote = () => {
-    navigate("/voteboard", { state: { selectedMeme, players } });
+    navigate("/voteboard", { state: { players } });
   };
 
   return (

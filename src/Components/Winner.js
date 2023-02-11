@@ -4,6 +4,7 @@ import "./Winner.css";
 
 function Winner() {
   const handleClick = () => {
+    localStorage.removeItem("FavoriteCards");
     navigate("/");
   };
 
@@ -13,8 +14,6 @@ function Winner() {
         <h1
           style={{
             textAlign: "center",
-            // marginTop: "60px",
-            // marginBottom: "60px",
             color: "#a32e9e",
           }}
         >
