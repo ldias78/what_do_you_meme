@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
-import axios from "axios";
+// import axios from "axios";
+
 const stringSort = (a, b) => {
   if (a < b) return -1;
   if (a > b) return 1;
@@ -9,7 +10,7 @@ const stringSort = (a, b) => {
 const FavoriteCards = ({ giphy }) => {
   const [favoriteCards, setFavoriteCards] = useState([]);
   // const [giphy, setGiphy] = useState("");
-  const [fetching, setFetching] = useState("false");
+  // const [fetching, setFetching] = useState("false");
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -54,7 +55,7 @@ const FavoriteCards = ({ giphy }) => {
                 localStorage.getItem("FavoriteCards") ?? "{}";
               const savedItems = JSON.parse(savedItemsStr);
               if (savedItems[player].count === undefined) {
-                savedItems[player].count = 0;
+                savedItems[player].count = 1;
               } else {
                 savedItems[player].count++;
               }
