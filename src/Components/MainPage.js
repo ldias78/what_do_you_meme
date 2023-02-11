@@ -7,9 +7,6 @@ const MainPage = () => {
   const [playerName, setPlayerName] = useState("");
   const [inputDisabled, setInputDisabled] = useState(false);
 
-  const handleStartGame = (names) => {
-    navigate("/boardgame", { state: { names } });
-  };
   const handleDone = () => {
     if (players.length < 4 && playerName !== "") {
       setPlayers([...players, `Player ${players.length + 1}: ${playerName}`]);

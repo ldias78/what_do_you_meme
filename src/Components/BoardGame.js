@@ -8,12 +8,11 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players;
+  console.log(players);
   const [selectedMeme] = useState("");
-
   const handleVote = () => {
     navigate("/voteboard", { state: { selectedMeme } });
   };
-
   return (
     <div className="boardgame-container">
       <video src="/videos/video-3.mp4" autoPlay loop muted />
@@ -25,13 +24,14 @@ const BoardGame = (props) => {
         <div className="header-container">
           {players.slice(0, 2).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player.playerName}</h2>
+              <h2>{player}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
-                onClick={() =>
-                  navigate(`/player${index + 1}cards`, { state: { player } })
-                }
+                onClick={() => {
+                  console.log("player1", player);
+                  navigate(`/playercard`, { state: { player } });
+                }}
               >
                 Get your Cards
               </Button>
@@ -43,13 +43,15 @@ const BoardGame = (props) => {
         <div className="footer-container">
           {players.slice(2, 4).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player.playerName}</h2>
+              <h2>{player}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
-                onClick={() =>
-                  navigate(`/player${index + 3}cards`, { state: { player } })
-                }
+                onClick={() => {
+                  // navigate(`/player${index + 3}cards`, { state: { player } })
+                  console.log("player222", player);
+                  navigate(`/playercard`, { state: { player } });
+                }}
               >
                 Get your Cards
               </Button>
@@ -91,5 +93,4 @@ const BoardGame = (props) => {
     </div>
   );
 };
-
 export default BoardGame;
