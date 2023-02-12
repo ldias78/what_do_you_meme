@@ -21,8 +21,25 @@ function Winner() {
       </h1>
       <video src="/videos/video-3.mp4" autoPlay loop muted />
       <footer style={{ display: "flex", justifyContent: "center" }}>
+        <button
+          style={{
+            marginTop: 30,
+            backgroundColor: "green",
+            transition: "all 0.5s ease",
+            padding: 15,
+            fontSize: 18,
+            borderRadius: 5,
+          }}
+          variant="secondary"
+          className="see-card-btn "
+          onClick={() => {
+            navigate("/boardgame");
+          }}
+        >
+          'Nother Round
+        </button>
         <button className="start-over" onClick={handleClick}>
-          START OVER
+          Game Over
         </button>
       </footer>
     </div>
