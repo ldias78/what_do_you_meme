@@ -3,12 +3,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import "./BoardGame.css";
 import { navigate } from "@reach/router";
+
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players ?? [];
   const handleVote = () => {
     navigate("/voteboard", { state: { players } });
   };
+
+  const isDisabled = () => {};
   return (
     <div className="boardgame-container">
       <video src="/videos/video-3.mp4" autoPlay loop muted />
@@ -77,7 +80,11 @@ const BoardGame = (props) => {
               Next Meme
             </Button>
             <div style={{ textAlign: "center", marginTop: "60px" }}>
-              <Button variant="secondary" onClick={handleVote}>
+              <Button
+                variant="secondary"
+                onClick={handleVote}
+                disabled={isDisabled}
+              >
                 Let's Vote
               </Button>
             </div>
