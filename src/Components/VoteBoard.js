@@ -2,17 +2,14 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "@reach/router";
 import "./VoteBoard.css";
-
 const VoteBoard = ({ giphy, location }) => {
   const navigate = useNavigate();
   const players = location?.state?.players;
-
   const handleClick = () => {
     navigate("/boardgame", {
       state: { players: players },
     });
   };
-
   return (
     <div>
       <h1 className="title">NOW LET'S VOTE FOR THE BEST CAPTION</h1>
@@ -66,7 +63,6 @@ const VoteBoard = ({ giphy, location }) => {
                   >
                     Next Game
                   </Button>
-
                   <Row style={{ marginTop: "30px" }}>
                     <Col md={{ span: 3.1, offset: 3.1 }}>
                       <Button
@@ -88,5 +84,4 @@ const VoteBoard = ({ giphy, location }) => {
     </div>
   );
 };
-
 export default VoteBoard;
