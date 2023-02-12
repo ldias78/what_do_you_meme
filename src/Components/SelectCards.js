@@ -1,3 +1,4 @@
+// SelectedCards.js
 import React from "react";
 import SelectedCard from "./SelectedCard";
 const SelectedCards = ({ selectedCards, onVote, onBackToBoard }) => (
