@@ -1,32 +1,28 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
 import "./MainPage.css";
-
+import { MAX_PLAYERS } from "../constant";
 const MainPage = () => {
   const [players, setPlayers] = useState([]);
   const [playerName, setPlayerName] = useState("");
   const [inputDisabled, setInputDisabled] = useState(false);
-
   const handleDone = () => {
-    if (players.length < 4 && playerName !== "") {
+    if (players.length < MAX_PLAYERS && playerName !== "") {
       setPlayers([...players, `Player ${players.length + 1}: ${playerName}`]);
       setPlayerName("");
     }
-    if (players.length === 3) {
+    if (players.length === MAX_PLAYERS - 1) {
       setInputDisabled(true);
     }
   };
-
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
     }
   };
-
   return (
     <div className="main-page">
       <video src="/videos/video-2.mp4" autoPlay loop muted />
-
       <form className="input-container">
         <div>
           <label>
@@ -53,7 +49,7 @@ const MainPage = () => {
           ))}
         </div>
       </div>
-      {players.length === 4 && (
+      {players.length === MAX_PLAYERS && (
         <button
           type="button"
           className="start-game-button"
@@ -68,5 +64,4 @@ const MainPage = () => {
     </div>
   );
 };
-
 export default MainPage;
