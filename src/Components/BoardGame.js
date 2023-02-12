@@ -1,4 +1,3 @@
-// import React, { useState } from "react";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
@@ -8,11 +7,6 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players ?? [];
-  // const [selectedMeme] = useState("");
-
-  // const handleVote = () => {
-  //   navigate("/voteboard", { state: { selectedMeme, players } });
-  // };
 
   return (
     <div className="boardgame-container">

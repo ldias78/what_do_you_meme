@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
-import "./BoardGame.css";
+// import "./BoardGame.css";
 import { navigate } from "@reach/router";
 import "./FavoriteCards.css";
 

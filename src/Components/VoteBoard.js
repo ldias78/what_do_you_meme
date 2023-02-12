@@ -29,7 +29,7 @@ const VoteBoard = ({ giphy, location }) => {
       <h1
         style={{
           textAlign: "center",
-          marginTop: "60px",
+          marginTop: "-60px",
           marginBottom: "60px",
           color: "green",
         }}
@@ -43,19 +43,7 @@ const VoteBoard = ({ giphy, location }) => {
         loop
         muted
       />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          position: "relative",
-        }}
-      >
-        <div style={{ position: "absolute", top: "1px", right: "450px" }}>
-          <button className="start-over" onClick={handleClick}>
-            START OVER
-          </button>
-        </div>
+      <div className="table-container">
         <Table striped bordered hover style={{ marginTop: "100px" }}>
           <thead style={{ backgroundColor: "coral" }}>
             <tr>
@@ -69,7 +57,7 @@ const VoteBoard = ({ giphy, location }) => {
               <tr
                 key={index}
                 style={{
-                  backgroundColor: index % 2 === 0 ? "green" : "light grey",
+                  backgroundColor: index % 2 === 0 ? "green" : "lightgrey",
                 }}
               >
                 <td>{index + 1}</td>
@@ -79,6 +67,9 @@ const VoteBoard = ({ giphy, location }) => {
             ))}
           </tbody>
         </Table>
+        <button className="start-over" onClick={handleClick}>
+          START OVER
+        </button>
       </div>
     </div>
   );
