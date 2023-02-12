@@ -23,6 +23,7 @@ const FavoriteCards = ({ giphy }) => {
   const FavoiteCard = ({ quote, player, count }) => {
     return (
       <div className="card-favorite">
+        <video src="/videos/video-3.mp4" autoPlay loop muted />
         <h4>{player}</h4>
         <p>{quote}</p>
         <div

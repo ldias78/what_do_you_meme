@@ -78,11 +78,6 @@ const BoardGame = (props) => {
             >
               Next Meme
             </Button>
-            <div style={{ textAlign: "center", marginTop: "60px" }}>
-              <Button variant="secondary" onClick={handleVote}>
-                Let's Vote
-              </Button>
-            </div>
           </div>
         </div>
       </div>
