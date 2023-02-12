@@ -1,49 +1,30 @@
 import React from "react";
 import { navigate } from "@reach/router";
 import "./Winner.css";
-
 function Winner() {
   const handleClick = () => {
+    localStorage.removeItem("FavoriteCards");
     navigate("/");
   };
-
   return (
-    <div>
-      <h1
-        style={{
-          textAlign: "center",
-          marginTop: "60px",
-          marginBottom: "60px",
-          color: "green",
-        }}
-      >
-        CONGRATULATIONS TO THE WINNER!
-      </h1>
-      <video src="/videos/video-3.mp4" autoPlay loop muted />
-      <footer style={{ display: "flex", justifyContent: "center" }}>
-        <button
+    <div className="page-container">
+      <div className="label-container">
+        <h1
           style={{
-            marginTop: 30,
-            backgroundColor: "green",
-            transition: "all 0.5s ease",
-            padding: 15,
-            fontSize: 18,
-            borderRadius: 5,
-          }}
-          variant="secondary"
-          className="see-card-btn "
-          onClick={() => {
-            navigate("/boardgame");
+            textAlign: "center",
+            color: "#a32e9e",
           }}
         >
-          'Nother Round
-        </button>
+          CONGRATULATIONS TO THE WINNER!
+        </h1>
+      </div>
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
+      <footer style={{ display: "flex", justifyContent: "center" }}>
         <button className="start-over" onClick={handleClick}>
-          Game Over
+          START OVER
         </button>
       </footer>
     </div>
   );
 }
-
 export default Winner;
