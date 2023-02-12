@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useNavigate } from "@reach/router";
 import "./VoteBoard.css";
+
 const VoteBoard = ({ giphy, location }) => {
   const navigate = useNavigate();
   const [players, setPlayers] = useState([]);
@@ -46,4 +47,5 @@ const VoteBoard = ({ giphy, location }) => {
     </div>
   );
 };
+
 export default VoteBoard;
