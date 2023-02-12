@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "@reach/router";
 import "./VoteBoard.css";
+
 const VoteBoard = ({ giphy, location }) => {
   const navigate = useNavigate();
   const players = location?.state?.players;
