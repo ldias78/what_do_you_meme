@@ -2,18 +2,13 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import "./BoardGame.css";
-// import axios from "axios";
 import { navigate } from "@reach/router";
-
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
-  const players = location?.state?.players;
-  const [selectedMeme] = useState("");
-
+  const players = location?.state?.players ?? [];
   const handleVote = () => {
-    navigate("/voteboard", { state: { selectedMeme, players } });
+    navigate("/voteboard", { state: { players } });
   };
-
   return (
     <div className="boardgame-container">
       <video src="/videos/video-3.mp4" autoPlay loop muted />
@@ -48,8 +43,6 @@ const BoardGame = (props) => {
                 variant="secondary"
                 className="big-btn see-card-btn"
                 onClick={() => {
-                  // navigate(`/player${index + 3}cards`, { state: { player } })
-
                   navigate(`/playercard`, { state: { player } });
                 }}
               >
