@@ -1,7 +1,5 @@
-// SelectedCards.js
 import React from "react";
 import SelectedCard from "./SelectedCard";
-
 const SelectedCards = ({ selectedCards, onVote, onBackToBoard }) => (
   <div>
     {selectedCards.map((quote, index) => (
@@ -10,5 +8,4 @@ const SelectedCards = ({ selectedCards, onVote, onBackToBoard }) => (
     <button onClick={onBackToBoard}>Back to Board</button>
   </div>
 );
-
 export default SelectedCards;
