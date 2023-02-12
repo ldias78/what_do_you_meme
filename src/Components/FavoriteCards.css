@@ -1,0 +1,30 @@
+/* .FavoiteCard {
+    width: 400px;
+    height: 200px;
+    margin-top: 1rem;
+    background: rgb(160, 67, 67);
+    border-radius: 4rem;
+    padding: 8rem;
+    box-shadow: 4px 4px 15px 2px rgba(0, 0, 0, 0.75);
+    transition: 0.2s;
+    word-wrap: break-word;
+} */
+
+
+button:hover {
+    transform: scale(1.1);
+    background-color: purple;
+    color: white;
+}
+
+.favorite-card-blue {
+    background-color: blue;
+}
+
+
+.card-favorite:hover {
+    transform: scale(1.1);
+}
+
+
+

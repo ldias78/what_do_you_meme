@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import "./BoardGame.css";
 import { navigate } from "@reach/router";
+import "./FavoriteCards.css";
 
 const stringSort = (a, b) => {
   if (a < b) return -1;
@@ -22,20 +23,34 @@ const FavoriteCards = ({ giphy }) => {
 
   const FavoiteCard = ({ quote, player, count }) => {
     return (
-      <div className="card-favorite">
-        <video src="/videos/video-3.mp4" autoPlay loop muted />
-        <h4>{player}</h4>
-        <p>{quote}</p>
+      <div
+        className="card-favorite"
+        style={{
+          width: "400px",
+          height: "250px",
+          marginTop: "1rem",
+          background: "rgb(160, 67, 67)",
+          borderRadius: "2rem",
+          padding: "4rem",
+          boxShadow: "4px 4px 15px 2px rgba(0, 0, 0, 0.75)",
+          transition: "0.2s",
+          wordWrap: "break-word",
+        }}
+      >
+        <h3 style={{ textAlign: "center", color: "coral" }}>{player}</h3>
+        <p style={{ marginTop: "1rem", color: "green" }}>{quote}</p>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: "3rem",
           }}
         >
           <Button
             variant="secondary"
             className="see-card-btn "
+            style={{ backgroundColor: "coral" }}
             onClick={() => {
               const savedItemsStr =
                 localStorage.getItem("FavoriteCards") ?? "{}";
@@ -53,7 +68,7 @@ const FavoriteCards = ({ giphy }) => {
               );
             }}
           >
-            Score
+            Vote
           </Button>
           {count && (
             <div
@@ -74,19 +89,32 @@ const FavoriteCards = ({ giphy }) => {
   return (
     <div>
       <div>
-        <h1 className="title">All Favorite Cards</h1>
+        <h1 className="title">
+          <p
+            style={{
+              marginBottom: 50,
+              color: "green",
+              fontFamily: "Comic Sans MS, sans-serif",
+            }}
+          >
+            All Favorite Cards
+          </p>
+        </h1>
       </div>
       <div className="cards-container">
+        {/* PLAYER CARD 1 AND 2 */}
         <div>
           {favoriteCards.slice(0, 2).map((card, index) => (
-            <FavoiteCard
-              key={index}
-              isSelected={false}
-              player={card[0]}
-              quote={card[1].quote}
-              count={card[1].count}
-              onClick={() => {}}
-            />
+            <div style={{ margin: "100px", maxWidth: "400px" }}>
+              <FavoiteCard
+                key={index}
+                isSelected={false}
+                player={card[0]}
+                quote={card[1].quote}
+                count={card[1].count}
+                onClick={() => {}}
+              />
+            </div>
           ))}
         </div>
         <div
@@ -96,40 +124,65 @@ const FavoriteCards = ({ giphy }) => {
             alignItems: "center",
           }}
         >
-          <Button
-            variant="secondary"
-            className="see-card-btn "
-            onClick={() => {
-              // navigate("/voteboard", { state: { selectedMeme, players } });
-              navigate("/voteboard");
-            }}
-          >
-            VoteBoard
-          </Button>
-          <Card.Img
-            variant="top"
-            src={giphy}
-            style={{
-              marginTop: "100px",
-              height: "550px",
-              width: "400px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          />
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Card.Img
+              variant="top"
+              src={giphy}
+              style={{
+                marginTop: "30px",
+                height: "400px",
+                width: "400px",
+              }}
+            />
+            <button
+              style={{
+                marginTop: 30,
+                backgroundColor: "green",
+                transition: "all 0.5s ease",
+                padding: 15,
+                fontSize: 18,
+                borderRadius: 5,
+              }}
+              variant="secondary"
+              className="see-card-btn "
+              onClick={() => {
+                navigate("/boardgame");
+              }}
+            >
+              PLAY AGAIN
+            </button>
+            <button
+              style={{
+                marginTop: 30,
+                backgroundColor: "brown",
+                transition: "all 0.5s ease",
+                padding: 15,
+                fontSize: 18,
+                borderRadius: 5,
+              }}
+              variant="secondary"
+              className="see-card-btn "
+              onClick={() => {
+                navigate("/voteboard");
+              }}
+            >
+              Game Over
+            </button>
+          </div>
         </div>
-
+        {/* PLAYER CARD 3 AND 4 */}
         <div>
           {favoriteCards.slice(2, 4).map((card, index) => (
-            <FavoiteCard
-              key={index}
-              isSelected={false}
-              player={card[0]}
-              quote={card[1].quote}
-              count={card[1].count}
-              onClick={() => {}}
-            />
+            <div style={{ margin: "100px", maxWidth: "500px" }}>
+              <FavoiteCard
+                key={index}
+                isSelected={false}
+                player={card[0]}
+                quote={card[1].quote}
+                count={card[1].count}
+                onClick={() => {}}
+              />
+            </div>
           ))}
         </div>
       </div>

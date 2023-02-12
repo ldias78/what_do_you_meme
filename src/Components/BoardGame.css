@@ -24,7 +24,7 @@ h1.title {
   .footer-container {
     position: fixed;
     top: 100;
-    left: 200;
+    left: 600;
     right: 200;
     display: flex;
     justify-content: space-between;

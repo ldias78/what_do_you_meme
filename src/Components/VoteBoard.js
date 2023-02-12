@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { useNavigate } from "@reach/router";
 import "./VoteBoard.css";
 
@@ -20,31 +20,65 @@ const VoteBoard = ({ giphy, location }) => {
     setPlayers(players.sort((a, b) => b.data.count - a.data.count));
   }, []);
 
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
     <div className="container">
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Player Name</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {players.map((player, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{player.player}</td>
-              <td>{player.data.count}</td>
+      <h1
+        style={{
+          textAlign: "center",
+          marginTop: "60px",
+          marginBottom: "60px",
+          color: "green",
+        }}
+      >
+        CONGRATULATIONS TO THE WINNER!
+      </h1>
+      <video
+        className="video-background"
+        src="/videos/video-3.mp4"
+        autoPlay
+        loop
+        muted
+      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "relative",
+        }}
+      >
+        <div style={{ position: "absolute", top: "1px", right: "450px" }}>
+          <button className="start-over" onClick={handleClick}>
+            START OVER
+          </button>
+        </div>
+        <Table striped bordered hover style={{ marginTop: "100px" }}>
+          <thead style={{ backgroundColor: "coral" }}>
+            <tr>
+              <th>#</th>
+              <th>Player Name</th>
+              <th>Score</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-
-      <div className="justify-center">
-        <Button variant="secondary" onClick={() => navigate("/winner")}>
-          Winner
-        </Button>
+          </thead>
+          <tbody>
+            {players.map((player, index) => (
+              <tr
+                key={index}
+                style={{
+                  backgroundColor: index % 2 === 0 ? "green" : "light grey",
+                }}
+              >
+                <td>{index + 1}</td>
+                <td>{player.player}</td>
+                <td>{player.data.count}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import "./BoardGame.css";
@@ -7,9 +8,11 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players ?? [];
-  const handleVote = () => {
-    navigate("/voteboard", { state: { players } });
-  };
+  // const [selectedMeme] = useState("");
+
+  // const handleVote = () => {
+  //   navigate("/voteboard", { state: { selectedMeme, players } });
+  // };
 
   return (
     <div className="boardgame-container">
@@ -26,6 +29,7 @@ const BoardGame = (props) => {
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
+                style={{ backgroundColor: "green" }}
                 onClick={() => {
                   navigate(`/playercard`, { state: { player } });
                 }}
@@ -44,6 +48,7 @@ const BoardGame = (props) => {
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
+                style={{ backgroundColor: "green" }}
                 onClick={() => {
                   navigate(`/playercard`, { state: { player } });
                 }}
