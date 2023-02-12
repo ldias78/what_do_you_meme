@@ -1,12 +1,15 @@
 import React from "react";
 import { navigate } from "@reach/router";
 import "./Winner.css";
-import { Button } from "react-bootstrap";
 
 function Winner() {
   const handleClick = () => {
     localStorage.removeItem("FavoriteCards");
     navigate("/");
+  };
+  const startClick = () => {
+    localStorage.removeItem("FavoriteCards");
+    navigate("/boardgame");
   };
   return (
     <div className="page-container">
@@ -22,26 +25,12 @@ function Winner() {
       </div>
       <video src="/videos/video-3.mp4" autoPlay loop muted />
       <footer style={{ display: "flex", justifyContent: "center" }}>
-        <Button
-          style={{
-            marginTop: 30,
-            backgroundColor: "green",
-            transition: "all 0.5s ease",
-            padding: 15,
-            fontSize: 18,
-            borderRadius: 5,
-          }}
-          variant="secondary"
-          className="see-card-btn "
-          onClick={() => {
-            navigate("/boardgame");
-          }}
-        >
+        <button className="start-over" onClick={startClick}>
           PLAY AGAIN
-        </Button>
-        <Button className="start-over" onClick={handleClick}>
+        </button>
+        <button className="start-over" onClick={handleClick}>
           START OVER
-        </Button>
+        </button>
       </footer>
     </div>
   );
