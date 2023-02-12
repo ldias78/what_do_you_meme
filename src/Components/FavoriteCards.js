@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import "./BoardGame.css";
-
-// import axios from "axios";
-
+import { navigate } from "@reach/router";
 const stringSort = (a, b) => {
   if (a < b) return -1;
   if (a > b) return 1;
@@ -11,30 +9,13 @@ const stringSort = (a, b) => {
 };
 const FavoriteCards = ({ giphy }) => {
   const [favoriteCards, setFavoriteCards] = useState([]);
-  // const [giphy, setGiphy] = useState("");
-  // const [fetching, setFetching] = useState("false");
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const apiRoot = "https://api.giphy.com/v1/gifs/";
-  //     const api_key = process.env.REACT_APP_GIPHY_KEY;
-  //     const result = await axios(`${apiRoot}trending?api_key=${api_key}`);
-  //     console.log(result);
-  //     const randomIndex = Math.floor(Math.random() * 50);
-  //     setGiphy(`${result.data.data[randomIndex].images.fixed_height.url}`);
-  //   };
-  //   fetchData();
-  // }, [fetching]);
-
   useEffect(() => {
     const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
     const savedItems = JSON.parse(savedItemsStr);
-
     setFavoriteCards(
       Object.entries(savedItems).sort((a, b) => stringSort(a[0], b[0]))
     );
   }, []);
-
   const FavoiteCard = ({ quote, player, count }) => {
     return (
       <div className="card-favorite">
@@ -87,7 +68,9 @@ const FavoriteCards = ({ giphy }) => {
   };
   return (
     <div>
-      <div>All Favorite cards</div>
+      <div>
+        <h1 className="title">All Favorite Cards</h1>
+      </div>
       <div className="cards-container">
         <div>
           {favoriteCards.slice(0, 2).map((card, index) => (
@@ -101,36 +84,35 @@ const FavoriteCards = ({ giphy }) => {
             />
           ))}
         </div>
-
-        <div className="container">
-          <div className="cards-container">
-            <div>
-              {favoriteCards.slice(0, 2).map((card, index) => (
-                <FavoiteCard
-                  key={index}
-                  isSelected={false}
-                  player={card[0]}
-                  quote={card[1].quote}
-                  count={card[1].count}
-                  onClick={() => {}}
-                />
-              ))}
-            </div>
-
-            <Card.Img variant="top" src={giphy} style={{ height: "350px" }} />
-            <div>
-              {favoriteCards.slice(2, 4).map((card, index) => (
-                <FavoiteCard
-                  key={index}
-                  isSelected={false}
-                  player={card[0]}
-                  quote={card[1].quote}
-                  count={card[1].count}
-                  onClick={() => {}}
-                />
-              ))}
-            </div>
-          </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            variant="secondary"
+            className="see-card-btn "
+            onClick={() => {
+              // navigate("/voteboard", { state: { selectedMeme, players } });
+              navigate("/voteboard");
+            }}
+          >
+            VoteBoard
+          </Button>
+          <Card.Img
+            variant="top"
+            src={giphy}
+            style={{
+              marginTop: "100px",
+              height: "550px",
+              width: "400px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          />
         </div>
         <div>
           {favoriteCards.slice(2, 4).map((card, index) => (
@@ -148,5 +130,4 @@ const FavoriteCards = ({ giphy }) => {
     </div>
   );
 };
-
 export default FavoriteCards;
