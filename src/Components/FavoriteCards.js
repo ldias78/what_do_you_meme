@@ -92,23 +92,6 @@ const FavoriteCards = ({ giphy }) => {
           }}
         >
           <Button
-            style={{
-              marginTop: 30,
-              backgroundColor: "green",
-              transition: "all 0.5s ease",
-              padding: 15,
-              fontSize: 18,
-              borderRadius: 5,
-            }}
-            variant="secondary"
-            className="see-card-btn "
-            onClick={() => {
-              navigate("/boardgame");
-            }}
-          >
-            PLAY AGAIN
-          </Button>
-          <Button
             variant="secondary"
             className="see-card-btn "
             onClick={() => {
