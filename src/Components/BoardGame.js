@@ -7,9 +7,10 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const [favoriteCards, setFavoriteCards] = useState([]);
-  const players = location?.state?.players ?? [];
+  // const players = location?.state?.players ?? [];
   const [isVoteBtnDisabled, setIsVoteBtnDisabled] = useState(true);
-  console.log("players-2", players);
+  const playersStr = localStorage.getItem("players");
+  const players = JSON.parse(playersStr);
 
   useEffect(() => {
     const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
@@ -22,11 +23,10 @@ const BoardGame = (props) => {
       });
     });
     setFavoriteCards(data);
-    console.log(
-      "data.every((item, index) => item.data.quote)",
-      data.every((item, index) => item.data.quote)
+    setIsVoteBtnDisabled(
+      Object.keys(savedItems[`R${Object.keys(savedItems).length - 1}`] ?? {})
+        .length != 4
     );
-    setIsVoteBtnDisabled(data.some((item, index) => !item.data.quote));
   }, []);
 
   return (
@@ -91,28 +91,49 @@ const BoardGame = (props) => {
               <h2>Look this Giphy and match your caption card</h2>
               <p>What caption makes you laugh when you look at this Meme?</p>
             </div>
+            {/* <Button
+              variant="primary"
+              style={{
+                // display: "block",
+                // margin: "0 auto",
+                marginTop: "20px",
+                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
+              }}
+              onClick={() => {
+                console.log("navigate")
+                navigate("favoritecards");
+              }}
+              disabled={isVoteBtnDisabled}
+            >
+              Let`s vote
+            </Button> */}
+
+            <button
+              style={{
+                marginTop: 30,
+                backgroundColor: "green",
+                transition: "all 0.5s ease",
+                padding: 15,
+                fontSize: 18,
+                borderRadius: 5,
+                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
+              }}
+              variant="secondary"
+              className="see-card-btn "
+              onClick={() => {
+                navigate("/favoritecards");
+              }}
+              disabled={isVoteBtnDisabled}
+            >
+              Let`s vote
+            </button>
+
             <Button
               variant="primary"
               style={{ display: "block", margin: "0 auto", marginTop: "60px" }}
               onClick={() => setFetching(!fetching)}
             >
               Next Meme
-            </Button>
-
-            <Button
-              variant="primary"
-              style={{
-                display: "block",
-                margin: "0 auto",
-                marginTop: "20px",
-                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
-              }}
-              onClick={() => {
-                navigate("favoritecards");
-              }}
-              disabled={isVoteBtnDisabled}
-            >
-              Let`s vote
             </Button>
           </div>
         </div>
