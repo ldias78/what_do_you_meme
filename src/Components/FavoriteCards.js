@@ -15,9 +15,14 @@ const FavoriteCards = ({ giphy }) => {
   useEffect(() => {
     const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
     const savedItems = JSON.parse(savedItemsStr);
+    const cards = savedItems[`R${Object.keys(savedItems).length - 1}`];
 
     setFavoriteCards(
-      Object.entries(savedItems).sort((a, b) => stringSort(a[0], b[0]))
+      Object.entries(cards).sort((a, b) => stringSort(a[0], b[0]))
+    );
+    console.log(
+      "Object.entries(cards).sort((a, b) => stringSort(a[0], b[0]))",
+      Object.entries(cards).sort((a, b) => stringSort(a[0], b[0]))
     );
   }, []);
 
@@ -55,16 +60,22 @@ const FavoriteCards = ({ giphy }) => {
               const savedItemsStr =
                 localStorage.getItem("FavoriteCards") ?? "{}";
               const savedItems = JSON.parse(savedItemsStr);
-              if (savedItems[player].count === undefined) {
-                savedItems[player].count = 1;
+              if (
+                savedItems[`R${Object.keys(savedItems).length - 1}`][player]
+                  ?.count === undefined
+              ) {
+                savedItems[`R${Object.keys(savedItems).length - 1}`][
+                  player
+                ].count = 1;
               } else {
-                savedItems[player].count++;
+                savedItems[`R${Object.keys(savedItems).length - 1}`][player]
+                  .count++;
               }
               localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
               setFavoriteCards(
-                Object.entries(savedItems).sort((a, b) =>
-                  stringSort(a[0], b[0])
-                )
+                Object.entries(
+                  savedItems[`R${Object.keys(savedItems).length - 1}`]
+                ).sort((a, b) => stringSort(a[0], b[0]))
               );
             }}
           >
@@ -105,9 +116,8 @@ const FavoriteCards = ({ giphy }) => {
         {/* PLAYER CARD 1 AND 2 */}
         <div>
           {favoriteCards.slice(0, 2).map((card, index) => (
-            <div style={{ margin: "100px", maxWidth: "400px" }}>
+            <div style={{ margin: "100px", maxWidth: "400px" }} key={index}>
               <FavoiteCard
-                key={index}
                 isSelected={false}
                 player={card[0]}
                 quote={card[1].quote}
@@ -146,6 +156,14 @@ const FavoriteCards = ({ giphy }) => {
               variant="secondary"
               className="see-card-btn "
               onClick={() => {
+                const savedItemsStr =
+                  localStorage.getItem("FavoriteCards") ?? "{}";
+                const savedItems = JSON.parse(savedItemsStr);
+                savedItems[`R${Object.keys(savedItems).length}`] = {};
+                localStorage.setItem(
+                  "FavoriteCards",
+                  JSON.stringify(savedItems)
+                );
                 navigate("/boardgame");
               }}
             >
@@ -173,9 +191,8 @@ const FavoriteCards = ({ giphy }) => {
         {/* PLAYER CARD 3 AND 4 */}
         <div>
           {favoriteCards.slice(2, 4).map((card, index) => (
-            <div style={{ margin: "100px", maxWidth: "500px" }}>
+            <div style={{ margin: "100px", maxWidth: "500px" }} key={index}>
               <FavoiteCard
-                key={index}
                 isSelected={false}
                 player={card[0]}
                 quote={card[1].quote}

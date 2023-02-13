@@ -61,6 +61,7 @@ const MainPage = () => {
           className="start-game-button"
           onClick={() => {
             localStorage.removeItem("FavoriteCards");
+            localStorage.setItem("players", JSON.stringify(players));
             navigate("/boardgame", { state: { players } });
           }}
         >

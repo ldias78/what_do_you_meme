@@ -5,19 +5,30 @@ import "./VoteBoard.css";
 
 const VoteBoard = ({ giphy, location }) => {
   const navigate = useNavigate();
-  const [players, setPlayers] = useState([]);
-
+  const [scores, setScores] = useState([]);
   useEffect(() => {
     const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
     const savedItems = JSON.parse(savedItemsStr);
-    let players = [];
-    Object.keys(savedItems).forEach((key) => {
-      players.push({
-        player: key,
-        data: savedItems[key],
+    let players = {};
+    Object.keys(savedItems).forEach((round) => {
+      Object.keys(savedItems[round]).forEach((p) => {
+        const temp = {
+          player: p,
+          totalScore: players[p]
+            ? players[p].totalScore + savedItems[round][p].count
+            : savedItems[round][p].count ?? 0,
+        };
+        players[p] = temp;
       });
     });
-    setPlayers(players.sort((a, b) => b.data.count - a.data.count));
+    let scores = [];
+    Object.keys(players).forEach((element) => {
+      scores.push({
+        player: players[element].player,
+        totalScore: players[element].totalScore,
+      });
+    });
+    setScores(scores.sort((a, b) => b.totalScore - a.totalScore));
   }, []);
 
   const handleClick = () => {
@@ -53,7 +64,7 @@ const VoteBoard = ({ giphy, location }) => {
             </tr>
           </thead>
           <tbody>
-            {players.map((player, index) => (
+            {scores.map((player, index) => (
               <tr
                 key={index}
                 style={{
@@ -62,7 +73,7 @@ const VoteBoard = ({ giphy, location }) => {
               >
                 <td>{index + 1}</td>
                 <td>{player.player}</td>
-                <td>{player.data.count}</td>
+                <td>{player.totalScore}</td>
               </tr>
             ))}
           </tbody>
