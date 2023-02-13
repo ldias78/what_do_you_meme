@@ -3,7 +3,6 @@ import { Router } from "@reach/router";
 import MainPage from "./MainPage";
 import BoardGame from "./BoardGame";
 import VoteBoard from "./VoteBoard";
-// import Winner from "./Winner";
 import axios from "axios";
 import PlayCard from "./PlayCard";
 import FavoriteCards from "./FavoriteCards";

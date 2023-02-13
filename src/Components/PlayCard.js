@@ -33,29 +33,6 @@ const PlayCard = (props) => {
         {player}
       </h1>
 
-      {/* {isLastPlayer && <button
-        style={{
-          backgroundColor: "green",
-          transition: "all 0.5s ease",
-          padding: 15,
-          fontSize: 18,
-          borderRadius: 5,
-        }}
-        onClick={() => {
-          navigate("favoritecards");
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "coral";
-          e.currentTarget.style.transform = "scale(1.2)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "green";
-          e.currentTarget.style.transform = "scale(1)";
-        }}
-      >
-        Go to All Favorite cards
-      </button>} */}
-
       <button
         style={{
           marginBottom: 50,
@@ -104,9 +81,6 @@ const PlayCard = (props) => {
               }
               setSelectedCard(quote.quote);
               localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
-              // savedItems[player] = savedItems[player] ?  savedItems[player].push(quote) : [quote];
-              // localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
-              // setSelectedCard(quote.quote);
             }}
           />
         ))}
