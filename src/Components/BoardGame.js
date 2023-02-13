@@ -91,23 +91,6 @@ const BoardGame = (props) => {
               <h2>Look this Giphy and match your caption card</h2>
               <p>What caption makes you laugh when you look at this Meme?</p>
             </div>
-            {/* <Button
-              variant="primary"
-              style={{
-                // display: "block",
-                // margin: "0 auto",
-                marginTop: "20px",
-                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
-              }}
-              onClick={() => {
-                console.log("navigate")
-                navigate("favoritecards");
-              }}
-              disabled={isVoteBtnDisabled}
-            >
-              Let`s vote
-            </Button> */}
-
             <button
               style={{
                 marginTop: 30,
