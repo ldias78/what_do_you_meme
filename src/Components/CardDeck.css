@@ -1,11 +1,6 @@
-/* body {
-  background: rgb(99, 163, 185);
-  height: 100vh;
-  margin: 0;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-} */
+body {
+  background: lightgray;
+}
 
 .cards {
   display: flex;
@@ -55,3 +50,4 @@
   margin-right: 5px;
   width: 400px;
 }
+
