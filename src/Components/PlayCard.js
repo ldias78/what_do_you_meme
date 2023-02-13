@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Randomphrases from "./Randomphrases.json";
-import "./CardDeck.css";
+import "./Playcard.css";
 import { navigate } from "@reach/router";
 import Card from "./Card";
 import { NUMBER_OF_CARDS } from "../constant";

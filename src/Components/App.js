@@ -7,6 +7,7 @@ import VoteBoard from "./VoteBoard";
 import axios from "axios";
 import PlayCard from "./PlayCard";
 import FavoriteCards from "./FavoriteCards";
+
 const App = (props) => {
   const [giphy, setGiphy] = useState("");
   const [fetching, setFetching] = useState("false");
