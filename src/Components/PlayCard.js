@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Randomphrases from "./Randomphrases.json";
-import "./CardDeck.css";
+import "./Playcard.css";
 import { navigate } from "@reach/router";
 import Card from "./Card";
 import { NUMBER_OF_CARDS } from "../constant";
@@ -32,9 +32,9 @@ const PlayCard = (props) => {
       >
         {player}
       </h1>
-      <button
+
+      {/* {isLastPlayer && <button
         style={{
-          marginBottom: 50,
           backgroundColor: "green",
           transition: "all 0.5s ease",
           padding: 15,
@@ -42,11 +42,7 @@ const PlayCard = (props) => {
           borderRadius: 5,
         }}
         onClick={() => {
-          if (isLastPlayer) {
-            navigate("favoritecards");
-          } else {
-            window.history.back();
-          }
+          navigate("favoritecards");
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.backgroundColor = "coral";
@@ -57,8 +53,38 @@ const PlayCard = (props) => {
           e.currentTarget.style.transform = "scale(1)";
         }}
       >
-        {isLastPlayer ? "Go to All Favorite cards" : "Back to meme"}
+        Go to All Favorite cards
+      </button>} */}
+
+      <button
+        style={{
+          marginBottom: 50,
+          backgroundColor: "green",
+          transition: "all 0.5s ease",
+          padding: 15,
+          fontSize: 18,
+          borderRadius: 5,
+        }}
+        onClick={() => {
+          // if (isLastPlayer) {
+          //   navigate("favoritecards");
+          // } else {
+          //   window.history.back();
+          // }
+          navigate("boardgame");
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "coral";
+          e.currentTarget.style.transform = "scale(1.2)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "green";
+          e.currentTarget.style.transform = "scale(1)";
+        }}
+      >
+        Back to meme
       </button>
+
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {cards.map((quote, index) => (
           <Card
@@ -69,9 +95,18 @@ const PlayCard = (props) => {
               const savedItemsStr =
                 localStorage.getItem("FavoriteCards") ?? "{}";
               const savedItems = JSON.parse(savedItemsStr);
-              savedItems[player] = quote;
-              localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
+              if (!Object.keys(savedItems).length) {
+                savedItems["R0"] = {};
+                savedItems["R0"][player] = quote;
+              } else {
+                savedItems[`R${Object.keys(savedItems).length - 1}`][player] =
+                  quote;
+              }
               setSelectedCard(quote.quote);
+              localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
+              // savedItems[player] = savedItems[player] ?  savedItems[player].push(quote) : [quote];
+              // localStorage.setItem("FavoriteCards", JSON.stringify(savedItems));
+              // setSelectedCard(quote.quote);
             }}
           />
         ))}

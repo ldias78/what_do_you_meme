@@ -102,7 +102,7 @@ The rules are simple.
 
 1.  An App feature
     - pick cards with random captions
-1.  Another App feature
+2.  Another App feature
     - pick random Memes 
     
   PS - I added google firebase as a new technology but if it is not enough I can add MySQL instead of Postgres. Please let me know if google firebase is enough.

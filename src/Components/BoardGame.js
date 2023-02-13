@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import "./BoardGame.css";
@@ -6,12 +6,37 @@ import { navigate } from "@reach/router";
 
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
+<<<<<<< HEAD
   const players = location?.state?.players ?? [];
   // const [selectedMeme] = useState("");
 
   // const handleVote = () => {
   //   navigate("/voteboard", { state: { selectedMeme, players } });
   // };
+=======
+  const [favoriteCards, setFavoriteCards] = useState([]);
+  // const players = location?.state?.players ?? [];
+  const [isVoteBtnDisabled, setIsVoteBtnDisabled] = useState(true);
+  const playersStr = localStorage.getItem("players");
+  const players = JSON.parse(playersStr);
+
+  useEffect(() => {
+    const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
+    const savedItems = JSON.parse(savedItemsStr);
+    let data = [];
+    Object.keys(savedItems).forEach((key) => {
+      data.push({
+        player: key,
+        data: savedItems[key],
+      });
+    });
+    setFavoriteCards(data);
+    setIsVoteBtnDisabled(
+      Object.keys(savedItems[`R${Object.keys(savedItems).length - 1}`] ?? {})
+        .length != 4
+    );
+  }, []);
+>>>>>>> eaabee0651ee6d59ce9469a2890dfcf216caa2ca
 
   return (
     <div className="boardgame-container">
@@ -82,6 +107,43 @@ const BoardGame = (props) => {
               <h2>Look this Giphy and match your caption card</h2>
               <p>What caption makes you laugh when you look at this Meme?</p>
             </div>
+            {/* <Button
+              variant="primary"
+              style={{
+                // display: "block",
+                // margin: "0 auto",
+                marginTop: "20px",
+                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
+              }}
+              onClick={() => {
+                console.log("navigate")
+                navigate("favoritecards");
+              }}
+              disabled={isVoteBtnDisabled}
+            >
+              Let`s vote
+            </Button> */}
+
+            <button
+              style={{
+                marginTop: 30,
+                backgroundColor: "green",
+                transition: "all 0.5s ease",
+                padding: 15,
+                fontSize: 18,
+                borderRadius: 5,
+                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
+              }}
+              variant="secondary"
+              className="see-card-btn "
+              onClick={() => {
+                navigate("/favoritecards");
+              }}
+              disabled={isVoteBtnDisabled}
+            >
+              Let`s vote
+            </button>
+
             <Button
               variant="primary"
               style={{
