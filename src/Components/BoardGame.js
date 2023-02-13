@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import "./BoardGame.css";
@@ -6,7 +6,28 @@ import { navigate } from "@reach/router";
 
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
+  const [favoriteCards, setFavoriteCards] = useState([]);
   const players = location?.state?.players ?? [];
+  const [isVoteBtnDisabled, setIsVoteBtnDisabled] = useState(true);
+  console.log("players-2", players);
+
+  useEffect(() => {
+    const savedItemsStr = localStorage.getItem("FavoriteCards") ?? "{}";
+    const savedItems = JSON.parse(savedItemsStr);
+    let data = [];
+    Object.keys(savedItems).forEach((key) => {
+      data.push({
+        player: key,
+        data: savedItems[key],
+      });
+    });
+    setFavoriteCards(data);
+    console.log(
+      "data.every((item, index) => item.data.quote)",
+      data.every((item, index) => item.data.quote)
+    );
+    setIsVoteBtnDisabled(data.some((item, index) => !item.data.quote));
+  }, []);
 
   return (
     <div className="boardgame-container">
@@ -76,6 +97,15 @@ const BoardGame = (props) => {
               onClick={() => setFetching(!fetching)}
             >
               Next Meme
+            </Button>
+
+            <Button
+              variant="primary"
+              style={{ display: "block", margin: "0 auto" }}
+              onClick={() => {}}
+              disabled={isVoteBtnDisabled}
+            >
+              Let`s vote
             </Button>
           </div>
         </div>
