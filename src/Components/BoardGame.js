@@ -7,19 +7,25 @@ import { navigate } from "@reach/router";
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
   const players = location?.state?.players ?? [];
+  // const [selectedMeme] = useState("");
+
+  // const handleVote = () => {
+  //   navigate("/voteboard", { state: { selectedMeme, players } });
+  // };
 
   return (
     <div className="boardgame-container">
       <video src="/videos/video-3.mp4" autoPlay loop muted />
-      <h1 className="title">
-        WELCOME TO THE WHAT DO YOU MEME GAME
-        <p> GIPHY VERSION</p>
-      </h1>
+      <div style={{ fontFamily: "Comic Sans MS, sans-serif" }}>
+        <h1 className="title" style={{ fontWeight: "bold" }}>
+          WELCOME TO THE WHAT DO YOU MEME GAME
+        </h1>
+      </div>
       <header>
         <div className="header-container">
           {players.slice(0, 2).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player}</h2>
+              <h2 style={{ color: "coral" }}>{player}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
@@ -38,7 +44,7 @@ const BoardGame = (props) => {
         <div className="footer-container">
           {players.slice(2, 4).map((player, index) => (
             <div className="player-container" key={index}>
-              <h2>{player}</h2>
+              <h2 style={{ color: "coral" }}>{player}</h2>
               <Button
                 variant="secondary"
                 className="big-btn see-card-btn"
@@ -54,8 +60,14 @@ const BoardGame = (props) => {
         </div>
       </footer>
       <div className="meme-container">
-        <div style={{ textAlign: "center", marginTop: "60px" }}>
-          <div style={{ backgroundColor: "powderblue", padding: "20px" }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "350px",
+            marginBottom: "200px",
+          }}
+        >
+          <div style={{ backgroundColor: "powderblue", padding: "10px" }}>
             <img
               src={giphy}
               alt=""
@@ -72,7 +84,12 @@ const BoardGame = (props) => {
             </div>
             <Button
               variant="primary"
-              style={{ display: "block", margin: "0 auto", marginTop: "60px" }}
+              style={{
+                display: "block",
+                margin: "0 auto",
+                marginTop: "40px",
+                backgroundColor: "coral",
+              }}
               onClick={() => setFetching(!fetching)}
             >
               Next Meme

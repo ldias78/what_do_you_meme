@@ -30,7 +30,7 @@ const MainPage = () => {
       <video src="/videos/video-2.mp4" autoPlay loop muted />
 
       <form className="input-container">
-        <div>
+        <div className="input-button-container">
           <label>
             <h1>Player Name:</h1>
             <input
@@ -43,7 +43,13 @@ const MainPage = () => {
               placeholder="type name here"
             />
           </label>
-          <button type="button" onClick={handleDone} disabled={inputDisabled}>
+          <button
+            type="button"
+            className="button-resize"
+            style={{ marginTop: "90px" }}
+            onClick={handleDone}
+            disabled={inputDisabled}
+          >
             Done
           </button>
         </div>
