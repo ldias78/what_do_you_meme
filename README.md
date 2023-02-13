@@ -42,7 +42,7 @@ Main Front-end Technology:
 
 
 Deployment:
-- Google Firebase
+- Heroku
 
 ## Project Description:
 The rules are simple. 
