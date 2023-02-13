@@ -101,8 +101,15 @@ const BoardGame = (props) => {
 
             <Button
               variant="primary"
-              style={{ display: "block", margin: "0 auto" }}
-              onClick={() => {}}
+              style={{
+                display: "block",
+                margin: "0 auto",
+                marginTop: "20px",
+                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
+              }}
+              onClick={() => {
+                navigate("favoritecards");
+              }}
               disabled={isVoteBtnDisabled}
             >
               Let`s vote
