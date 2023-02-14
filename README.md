@@ -12,7 +12,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -22,7 +22,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
@@ -35,31 +35,32 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 # Project name - WHAT DO YOU MEME? - Luciane D. and Diana S.
 
 Project Type:
-- Game app
+- Game Website
 
 Main Front-end Technology:
-- Javascript/React
-
+- Javascript/React/Bootstrap
 
 Deployment:
 - Heroku
 
 ## Project Description:
 The rules are simple. 
-- Each round, a rotating judge(computer ramdonly pick a card) plays a Photo Card with a MEME
+- Each round, a MEME will appear and each player will be provided 7 cards. 
+- If you so choose, you can choose another Meme if you'd like to pass on the current one. 
 - Each player gets 7 captions card randomly picked by the computer
 - The cards should be private, no one else can see the cards except the player.
-- Based in the Meme card everyone plays a Caption Card from the 7 captions card. 
-- When the playear play a card, another card should automatically added to the player cards, the playear should always have 7 caption cards.
+- Based in the Meme card everyone chooses ONE Caption Card from the 7 card. 
+- The selected cards will be shown after all 4 players pick their respective card. 
 - The cards should be in secret until clicked on a bottom that would reveal all the cards at the same time.
 - Everyone should vote to the funniest and most appropriated card for the MEME
 - The card that gets the most vote should score a point, if there is a tie both players get the points in the round
 - Lather, rinse, repeat.
 
 
-1.  An App feature
-    - pick cards with random captions
-2.  Another App feature
-    - pick random Memes 
-    
-  PS - I added google firebase as a new technology but if it is not enough I can add MySQL instead of Postgres. Please let me know if google firebase is enough.
+Dependencies:
+    Reach/Router 6
+    React 18
+    Bootstrap 3 
+    Axios
+    React Bootstrap 2.7
+
