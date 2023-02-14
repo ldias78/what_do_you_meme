@@ -1,6 +1,6 @@
-body {
+/* body {
   background: lightgray;
-}
+} */
 
 .cards {
   display: flex;
@@ -13,7 +13,7 @@ body {
 }
 .card {
   width: 400px;
-  height: 200px;
+  height: 180px;
   margin-top: 1rem;
   background: rgb(160, 67, 67);
   border-radius: 4rem;

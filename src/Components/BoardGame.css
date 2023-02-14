@@ -31,7 +31,7 @@ header {
 
 footer {
   bottom: 40px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .header-container,
@@ -69,7 +69,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
 }
 
 img {

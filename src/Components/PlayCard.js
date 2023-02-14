@@ -16,16 +16,17 @@ const PlayCard = (props) => {
     setCards(chooenItems);
   }, [player]);
 
-  const isLastPlayer = player.startsWith("Player 4:");
+  // const isLastPlayer = player.startsWith("Player 4:");
 
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
       <h1
         style={{
-          marginBottom: 50,
-          marginTop: 100,
+          marginBottom: 0,
+          marginTop: 20,
           color: "green",
           fontFamily: "Comic Sans MS, sans-serif",
         }}
@@ -33,32 +34,10 @@ const PlayCard = (props) => {
         {player}
       </h1>
 
-      {/* {isLastPlayer && <button
-        style={{
-          backgroundColor: "green",
-          transition: "all 0.5s ease",
-          padding: 15,
-          fontSize: 18,
-          borderRadius: 5,
-        }}
-        onClick={() => {
-          navigate("favoritecards");
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "coral";
-          e.currentTarget.style.transform = "scale(1.2)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "green";
-          e.currentTarget.style.transform = "scale(1)";
-        }}
-      >
-        Go to All Favorite cards
-      </button>} */}
-
       <button
         style={{
-          marginBottom: 50,
+          marginBottom: 10,
+          marginTop: 20,
           backgroundColor: "green",
           transition: "all 0.5s ease",
           padding: 15,
@@ -82,7 +61,7 @@ const PlayCard = (props) => {
           e.currentTarget.style.transform = "scale(1)";
         }}
       >
-        Back to meme
+        Back to Meme
       </button>
 
       <div style={{ display: "flex", flexWrap: "wrap" }}>
@@ -111,13 +90,13 @@ const PlayCard = (props) => {
           />
         ))}
       </div>
-      <div style={{ marginTop: 20 }}>
+      <div style={{ marginTop: 0 }}>
         {selectedCard && (
           <div>
             <h3>
               <p
                 style={{
-                  marginBottom: 50,
+                  marginBottom: 0,
                   color: "green",
                   fontFamily: "Comic Sans MS, sans-serif",
                 }}

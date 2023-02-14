@@ -6,14 +6,6 @@ import { navigate } from "@reach/router";
 
 const BoardGame = (props) => {
   const { setFetching, fetching, giphy, location } = props;
-<<<<<<< HEAD
-  const players = location?.state?.players ?? [];
-  // const [selectedMeme] = useState("");
-
-  // const handleVote = () => {
-  //   navigate("/voteboard", { state: { selectedMeme, players } });
-  // };
-=======
   const [favoriteCards, setFavoriteCards] = useState([]);
   // const players = location?.state?.players ?? [];
   const [isVoteBtnDisabled, setIsVoteBtnDisabled] = useState(true);
@@ -36,7 +28,6 @@ const BoardGame = (props) => {
         .length != 4
     );
   }, []);
->>>>>>> eaabee0651ee6d59ce9469a2890dfcf216caa2ca
 
   return (
     <div className="boardgame-container">
@@ -123,39 +114,43 @@ const BoardGame = (props) => {
             >
               Let`s vote
             </Button> */}
-
-            <button
-              style={{
-                marginTop: 30,
-                backgroundColor: "green",
-                transition: "all 0.5s ease",
-                padding: 15,
-                fontSize: 18,
-                borderRadius: 5,
-                backgroundColor: isVoteBtnDisabled ? "red" : "blue",
-              }}
-              variant="secondary"
-              className="see-card-btn "
-              onClick={() => {
-                navigate("/favoritecards");
-              }}
-              disabled={isVoteBtnDisabled}
-            >
-              Let`s vote
-            </button>
-
             <Button
               variant="primary"
+              className="next-meme-btn"
               style={{
                 display: "block",
                 margin: "0 auto",
+                fontSize: 18,
                 marginTop: "40px",
+                borderRadius: 5,
+                padding: 10,
                 backgroundColor: "coral",
               }}
               onClick={() => setFetching(!fetching)}
             >
               Next Meme
             </Button>
+
+            <button
+              style={{
+                marginTop: 20,
+                backgroundColor: "green",
+                transition: "all 0.5s ease",
+                padding: 10,
+                fontSize: 18,
+                borderRadius: 5,
+                backgroundColor: isVoteBtnDisabled ? "green" : "coral",
+              }}
+              variant="secondary"
+              className="see-card-btn "
+              onClick={() => {
+                // console.log("let`s vote clicked");
+                navigate("/favoritecards");
+              }}
+              disabled={isVoteBtnDisabled}
+            >
+              Let's vote
+            </button>
           </div>
         </div>
       </div>

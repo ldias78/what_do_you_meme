@@ -31,6 +31,8 @@ const FavoriteCards = ({ giphy }) => {
       <div
         className="card-favorite"
         style={{
+          fontFamily: "Comic Sans MS, sans-serif",
+          fontSize: 12,
           width: "400px",
           height: "250px",
           marginTop: "1rem",
