@@ -101,6 +101,7 @@ const FavoriteCards = ({ giphy }) => {
   };
   return (
     <div>
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
       <div>
         <h1 className="title">
           <p
