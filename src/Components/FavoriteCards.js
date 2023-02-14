@@ -31,6 +31,8 @@ const FavoriteCards = ({ giphy }) => {
       <div
         className="card-favorite"
         style={{
+          fontFamily: "Comic Sans MS, sans-serif",
+          fontSize: 12,
           width: "400px",
           height: "250px",
           marginTop: "1rem",
@@ -99,6 +101,7 @@ const FavoriteCards = ({ giphy }) => {
   };
   return (
     <div>
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
       <div>
         <h1 className="title">
           <p

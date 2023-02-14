@@ -41,7 +41,7 @@ const VoteBoard = ({ giphy, location }) => {
         style={{
           textAlign: "center",
           marginTop: "-60px",
-          marginBottom: "60px",
+          marginBottom: "0px",
           color: "green",
         }}
       >
